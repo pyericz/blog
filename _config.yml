@@ -6,6 +6,7 @@ description: "人生最曼妙的风景，不是命运的波澜，而是内心的
 baseurl: ""
 url: "http://pyericz.github.io"
 github_username:  pyericz
+timezone: Asian/Shanghai
 
 # Build settings
 markdown: kramdown

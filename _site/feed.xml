@@ -5,9 +5,22 @@
     <description>人生最曼妙的风景，不是命运的波澜，而是内心的淡定与从容</description>
     <link>http://pyericz.github.io/</link>
     <atom:link href="http://pyericz.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 31 Dec 2015 22:48:18 +0800</pubDate>
-    <lastBuildDate>Thu, 31 Dec 2015 22:48:18 +0800</lastBuildDate>
+    <pubDate>Thu, 31 Dec 2015 15:15:30 +0000</pubDate>
+    <lastBuildDate>Thu, 31 Dec 2015 15:15:30 +0000</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
+    
+      <item>
+        <title>2015年的最后一个小时</title>
+        <description>&lt;p&gt;其实一直想写博客之类的，但却一直没有付诸行动。希望2015年最后一个小时的努力，能带领后通过博客记录点滴，从容面对人生。&lt;/p&gt;
+</description>
+        <pubDate>Thu, 31 Dec 2015 23:10:00 +0000</pubDate>
+        <link>http://pyericz.github.io/%E9%9A%8F%E7%AC%94/2015/12/31/last-day/</link>
+        <guid isPermaLink="true">http://pyericz.github.io/%E9%9A%8F%E7%AC%94/2015/12/31/last-day/</guid>
+        
+        
+        <category>随笔</category>
+        
+      </item>
     
       <item>
         <title>Welcome to Jekyll!</title>
@@ -25,9 +38,9 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 &lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
 
 </description>
-        <pubDate>Fri, 01 Jan 2016 06:27:08 +0800</pubDate>
-        <link>http://pyericz.github.io/jekyll/update/2016/01/01/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://pyericz.github.io/jekyll/update/2016/01/01/welcome-to-jekyll/</guid>
+        <pubDate>Thu, 31 Dec 2015 22:27:08 +0000</pubDate>
+        <link>http://pyericz.github.io/jekyll/update/2015/12/31/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://pyericz.github.io/jekyll/update/2015/12/31/welcome-to-jekyll/</guid>
         
         
         <category>jekyll</category>
