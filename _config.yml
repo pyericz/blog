@@ -1,0 +1,15 @@
+# Site settings
+title: 艾里克de梦
+layout: post
+email: pyericz@yahoo.com 
+description: "人生最曼妙的风景，不是命运的波澜，而是内心的淡定与从容"
+baseurl: ""
+url: "http://pyericz.github.io"
+github_username:  pyericz
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+highlighter: pygments
+github: https://github.com/pyericz/pyericz.github.io.git
