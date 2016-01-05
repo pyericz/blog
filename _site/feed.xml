@@ -5,9 +5,9 @@
     <description>人生最曼妙的风景，不是命运的波澜，而是内心的淡定与从容</description>
     <link>http://pyericz.github.io/</link>
     <atom:link href="http://pyericz.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 05 Jan 2016 08:03:08 +0000</pubDate>
-    <lastBuildDate>Tue, 05 Jan 2016 08:03:08 +0000</lastBuildDate>
-    <generator>Jekyll v3.0.1</generator>
+    <pubDate>Tue, 05 Jan 2016 16:15:18 +0000</pubDate>
+    <lastBuildDate>Tue, 05 Jan 2016 16:15:18 +0000</lastBuildDate>
+    <generator>Jekyll v2.2.0</generator>
     
       <item>
         <title>迭代开发</title>
@@ -15,17 +15,17 @@
   &lt;p&gt;全文整理摘录《UML和模式应用》（原书第3版）（美）Craig Larman 著&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;strong&gt;软件开发过程&lt;/strong&gt;（software development process）描述了构造、部署以及维护软件的方式。
-&lt;strong&gt;统一过程&lt;/strong&gt;（unified process, UP）是一种比较流行的构造面向对象系统的&lt;strong&gt;迭代&lt;/strong&gt;软件开发过程。
-而&lt;strong&gt;迭代开发&lt;/strong&gt;（iterative development）是UP和大多数其他现代方法中的关键实践。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;软件开发过程&lt;/strong&gt;(software development process)描述了构造、部署以及维护软件的方式。
+&lt;strong&gt;统一过程&lt;/strong&gt;(unified process, UP)是一种比较流行的构造面向对象系统的&lt;strong&gt;迭代&lt;/strong&gt;软件开发过程。
+而&lt;strong&gt;迭代开发&lt;/strong&gt;(iterative development)是UP和大多数其他现代方法中的关键实践。&lt;/p&gt;
 
-&lt;p&gt;在迭代开发生命周期方法中，开发被组织成一系列固定的短期（如三个星期）小项目，称为&lt;strong&gt;迭代&lt;/strong&gt;（iteration）；
+&lt;p&gt;在迭代开发生命周期方法中，开发被组织成一系列固定的短期（如三个星期）小项目，称为&lt;strong&gt;迭代&lt;/strong&gt;(iteration)；
 每次迭代都产生经过测试、集成并可执行的局部系统。
 每次迭代都具有各自的需求分析、设计、实现和测试活动。
 迭代生命周期基于对经过多次迭代的系统进行持续扩展和精化，
 并以循环反馈和调整为核心驱动力，使之最终成为适当的系统。&lt;/p&gt;
 
-&lt;p&gt;迭代开发的一个关键态度：瀑布式过程（waterfall process）是在实现之前，（失败地）企图全面和正确地规格化、冻结，
+&lt;p&gt;迭代开发的一个关键态度：瀑布式过程(waterfall process)是在实现之前，（失败地）企图全面和正确地规格化、冻结，
 以及“签署”需求集和设计，以此与软件开发中不可避免的变更进行抗争。与其相反，迭代和进化式开发抱以接收变更和改写的态度，
 并以此为真正本质的驱动力。但这并非表明迭代开发和UP提倡不受控制的、反应式的“特性蔓延”驱动的过程。&lt;/p&gt;
 
@@ -67,7 +67,7 @@
 仅一周的迭代时间不足以获得有意义的产出和反馈；若迭代时间大于6周，则复杂性会变得不可控制，反馈将延迟。
 时间定量超长的迭代不符合迭代开发的观点。短时迭代为上。&lt;/p&gt;
 
-&lt;p&gt;迭代的一个关键思想是&lt;strong&gt;时间定量&lt;/strong&gt;（timeboxed），或时长固定。例如，假设选择下一次迭代时间为3周，则必须依照时间表来集成、测试和稳定局部系统——推延时间则违约。
+&lt;p&gt;迭代的一个关键思想是&lt;strong&gt;时间定量&lt;/strong&gt;(timeboxed)，或时长固定。例如，假设选择下一次迭代时间为3周，则必须依照时间表来集成、测试和稳定局部系统——推延时间则违约。
 如果看起来难以满足期限要求，那么建议从本次迭代中除去一些任务或需求，并将其分配在将来的迭代中，而不是推迟完成日期。&lt;/p&gt;
 </description>
         <pubDate>Tue, 05 Jan 2016 00:00:00 +0000</pubDate>
@@ -99,11 +99,11 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 
 &lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
 
