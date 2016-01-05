@@ -5,8 +5,8 @@
     <description>人生最曼妙的风景，不是命运的波澜，而是内心的淡定与从容</description>
     <link>http://pyericz.github.io/</link>
     <atom:link href="http://pyericz.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 05 Jan 2016 07:57:22 +0000</pubDate>
-    <lastBuildDate>Tue, 05 Jan 2016 07:57:22 +0000</lastBuildDate>
+    <pubDate>Tue, 05 Jan 2016 08:03:08 +0000</pubDate>
+    <lastBuildDate>Tue, 05 Jan 2016 08:03:08 +0000</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -67,8 +67,8 @@
 仅一周的迭代时间不足以获得有意义的产出和反馈；若迭代时间大于6周，则复杂性会变得不可控制，反馈将延迟。
 时间定量超长的迭代不符合迭代开发的观点。短时迭代为上。&lt;/p&gt;
 
-&lt;p&gt;迭代的一个关键思想是&lt;strong&gt;时间定量&lt;/strong&gt;（timeboxed），或时长固定。例如，假设选择下一次迭代时间为3周，则必须依照时间表来集成、测试和稳定局部系统
-——推延时间则违约。如果看起来难以满足期限要求，那么建议从本次迭代中除去一些任务或需求，并将其分配在将来的迭代中，而不是推迟完成日期。&lt;/p&gt;
+&lt;p&gt;迭代的一个关键思想是&lt;strong&gt;时间定量&lt;/strong&gt;（timeboxed），或时长固定。例如，假设选择下一次迭代时间为3周，则必须依照时间表来集成、测试和稳定局部系统——推延时间则违约。
+如果看起来难以满足期限要求，那么建议从本次迭代中除去一些任务或需求，并将其分配在将来的迭代中，而不是推迟完成日期。&lt;/p&gt;
 </description>
         <pubDate>Tue, 05 Jan 2016 00:00:00 +0000</pubDate>
         <link>http://pyericz.github.io/%E5%BC%80%E5%8F%91/2016/01/05/%E8%BF%AD%E4%BB%A3%E5%BC%80%E5%8F%91/</link>
