@@ -5,9 +5,79 @@
     <description>人生最曼妙的风景，不是命运的波澜，而是内心的淡定与从容</description>
     <link>http://pyericz.github.io/</link>
     <atom:link href="http://pyericz.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 31 Dec 2015 15:15:30 +0000</pubDate>
-    <lastBuildDate>Thu, 31 Dec 2015 15:15:30 +0000</lastBuildDate>
-    <generator>Jekyll v2.2.0</generator>
+    <pubDate>Tue, 05 Jan 2016 07:57:22 +0000</pubDate>
+    <lastBuildDate>Tue, 05 Jan 2016 07:57:22 +0000</lastBuildDate>
+    <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>迭代开发</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;全文整理摘录《UML和模式应用》（原书第3版）（美）Craig Larman 著&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;软件开发过程&lt;/strong&gt;（software development process）描述了构造、部署以及维护软件的方式。
+&lt;strong&gt;统一过程&lt;/strong&gt;（unified process, UP）是一种比较流行的构造面向对象系统的&lt;strong&gt;迭代&lt;/strong&gt;软件开发过程。
+而&lt;strong&gt;迭代开发&lt;/strong&gt;（iterative development）是UP和大多数其他现代方法中的关键实践。&lt;/p&gt;
+
+&lt;p&gt;在迭代开发生命周期方法中，开发被组织成一系列固定的短期（如三个星期）小项目，称为&lt;strong&gt;迭代&lt;/strong&gt;（iteration）；
+每次迭代都产生经过测试、集成并可执行的局部系统。
+每次迭代都具有各自的需求分析、设计、实现和测试活动。
+迭代生命周期基于对经过多次迭代的系统进行持续扩展和精化，
+并以循环反馈和调整为核心驱动力，使之最终成为适当的系统。&lt;/p&gt;
+
+&lt;p&gt;迭代开发的一个关键态度：瀑布式过程（waterfall process）是在实现之前，（失败地）企图全面和正确地规格化、冻结，
+以及“签署”需求集和设计，以此与软件开发中不可避免的变更进行抗争。与其相反，迭代和进化式开发抱以接收变更和改写的态度，
+并以此为真正本质的驱动力。但这并非表明迭代开发和UP提倡不受控制的、反应式的“特性蔓延”驱动的过程。&lt;/p&gt;
+
+&lt;p&gt;迭代式开发是通过一系列有序的&lt;strong&gt;构造-反馈-调整&lt;/strong&gt;循环向前发展的。每次迭代选择一小组需求，并快速设计、实现和测试。在早期迭代中，
+对需求和设计的选择对于最终期望来说可能并不准确。但是，在最终确定所有需求或经过深思熟虑而定义完整设计之前，
+快速地实施一小步的方式可以得到快速反馈——来自用户、开发人员和测试（诸如负载测试和可用性测试）的反馈。
+这种早期反馈具有极高的价值。与“推测”完整、正确的需求或设计相反，团队可以从实际构造和测试的反馈中，
+挖掘出至关重要和实际的观点，并修改和调整对需求或设计的理解。除了明确需求之外，负载测试将验证局部设计和实现是否正确，
+或者是否需要在下次迭代中改变核心架构。最好及早解决和验证具有风险的、关键的设计决策，而迭代开发提供了完成这项工作的机制。
+对于最终的需求和设计而言，早期迭代中系统偏离“正确轨迹”的程度会大于后继迭代。
+随着时间的发展，系统将沿着这一轨迹收敛。&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;迭代开发的优点&lt;/h2&gt;
+&lt;p&gt;迭代开发的优点包括：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;减少项目失败可能性，提高生产率，降低缺陷率。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在早期（而不是晚期）缓解高风险（技术、需求、目标、可用性等等）&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;早期可见的进展。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;早期反馈、用户参与和调整，会产生更接近涉众真实需求的精化系统。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;可控复杂性；团队不会被“分析瘫痪”或长期且复杂的步骤所淹没。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;一次迭代中的经验可以被系统地用于改进开发过程本身，并如此反复进行下去。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;一次迭代的持续时间和时间定量&lt;/h2&gt;
+&lt;p&gt;大部分迭代方法建议迭代时间在2~6周之间。小步骤、快速反馈和调整是迭代开发的主要思想，迭代时间过长会破坏迭代开发的核心动机并增加项目风险。
+仅一周的迭代时间不足以获得有意义的产出和反馈；若迭代时间大于6周，则复杂性会变得不可控制，反馈将延迟。
+时间定量超长的迭代不符合迭代开发的观点。短时迭代为上。&lt;/p&gt;
+
+&lt;p&gt;迭代的一个关键思想是&lt;strong&gt;时间定量&lt;/strong&gt;（timeboxed），或时长固定。例如，假设选择下一次迭代时间为3周，则必须依照时间表来集成、测试和稳定局部系统
+——推延时间则违约。如果看起来难以满足期限要求，那么建议从本次迭代中除去一些任务或需求，并将其分配在将来的迭代中，而不是推迟完成日期。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 05 Jan 2016 00:00:00 +0000</pubDate>
+        <link>http://pyericz.github.io/%E5%BC%80%E5%8F%91/2016/01/05/%E8%BF%AD%E4%BB%A3%E5%BC%80%E5%8F%91/</link>
+        <guid isPermaLink="true">http://pyericz.github.io/%E5%BC%80%E5%8F%91/2016/01/05/%E8%BF%AD%E4%BB%A3%E5%BC%80%E5%8F%91/</guid>
+        
+        
+        <category>开发</category>
+        
+      </item>
     
       <item>
         <title>2015年的最后一个小时</title>
@@ -29,11 +99,11 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 
 &lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
 
