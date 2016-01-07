@@ -5,9 +5,112 @@
     <description>人生最曼妙的风景，不是命运的波澜，而是内心的淡定与从容</description>
     <link>http://pyericz.github.io/</link>
     <atom:link href="http://pyericz.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 05 Jan 2016 08:03:08 +0000</pubDate>
-    <lastBuildDate>Tue, 05 Jan 2016 08:03:08 +0000</lastBuildDate>
+    <pubDate>Thu, 07 Jan 2016 07:20:05 +0000</pubDate>
+    <lastBuildDate>Thu, 07 Jan 2016 07:20:05 +0000</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>详述用例模板</title>
+        <description>&lt;style&gt;
+    table{
+        width: 100%;
+        border-collapse: collapse;
+        border:solid #000000;
+        border-width:2px 0px 2px 0px;
+        border-spacing: 10px;
+    }
+
+    th{
+        border: solid #000000;
+        border-width:2px 0px 2px 0px;
+        padding: 0 5%;
+    }
+  
+    td{
+        border: 0 solid #000000;
+        padding: 0 10px;
+    }
+&lt;/style&gt;
+
+&lt;p&gt;&lt;strong&gt;详述用例&lt;/strong&gt;（fully dressed use case）是结构化的，它展示了更多细节，并且更为深入。&lt;/p&gt;
+
+&lt;p&gt;在迭代和进化式UP需求分析中，第一次需求讨论会应该以这种形式编写10%的关键用例。
+随后对着10%中最具有重要架构意义的用例或场景进行设计和编程。&lt;/p&gt;
+
+&lt;p&gt;对于详细的用例有各种格式的模板。自20世纪90年代早期以来，使用最为广泛的格式是alistair.cockburn.us上提供的模板，
+该模板由Alistair Cockburn创建。格式如下：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;用例的不用部分&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;注释&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;用例名称&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;以动词开始&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;范围&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;要设计的系统&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;级别&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;“用户目标”或者是“子功能”&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;主要参与者&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;调用系统，使之交付服务&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;涉众及其关注点&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;关注该用例的人，及其需要&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;前置条件&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;值得告知读者的，开始前必须为真的条件&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;成功保证&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;值得告知读者的，成功完成必须满足的条件&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;主成功场景&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;典型的、无条件的、理想方式的成功场景&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;扩展&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;成功或失败的替代场景&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;特殊需求&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;相关的非功能性需求&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;技术和数据变元表&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;不同的I/O方法和数据格式&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;发生频率&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;影响对实现的调查、测试和时间安排&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;杂项&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;例如未决问题&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+        <pubDate>Thu, 07 Jan 2016 00:00:00 +0000</pubDate>
+        <link>http://pyericz.github.io/%E5%BC%80%E5%8F%91/2016/01/07/%E8%AF%A6%E8%BF%B0%E7%94%A8%E4%BE%8B%E6%A8%A1%E6%9D%BF.html</link>
+        <guid isPermaLink="true">http://pyericz.github.io/%E5%BC%80%E5%8F%91/2016/01/07/%E8%AF%A6%E8%BF%B0%E7%94%A8%E4%BE%8B%E6%A8%A1%E6%9D%BF.html</guid>
+        
+        
+        <category>开发</category>
+        
+      </item>
     
       <item>
         <title>迭代开发</title>
@@ -71,8 +174,8 @@
 如果看起来难以满足期限要求，那么建议从本次迭代中除去一些任务或需求，并将其分配在将来的迭代中，而不是推迟完成日期。&lt;/p&gt;
 </description>
         <pubDate>Tue, 05 Jan 2016 00:00:00 +0000</pubDate>
-        <link>http://pyericz.github.io/%E5%BC%80%E5%8F%91/2016/01/05/%E8%BF%AD%E4%BB%A3%E5%BC%80%E5%8F%91/</link>
-        <guid isPermaLink="true">http://pyericz.github.io/%E5%BC%80%E5%8F%91/2016/01/05/%E8%BF%AD%E4%BB%A3%E5%BC%80%E5%8F%91/</guid>
+        <link>http://pyericz.github.io/%E5%BC%80%E5%8F%91/2016/01/05/%E8%BF%AD%E4%BB%A3%E5%BC%80%E5%8F%91.html</link>
+        <guid isPermaLink="true">http://pyericz.github.io/%E5%BC%80%E5%8F%91/2016/01/05/%E8%BF%AD%E4%BB%A3%E5%BC%80%E5%8F%91.html</guid>
         
         
         <category>开发</category>
@@ -84,8 +187,8 @@
         <description>&lt;p&gt;其实一直想写博客之类的，但却一直没有付诸行动。希望2015年最后一个小时的努力，能带领后通过博客记录点滴，从容面对人生。&lt;/p&gt;
 </description>
         <pubDate>Thu, 31 Dec 2015 23:10:00 +0000</pubDate>
-        <link>http://pyericz.github.io/%E9%9A%8F%E7%AC%94/2015/12/31/last-day/</link>
-        <guid isPermaLink="true">http://pyericz.github.io/%E9%9A%8F%E7%AC%94/2015/12/31/last-day/</guid>
+        <link>http://pyericz.github.io/%E9%9A%8F%E7%AC%94/2015/12/31/last-day.html</link>
+        <guid isPermaLink="true">http://pyericz.github.io/%E9%9A%8F%E7%AC%94/2015/12/31/last-day.html</guid>
         
         
         <category>随笔</category>
@@ -109,8 +212,8 @@ To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; direc
 
 </description>
         <pubDate>Thu, 31 Dec 2015 22:27:08 +0000</pubDate>
-        <link>http://pyericz.github.io/jekyll/update/2015/12/31/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://pyericz.github.io/jekyll/update/2015/12/31/welcome-to-jekyll/</guid>
+        <link>http://pyericz.github.io/jekyll/update/2015/12/31/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://pyericz.github.io/jekyll/update/2015/12/31/welcome-to-jekyll.html</guid>
         
         
         <category>jekyll</category>

@@ -8,6 +8,8 @@ url: "http://pyericz.github.io"
 github_username:  pyericz
 timezone: Asian/Shanghai
 
+author: Eric Zhang
+
 # Build settings
 markdown: kramdown
 permalink: pretty

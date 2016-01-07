@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>艾里克de梦</title>
+    <title>详述用例模板</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="人生最曼妙的风景，不是命运的波澜，而是内心的淡定与从容">
-    <link rel="canonical" href="http://pyericz.github.io/">
+    <link rel="canonical" href="http://pyericz.github.io/%E5%BC%80%E5%8F%91/2016/01/07/%E8%AF%A6%E8%BF%B0%E7%94%A8%E4%BE%8B%E6%A8%A1%E6%9D%BF.html">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -53,35 +53,107 @@
 
     <div class="page-content">
       <div class="wrap">
-      <div class="home">
+      <div class="post">
 
-  <h1>Posts</h1>
+  <header class="post-header">
+    <h1>详述用例模板</h1>
+    <p class="meta">Jan 7, 2016</p>
+  </header>
 
-  <ul class="posts">
-    
-      <li>
-        <span class="post-date">Jan 7, 2016</span>
-        <a class="post-link" href="/%E5%BC%80%E5%8F%91/2016/01/07/%E8%AF%A6%E8%BF%B0%E7%94%A8%E4%BE%8B%E6%A8%A1%E6%9D%BF.html">详述用例模板</a>
-      </li>
-    
-      <li>
-        <span class="post-date">Jan 5, 2016</span>
-        <a class="post-link" href="/%E5%BC%80%E5%8F%91/2016/01/05/%E8%BF%AD%E4%BB%A3%E5%BC%80%E5%8F%91.html">迭代开发</a>
-      </li>
-    
-      <li>
-        <span class="post-date">Dec 31, 2015</span>
-        <a class="post-link" href="/%E9%9A%8F%E7%AC%94/2015/12/31/last-day.html">2015年的最后一个小时</a>
-      </li>
-    
-      <li>
-        <span class="post-date">Dec 31, 2015</span>
-        <a class="post-link" href="/jekyll/update/2015/12/31/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-      </li>
-    
-  </ul>
+  <article class="post-content">
+  <style>
+    table{
+        width: 100%;
+        border-collapse: collapse;
+        border:solid #000000;
+        border-width:2px 0px 2px 0px;
+        border-spacing: 10px;
+    }
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+    th{
+        border: solid #000000;
+        border-width:2px 0px 2px 0px;
+        padding: 0 5%;
+    }
+  
+    td{
+        border: 0 solid #000000;
+        padding: 0 10px;
+    }
+</style>
+
+<p><strong>详述用例</strong>（fully dressed use case）是结构化的，它展示了更多细节，并且更为深入。</p>
+
+<p>在迭代和进化式UP需求分析中，第一次需求讨论会应该以这种形式编写10%的关键用例。
+随后对着10%中最具有重要架构意义的用例或场景进行设计和编程。</p>
+
+<p>对于详细的用例有各种格式的模板。自20世纪90年代早期以来，使用最为广泛的格式是alistair.cockburn.us上提供的模板，
+该模板由Alistair Cockburn创建。格式如下：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">用例的不用部分</th>
+      <th style="text-align: left">注释</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">用例名称</td>
+      <td style="text-align: left">以动词开始</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">范围</td>
+      <td style="text-align: left">要设计的系统</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">级别</td>
+      <td style="text-align: left">“用户目标”或者是“子功能”</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">主要参与者</td>
+      <td style="text-align: left">调用系统，使之交付服务</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">涉众及其关注点</td>
+      <td style="text-align: left">关注该用例的人，及其需要</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">前置条件</td>
+      <td style="text-align: left">值得告知读者的，开始前必须为真的条件</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">成功保证</td>
+      <td style="text-align: left">值得告知读者的，成功完成必须满足的条件</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">主成功场景</td>
+      <td style="text-align: left">典型的、无条件的、理想方式的成功场景</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">扩展</td>
+      <td style="text-align: left">成功或失败的替代场景</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">特殊需求</td>
+      <td style="text-align: left">相关的非功能性需求</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">技术和数据变元表</td>
+      <td style="text-align: left">不同的I/O方法和数据格式</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">发生频率</td>
+      <td style="text-align: left">影响对实现的调查、测试和时间安排</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">杂项</td>
+      <td style="text-align: left">例如未决问题</td>
+    </tr>
+  </tbody>
+</table>
+
+  </article>
 
 </div>
 
