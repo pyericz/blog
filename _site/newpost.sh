@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 BASEURL="_posts/"
 NOW=$(date +"%Y-%m-%d")
 HYPHEN="-"
