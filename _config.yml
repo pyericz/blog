@@ -17,5 +17,5 @@ redcarpet:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "strikethrough", "with_toc_data"]
 permalink: pretty
 
-highlighter: pygments
+highlighter: rouge
 github: https://github.com/pyericz/pyericz.github.io.git

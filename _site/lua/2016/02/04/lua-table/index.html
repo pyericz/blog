@@ -74,9 +74,9 @@ vector, map这类强类型的容器只能聚合某一类数据，而是可以聚
 
 <p>一种简单表单的用法：</p>
 <div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">hello.png&quot;</span><span class="p">,</span>
-    <span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">world.png&quot;</span><span class="p">,</span>
-    <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">lua.jpg&quot;</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="s2">"hello.png"</span><span class="p">,</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="s2">"world.png"</span><span class="p">,</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="s2">"lua.jpg"</span>
 <span class="p">}</span>
 
 <span class="k">function</span> <span class="nf">loadImage</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
@@ -84,7 +84,7 @@ vector, map这类强类型的容器只能聚合某一类数据，而是可以聚
 <span class="k">end</span>
 
 <span class="k">function</span> <span class="nf">loadImages</span><span class="p">(</span><span class="n">objs</span><span class="p">)</span>
-    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">objs</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">objs</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"table"</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="k">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">objs</span><span class="p">)</span> <span class="k">do</span>
         <span class="kd">local</span> <span class="n">img</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="kd">local</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">objs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -98,7 +98,7 @@ vector, map这类强类型的容器只能聚合某一类数据，而是可以聚
 <span class="k">end</span>
 
 <span class="k">function</span> <span class="nf">createView</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">config</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">config</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"table"</span><span class="p">)</span>
     <span class="kd">local</span> <span class="n">view</span> <span class="o">=</span> <span class="n">createObject</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">class</span><span class="p">)</span>
     <span class="n">setPosition</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">config</span><span class="p">.</span><span class="n">position</span><span class="p">)</span>
     <span class="n">setSize</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">config</span><span class="p">.</span><span class="n">size</span><span class="p">)</span>
@@ -110,8 +110,8 @@ vector, map这类强类型的容器只能聚合某一类数据，而是可以聚
 
 <span class="k">function</span> <span class="nf">create</span><span class="p">()</span>
     <span class="kd">local</span> <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="n">class</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">button&quot;</span><span class="p">,</span>
-        <span class="n">id</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">1314&quot;</span><span class="p">,</span>
+        <span class="n">class</span> <span class="o">=</span> <span class="s2">"button"</span><span class="p">,</span>
+        <span class="n">id</span> <span class="o">=</span> <span class="s2">"1314"</span><span class="p">,</span>
         <span class="n">tag</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
         <span class="n">position</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
         <span class="n">size</span> <span class="o">=</span> <span class="p">{</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">},</span>
@@ -149,7 +149,7 @@ $$</p>
 <p>第一种实现方式：</p>
 <div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
 <span class="n">a</span><span class="p">.</span><span class="n">add</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"table"</span><span class="p">)</span>
     <span class="kd">local</span> <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
@@ -159,7 +159,7 @@ $$</p>
 
 <span class="kd">local</span> <span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">}</span>
 <span class="n">b</span><span class="p">.</span><span class="n">add</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"table"</span><span class="p">)</span>
     <span class="kd">local</span> <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
@@ -173,15 +173,15 @@ $$</p>
 <span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
 <span class="n">a</span><span class="p">.</span><span class="n">add</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
-    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
-    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"table"</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"table"</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">{</span><span class="n">t1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">3</span><span class="p">]}</span>
 <span class="k">end</span>
 
 <span class="kd">local</span> <span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">}</span>
 <span class="n">b</span><span class="p">.</span><span class="n">add</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
-    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
-    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"table"</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"table"</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">{</span><span class="n">t1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">3</span><span class="p">]}</span>
 <span class="k">end</span>
 
@@ -195,8 +195,8 @@ $$</p>
 <span class="kd">local</span> <span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">}</span>
 
 <span class="k">function</span> <span class="nf">add</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
-    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
-    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"table"</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"table"</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">{</span><span class="n">t1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">3</span><span class="p">]}</span>
 <span class="k">end</span>
 
@@ -214,8 +214,8 @@ $$</p>
     <span class="k">return</span> <span class="n">o</span>
 <span class="k">end</span>
 <span class="n">vector</span><span class="p">.</span><span class="n">add</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
-    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
-    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"table"</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"table"</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">vector</span><span class="p">:</span><span class="n">new</span><span class="p">{</span><span class="n">t1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">3</span><span class="p">]}</span>
 <span class="k">end</span>
 
@@ -255,6 +255,7 @@ $$</p>
 <span class="n">__newindex</span>
 <span class="n">__tostring</span>
 <span class="n">__call</span>
+
 </code></pre></div>
 <p>元表的概念和面向对象设计中的继承关系十分类似。当然也有不同。比如在内存方面，传统意义的面向对象设计new出来的每个对象都各自独占一份内存，但元表new出来的不同新表会共享一份元表内存。
 同时，元表的面向对象设计并不能实现访问限制，即无法实现protected、private功能。尽管如此，lua
@@ -280,7 +281,7 @@ $$</p>
 
 <span class="k">function</span> <span class="nc">set</span><span class="p">.</span><span class="nf">union</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">getmetatable</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">~=</span> <span class="n">mt</span> <span class="ow">or</span> <span class="nb">getmetatable</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">~=</span> <span class="n">mt</span> <span class="k">then</span>
-        <span class="nb">error</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">attempt to &#39;add&#39; a set with a not-set value&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="nb">error</span><span class="p">(</span><span class="s2">"attempt to 'add' a set with a not-set value"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="k">end</span>
     <span class="kd">local</span> <span class="n">res</span> <span class="o">=</span> <span class="n">set</span><span class="p">.</span><span class="n">new</span><span class="p">{}</span>
     <span class="k">for</span> <span class="n">k</span> <span class="k">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">do</span> <span class="n">res</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span> <span class="k">end</span>
