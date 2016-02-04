@@ -14,58 +14,58 @@ vector, map这类强类型的容器只能聚合某一类数据，而是可以聚
 ## table作为config表单
 一种简单表单的用法：
 
-```lua
+{% highlight lua %}
 local config = {
-	[1]="hello.png",
-	[2]="world.png",
-	[3]="lua.jpg"
+    [1]="hello.png",
+    [2]="world.png",
+    [3]="lua.jpg"
 }
 
 function loadImage(obj, img)
-	-- do your stuff
+    -- do your stuff
 end
 
 function loadImages(objs)
-	assert(type(objs) == "table")
-	for i, v in ipairs(objs) do
-		local img = config[i]
-		local obj = objs[i]
-		loadImage(obj, img)
-	end
+    assert(type(objs) == "table")
+    for i, v in ipairs(objs) do
+        local img = config[i]
+        local obj = objs[i]
+        loadImage(obj, img)
+    end
 end
-```
+{% endhighlight %}
 
 配置更为复杂的表单：
 
-```lua
+{% highlight lua %}
 function createObject(class)
-	-- object factory
+    -- object factory
 end
 
 function createView(config)
-	assert(type(config) == "table")
-	local view = createObject(config.class)
-	setPosition(view, config.position)
-	setSize(view, config.size)
-	setVisible(view, config.visible)
-	setId(view, config.id)
-	setTag(view, config.tag)
-	return view
+    assert(type(config) == "table")
+    local view = createObject(config.class)
+    setPosition(view, config.position)
+    setSize(view, config.size)
+    setVisible(view, config.visible)
+    setId(view, config.id)
+    setTag(view, config.tag)
+    return view
 end
 
 function create()
-	local config = {
-		class = "button",
-		id = "1314",
-		tag = 3,
-		position = {0, 0},
-		size = {40, 40},
-		visible = true
-	}
-	local button = createView(config)
-	-- do your stuff
+    local config = {
+        class = "button",
+        id = "1314",
+        tag = 3,
+        position = {0, 0},
+        size = {40, 40},
+        visible = true
+    }
+    local button = createView(config)
+    -- do your stuff
 end
-```
+{% endhighlight %}
 
 ## 元表
 元表的引入最初是为了能扩展table本身不具备的行为。比如，两个table的加／减法是未定义的，但通过元表的方式可以扩展实现这种定义。
@@ -73,10 +73,10 @@ end
 举个例子。
 现有如下两个表：
 
-```lua
+{% highlight lua %}
 local a = {3, 4, 5}
 local b = {6, 7, 8}
-```
+{% endhighlight %}
 
 那么a和b相加应该得到什么样的结果呢？这其实与a和b的定义有关。若a和b代表矢量（或方向向量），则
 
@@ -96,64 +96,64 @@ $$
 
 第一种实现方式：
 
-```lua
+{% highlight lua %}
 local a = {3, 4, 5}
 a.add = function(t)
-	assert(type(t) == "table")
-	local result = {}
-	result[1] = a[1] + t[1]
-	result[2] = a[2] + t[2]
-	result[3] = a[3] + t[3]
-	return result
+    assert(type(t) == "table")
+    local result = {}
+    result[1] = a[1] + t[1]
+    result[2] = a[2] + t[2]
+    result[3] = a[3] + t[3]
+    return result
 end
 
 local b = {6, 7, 8}
 b.add = function(t)
-	assert(type(t) == "table")
-	local result = {}
-	result[1] = t[1] + b[1]
-	result[2] = t[2] + b[2]
-	result[3] = t[3] + b[3]
-	return result
+    assert(type(t) == "table")
+    local result = {}
+    result[1] = t[1] + b[1]
+    result[2] = t[2] + b[2]
+    result[3] = t[3] + b[3]
+    return result
 end
 
 -- add a and b
 c = a.add(b)
 -- or
 c = b.add(a)
-```
+{% endhighlight %}
 
-```lua
+{% highlight lua %}
 local a = {3, 4, 5}
 a.add = function(t1, t2)
-	assert(type(t1) == "table")
-	assert(type(t2) == "table")
-	return {t1[1] + t2[1], t1[2] + t2[2], t1[3] + t2[3]}
+    assert(type(t1) == "table")
+    assert(type(t2) == "table")
+    return {t1[1] + t2[1], t1[2] + t2[2], t1[3] + t2[3]}
 end
 
 local b = {6, 7, 8}
 b.add = function(t1, t2)
-	assert(type(t1) == "table")
-	assert(type(t2) == "table")
-	return {t1[1] + t2[1], t1[2] + t2[2], t1[3] + t2[3]}
+    assert(type(t1) == "table")
+    assert(type(t2) == "table")
+    return {t1[1] + t2[1], t1[2] + t2[2], t1[3] + t2[3]}
 end
 
 -- Add a and b. Notice that I use colon here.
 local c = a:add(b)
 -- or
 local c = b:add(a)
-```
+{% endhighlight %}
 
 第二种实现方式：
 
-```lua
+{% highlight lua %}
 local a = {3, 4, 5}
 local b = {6, 7, 8}
 
 function add(t1, t2)
-	assert(type(t1) == "table")
-	assert(type(t2) == "table")
-	return {t1[1] + t2[1], t1[2] + t2[2], t1[3] + t2[3]}
+    assert(type(t1) == "table")
+    assert(type(t2) == "table")
+    return {t1[1] + t2[1], t1[2] + t2[2], t1[3] + t2[3]}
 end
 
 -- add a and b
@@ -161,21 +161,21 @@ local d = {11, 33, 33}
 local c = add(a, b)
 local result = add(c, d)
 result = add(add(a, b), d)
-```
+{% endhighlight %}
 
 元表的实现方式：
 
-```lua
+{% highlight lua %}
 local vector = {}
 function vector:new(o)
-	o = o or {}
-	setmetatable(o, {__index = self})
-	return o
+    o = o or {}
+    setmetatable(o, {__index = self})
+    return o
 end
 vector.add = function(t1, t2)
-	assert(type(t1) == "table")
-	assert(type(t2) == "table")
-	return vector:new{t1[1] + t2[1], t1[2] + t2[2], t1[3] + t2[3]}
+    assert(type(t1) == "table")
+    assert(type(t2) == "table")
+    return vector:new{t1[1] + t2[1], t1[2] + t2[2], t1[3] + t2[3]}
 end
 
 local a = vector:new({3, 4, 5})
@@ -187,44 +187,44 @@ local result = a:add(b):add(c)
 local result = b:add(a):add(c)
 -- or
 local result = vector.add(a, b):add(c)
-```
+{% endhighlight %}
 
 元表还支持元方法（metamethod)
 
-```lua
+{% highlight lua %}
 vector.__add = vector.add
-```
+{% endhighlight %}
 
 这样，上面的计算公式变成
 
-```lua
+{% highlight lua %}
 local a = vector:new({3, 4, 5})
 local b = vector:new({6, 7, 8})
 local c = vector:new({9, 10, 11})
 
 local result = a + b + c
-```
+{% endhighlight %}
 
 常用的元方法有：
 
-```lua
-__add			-- for addition(+)
-__sub			-- for subtraction(-)
-__div			-- for division(/)
-__mul			-- for multiplication(*)
-__unm			-- for negation(~)
-__mod			-- for modulo(%)
-__pow			-- for exponentiation(^)
-__eq			-- equal to
-__lt			-- less than
-__le			-- less than or equal
-__concat		-- concatenation		
+{% highlight lua %}
+__add            -- for addition(+)
+__sub            -- for subtraction(-)
+__div            -- for division(/)
+__mul            -- for multiplication(*)
+__unm            -- for negation(~)
+__mod            -- for modulo(%)
+__pow            -- for exponentiation(^)
+__eq            -- equal to
+__lt            -- less than
+__le            -- less than or equal
+__concat        -- concatenation        
 __index
 __newindex
 __tostring
 __call
 
-```
+{% endhighlight %}
 
 元表的概念和面向对象设计中的继承关系十分类似。当然也有不同。比如在内存方面，传统意义的面向对象设计new出来的每个对象都各自独占一份内存，但元表new出来的不同新表会共享一份元表内存。
 同时，元表的面向对象设计并不能实现访问限制，即无法实现protected、private功能。尽管如此，lua
@@ -236,7 +236,7 @@ lua语言虽然简单，但lua程序语言设计的思想是值得我们每个�
 ## table作为数据结构
 以下是数据结构—— **集合** 的lua实现
 
-```lua
+{% highlight lua %}
 local set = {}
 local mt = {}
 function set.new(s)
@@ -273,33 +273,33 @@ function set.equal(a, b)
     end
     return true
 end
-```
+{% endhighlight %}
 
 可以定义如下元方法
 
-```lua
+{% highlight lua %}
 mt = {}
 mt.__add = set.union
 mt.__mul = set.intersection
 mt.__eq = set.equal
-```
+{% endhighlight %}
 
 ## table作为类
 一个简单的面向对象设计如下：
 
-```lua
+{% highlight lua %}
 object = {}
 function object:extend(o)
-	o = o or {}
-	setmetatable(o, {__index = self})
-	return o
+    o = o or {}
+    setmetatable(o, {__index = self})
+    return o
 end
 object.new = object.extend
-```
+{% endhighlight %}
 
 多重继承：
 
-```lua
+{% highlight lua %}
 local search = function(k, plist)
     for i=1, #plist do
         local v=plist[i][k]
@@ -324,4 +324,4 @@ function extendClasses(...)
     c.new = c.extend
     return c
 end
-```
+{% endhighlight %}

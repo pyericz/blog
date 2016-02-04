@@ -62,18 +62,17 @@
 
   <article class="post-content">
   <blockquote>
-<p>本系列lua教程不会涉及lua基本语法的讲解，而是会专注于lua的一些核心模块以及与我们日常开发紧密相关的知识点。更多lua语法细节需要大家在lua教材中去阅读。</p>
+  <p>本系列lua教程不会涉及lua基本语法的讲解，而是会专注于lua的一些核心模块以及与我们日常开发紧密相关的知识点。更多lua语法细节需要大家在lua教材中去阅读。</p>
 </blockquote>
 
 <p>lua的核心——table是一种关联性数组（associative array），也就是说，table不像array,
 vector, map这类强类型的容器只能聚合某一类数据，而是可以聚合任意类型的数据。
 这也让table变成了一种极其强大、灵活的容器。加上table可以存放函数，
-以及元表（metatable）概念的引入，table可以解决大部分逻辑编程问题。</p>
+以及元表（metatable）概念的引入，table可以解决大部分逻辑编程问题。
+## table作为config表单
+一种简单表单的用法：</p>
 
-<h2 id="table-config">table作为config表单</h2>
-
-<p>一种简单表单的用法：</p>
-<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
     <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="s2">"hello.png"</span><span class="p">,</span>
     <span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="s2">"world.png"</span><span class="p">,</span>
     <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="s2">"lua.jpg"</span>
@@ -90,10 +89,11 @@ vector, map这类强类型的容器只能聚合某一类数据，而是可以聚
         <span class="kd">local</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">objs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="n">loadImage</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
     <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div>
+<span class="k">end</span></code></pre></figure>
+
 <p>配置更为复杂的表单：</p>
-<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="k">function</span> <span class="nf">createObject</span><span class="p">(</span><span class="n">class</span><span class="p">)</span>
+
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="k">function</span> <span class="nf">createObject</span><span class="p">(</span><span class="n">class</span><span class="p">)</span>
     <span class="c1">-- object factory</span>
 <span class="k">end</span>
 
@@ -119,35 +119,32 @@ vector, map这类强类型的容器只能聚合某一类数据，而是可以聚
     <span class="p">}</span>
     <span class="kd">local</span> <span class="n">button</span> <span class="o">=</span> <span class="n">createView</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
     <span class="c1">-- do your stuff</span>
-<span class="k">end</span>
-</code></pre></div>
-<h2 id=">元表</h2>
+<span class="k">end</span></code></pre></figure>
 
+<h2 id="section">元表</h2>
 <p>元表的引入最初是为了能扩展table本身不具备的行为。比如，两个table的加／减法是未定义的，但通过元表的方式可以扩展实现这种定义。</p>
 
 <p>举个例子。
 现有如下两个表：</p>
-<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
-<span class="kd">local</span> <span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">}</span>
-</code></pre></div>
+
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+<span class="kd">local</span> <span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">}</span></code></pre></figure>
+
 <p>那么a和b相加应该得到什么样的结果呢？这其实与a和b的定义有关。若a和b代表矢量（或方向向量），则</p>
 
-<p>$$
-\vec{a} + \vec{b} = (3 + 6, 4 + 7, 5 + 8) = (9, 11, 13)
-$$</p>
+<script type="math/tex; mode=display">\vec{a} + \vec{b} = (3 + 6, 4 + 7, 5 + 8) = (9, 11, 13)</script>
 
 <p>若a和b代表集合，则</p>
 
-<p>$$
-(a + b) = {3, 4, 5, 6, 7, 8}
-$$</p>
+<script type="math/tex; mode=display">(a + b) = \{3, 4, 5, 6, 7, 8\}</script>
 
 <p>因此，lua本身并不能事先定义加法操作，只能交由开发者去定义。</p>
 
 <p>现在假设a和b代表矢量，那么加法的定义也就明确了。我们先来看看如下几种加法实现有什么优劣。</p>
 
 <p>第一种实现方式：</p>
-<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
 <span class="n">a</span><span class="p">.</span><span class="n">add</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"table"</span><span class="p">)</span>
     <span class="kd">local</span> <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
@@ -170,8 +167,9 @@ $$</p>
 <span class="c1">-- add a and b</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 <span class="c1">-- or</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
 <span class="n">a</span><span class="p">.</span><span class="n">add</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
     <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"table"</span><span class="p">)</span>
     <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"table"</span><span class="p">)</span>
@@ -188,10 +186,11 @@ $$</p>
 <span class="c1">-- Add a and b. Notice that I use colon here.</span>
 <span class="kd">local</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 <span class="c1">-- or</span>
-<span class="kd">local</span> <span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</code></pre></div>
+<span class="kd">local</span> <span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></pre></figure>
+
 <p>第二种实现方式：</p>
-<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
 <span class="kd">local</span> <span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">}</span>
 
 <span class="k">function</span> <span class="nf">add</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
@@ -204,10 +203,11 @@ $$</p>
 <span class="kd">local</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">11</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">33</span><span class="p">}</span>
 <span class="kd">local</span> <span class="n">c</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 <span class="kd">local</span> <span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">d</span><span class="p">)</span>
-</code></pre></div>
+<span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">d</span><span class="p">)</span></code></pre></figure>
+
 <p>元表的实现方式：</p>
-<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">vector</span> <span class="o">=</span> <span class="p">{}</span>
+
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">vector</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">function</span> <span class="nf">vector</span><span class="p">:</span><span class="n">new</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
     <span class="n">o</span> <span class="o">=</span> <span class="n">o</span> <span class="ow">or</span> <span class="p">{}</span>
     <span class="nb">setmetatable</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="p">{</span><span class="n">__index</span> <span class="o">=</span> <span class="n">self</span><span class="p">})</span>
@@ -227,26 +227,29 @@ $$</p>
 <span class="c1">-- or</span>
 <span class="kd">local</span> <span class="n">result</span> <span class="o">=</span> <span class="n">b</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">):</span><span class="n">add</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 <span class="c1">-- or</span>
-<span class="kd">local</span> <span class="n">result</span> <span class="o">=</span> <span class="n">vector</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span><span class="n">add</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-</code></pre></div>
+<span class="kd">local</span> <span class="n">result</span> <span class="o">=</span> <span class="n">vector</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span><span class="n">add</span><span class="p">(</span><span class="n">c</span><span class="p">)</span></code></pre></figure>
+
 <p>元表还支持元方法（metamethod)</p>
-<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="n">vector</span><span class="p">.</span><span class="n">__add</span> <span class="o">=</span> <span class="n">vector</span><span class="p">.</span><span class="n">add</span>
-</code></pre></div>
+
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="n">vector</span><span class="p">.</span><span class="n">__add</span> <span class="o">=</span> <span class="n">vector</span><span class="p">.</span><span class="n">add</span></code></pre></figure>
+
 <p>这样，上面的计算公式变成</p>
-<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="n">vector</span><span class="p">:</span><span class="n">new</span><span class="p">({</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">})</span>
+
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="n">vector</span><span class="p">:</span><span class="n">new</span><span class="p">({</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">})</span>
 <span class="kd">local</span> <span class="n">b</span> <span class="o">=</span> <span class="n">vector</span><span class="p">:</span><span class="n">new</span><span class="p">({</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">})</span>
 <span class="kd">local</span> <span class="n">c</span> <span class="o">=</span> <span class="n">vector</span><span class="p">:</span><span class="n">new</span><span class="p">({</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">})</span>
 
-<span class="kd">local</span> <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span>
-</code></pre></div>
+<span class="kd">local</span> <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span></code></pre></figure>
+
 <p>常用的元方法有：</p>
-<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="n">__add</span>           <span class="c1">-- for addition(+)</span>
-<span class="n">__sub</span>           <span class="c1">-- for subtraction(-)</span>
-<span class="n">__div</span>           <span class="c1">-- for division(/)</span>
-<span class="n">__mul</span>           <span class="c1">-- for multiplication(*)</span>
-<span class="n">__unm</span>           <span class="c1">-- for negation(~)</span>
-<span class="n">__mod</span>           <span class="c1">-- for modulo(%)</span>
-<span class="n">__pow</span>           <span class="c1">-- for exponentiation(^)</span>
+
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="n">__add</span>            <span class="c1">-- for addition(+)</span>
+<span class="n">__sub</span>            <span class="c1">-- for subtraction(-)</span>
+<span class="n">__div</span>            <span class="c1">-- for division(/)</span>
+<span class="n">__mul</span>            <span class="c1">-- for multiplication(*)</span>
+<span class="n">__unm</span>            <span class="c1">-- for negation(~)</span>
+<span class="n">__mod</span>            <span class="c1">-- for modulo(%)</span>
+<span class="n">__pow</span>            <span class="c1">-- for exponentiation(^)</span>
 <span class="n">__eq</span>            <span class="c1">-- equal to</span>
 <span class="n">__lt</span>            <span class="c1">-- less than</span>
 <span class="n">__le</span>            <span class="c1">-- less than or equal</span>
@@ -254,23 +257,19 @@ $$</p>
 <span class="n">__index</span>
 <span class="n">__newindex</span>
 <span class="n">__tostring</span>
-<span class="n">__call</span>
+<span class="n">__call</span></code></pre></figure>
 
-</code></pre></div>
 <p>元表的概念和面向对象设计中的继承关系十分类似。当然也有不同。比如在内存方面，传统意义的面向对象设计new出来的每个对象都各自独占一份内存，但元表new出来的不同新表会共享一份元表内存。
 同时，元表的面向对象设计并不能实现访问限制，即无法实现protected、private功能。尽管如此，lua
 的table概念已经足够强大，足以满足我们大部分代码设计与实现。</p>
 
-<p>lua语言虽然简单，但lua程序语言设计的思想是值得我们每个人去思考的。</p>
-
-<blockquote>
-<p>Simple But Elegant（简单却不失优雅）</p>
-</blockquote>
+<p>lua语言虽然简单，但lua程序语言设计的思想是值得我们每个人去思考的。
+&gt;Simple But Elegant（简单却不失优雅）</p>
 
 <h2 id="table">table作为数据结构</h2>
-
 <p>以下是数据结构—— <strong>集合</strong> 的lua实现</p>
-<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">set</span> <span class="o">=</span> <span class="p">{}</span>
+
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">set</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="kd">local</span> <span class="n">mt</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">function</span> <span class="nc">set</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
     <span class="kd">local</span> <span class="n">o</span> <span class="o">=</span> <span class="p">{}</span>
@@ -305,27 +304,29 @@ $$</p>
         <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">~=</span> <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">then</span> <span class="k">return</span> <span class="kc">false</span> <span class="k">end</span>
     <span class="k">end</span>
     <span class="k">return</span> <span class="kc">true</span>
-<span class="k">end</span>
-</code></pre></div>
+<span class="k">end</span></code></pre></figure>
+
 <p>可以定义如下元方法</p>
-<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="n">mt</span> <span class="o">=</span> <span class="p">{}</span>
+
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="n">mt</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">mt</span><span class="p">.</span><span class="n">__add</span> <span class="o">=</span> <span class="n">set</span><span class="p">.</span><span class="n">union</span>
 <span class="n">mt</span><span class="p">.</span><span class="n">__mul</span> <span class="o">=</span> <span class="n">set</span><span class="p">.</span><span class="n">intersection</span>
-<span class="n">mt</span><span class="p">.</span><span class="n">__eq</span> <span class="o">=</span> <span class="n">set</span><span class="p">.</span><span class="n">equal</span>
-</code></pre></div>
-<h2 id="table">table作为类</h2>
+<span class="n">mt</span><span class="p">.</span><span class="n">__eq</span> <span class="o">=</span> <span class="n">set</span><span class="p">.</span><span class="n">equal</span></code></pre></figure>
 
+<h2 id="table-1">table作为类</h2>
 <p>一个简单的面向对象设计如下：</p>
-<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="n">object</span> <span class="o">=</span> <span class="p">{}</span>
+
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="n">object</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">function</span> <span class="nf">object</span><span class="p">:</span><span class="n">extend</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
     <span class="n">o</span> <span class="o">=</span> <span class="n">o</span> <span class="ow">or</span> <span class="p">{}</span>
     <span class="nb">setmetatable</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="p">{</span><span class="n">__index</span> <span class="o">=</span> <span class="n">self</span><span class="p">})</span>
     <span class="k">return</span> <span class="n">o</span>
 <span class="k">end</span>
-<span class="n">object</span><span class="p">.</span><span class="n">new</span> <span class="o">=</span> <span class="n">object</span><span class="p">.</span><span class="n">extend</span>
-</code></pre></div>
+<span class="n">object</span><span class="p">.</span><span class="n">new</span> <span class="o">=</span> <span class="n">object</span><span class="p">.</span><span class="n">extend</span></code></pre></figure>
+
 <p>多重继承：</p>
-<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">search</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">plist</span><span class="p">)</span>
+
+<figure class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">search</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">plist</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">#</span><span class="n">plist</span> <span class="k">do</span>
         <span class="kd">local</span> <span class="n">v</span><span class="o">=</span><span class="n">plist</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">v</span> <span class="k">then</span> <span class="k">return</span> <span class="n">v</span> <span class="k">end</span>
@@ -348,8 +349,9 @@ $$</p>
     <span class="k">end</span>
     <span class="n">c</span><span class="p">.</span><span class="n">new</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="n">extend</span>
     <span class="k">return</span> <span class="n">c</span>
-<span class="k">end</span>
-</code></pre></div>
+<span class="k">end</span></code></pre></figure>
+
+
   </article>
 
 </div>

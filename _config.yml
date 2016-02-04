@@ -11,10 +11,10 @@ timezone: Asian/Shanghai
 author: Eric Zhang
 
 # Build settings
-# markdown: kramdown
-markdown: redcarpet
-redcarpet:
-  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "strikethrough", "with_toc_data"]
+markdown: kramdown
+#markdown: redcarpet
+#redcarpet:
+#  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "strikethrough", "with_toc_data"]
 permalink: pretty
 
 highlighter: rouge
