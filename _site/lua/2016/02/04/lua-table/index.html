@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lua的核心——table</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="人生最曼妙的风景，不是命运的波澜，而是内心的淡定与从容">
+    <link rel="canonical" href="http://pyericz.github.io/lua/2016/02/04/lua-table/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/">艾里克de梦</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>Lua的核心——table</h1>
+    <p class="meta">Feb 4, 2016</p>
+  </header>
+
+  <article class="post-content">
+  <blockquote>
+<p>本系列lua教程不会涉及lua基本语法的讲解，而是会专注于lua的一些核心模块以及与我们日常开发紧密相关的知识点。更多lua语法细节需要大家在lua教材中去阅读。</p>
+</blockquote>
+
+<p>lua的核心——table是一种关联性数组（associative array），也就是说，table不像array,
+vector, map这类强类型的容器只能聚合某一类数据，而是可以聚合任意类型的数据。
+这也让table变成了一种极其强大、灵活的容器。加上table可以存放函数，
+以及元表（metatable）概念的引入，table可以解决大部分逻辑编程问题。</p>
+
+<h2 id="table-config">table作为config表单</h2>
+
+<p>一种简单表单的用法：</p>
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">hello.png&quot;</span><span class="p">,</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">world.png&quot;</span><span class="p">,</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">lua.jpg&quot;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">loadImage</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+    <span class="c1">-- do your stuff</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nf">loadImages</span><span class="p">(</span><span class="n">objs</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">objs</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="k">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">objs</span><span class="p">)</span> <span class="k">do</span>
+        <span class="kd">local</span> <span class="n">img</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="kd">local</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">objs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">loadImage</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>配置更为复杂的表单：</p>
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="k">function</span> <span class="nf">createObject</span><span class="p">(</span><span class="n">class</span><span class="p">)</span>
+    <span class="c1">-- object factory</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nf">createView</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">config</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">view</span> <span class="o">=</span> <span class="n">createObject</span><span class="p">(</span><span class="n">config</span><span class="p">.</span><span class="n">class</span><span class="p">)</span>
+    <span class="n">setPosition</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">config</span><span class="p">.</span><span class="n">position</span><span class="p">)</span>
+    <span class="n">setSize</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">config</span><span class="p">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">setVisible</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">config</span><span class="p">.</span><span class="n">visible</span><span class="p">)</span>
+    <span class="n">setId</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">config</span><span class="p">.</span><span class="n">id</span><span class="p">)</span>
+    <span class="n">setTag</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">config</span><span class="p">.</span><span class="n">tag</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">view</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nf">create</span><span class="p">()</span>
+    <span class="kd">local</span> <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">class</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">button&quot;</span><span class="p">,</span>
+        <span class="n">id</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">1314&quot;</span><span class="p">,</span>
+        <span class="n">tag</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="n">position</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="p">{</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">},</span>
+        <span class="n">visible</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="p">}</span>
+    <span class="kd">local</span> <span class="n">button</span> <span class="o">=</span> <span class="n">createView</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+    <span class="c1">-- do your stuff</span>
+<span class="k">end</span>
+</code></pre></div>
+<h2 id=">元表</h2>
+
+<p>元表的引入最初是为了能扩展table本身不具备的行为。比如，两个table的加／减法是未定义的，但通过元表的方式可以扩展实现这种定义。</p>
+
+<p>举个例子。
+现有如下两个表：</p>
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+<span class="kd">local</span> <span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">}</span>
+</code></pre></div>
+<p>那么a和b相加应该得到什么样的结果呢？这其实与a和b的定义有关。若a和b代表矢量（或方向向量），则</p>
+
+<p>$$
+\vec{a} + \vec{b} = (3 + 6, 4 + 7, 5 + 8) = (9, 11, 13)
+$$</p>
+
+<p>若a和b代表集合，则</p>
+
+<p>$$
+(a + b) = {3, 4, 5, 6, 7, 8}
+$$</p>
+
+<p>因此，lua本身并不能事先定义加法操作，只能交由开发者去定义。</p>
+
+<p>现在假设a和b代表矢量，那么加法的定义也就明确了。我们先来看看如下几种加法实现有什么优劣。</p>
+
+<p>第一种实现方式：</p>
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+<span class="n">a</span><span class="p">.</span><span class="n">add</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">result</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">result</span>
+<span class="k">end</span>
+
+<span class="kd">local</span> <span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">}</span>
+<span class="n">b</span><span class="p">.</span><span class="n">add</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">result</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">result</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">result</span>
+<span class="k">end</span>
+
+<span class="c1">-- add a and b</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="c1">-- or</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+<span class="n">a</span><span class="p">.</span><span class="n">add</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">t1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">3</span><span class="p">]}</span>
+<span class="k">end</span>
+
+<span class="kd">local</span> <span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">}</span>
+<span class="n">b</span><span class="p">.</span><span class="n">add</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">t1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">3</span><span class="p">]}</span>
+<span class="k">end</span>
+
+<span class="c1">-- Add a and b. Notice that I use colon here.</span>
+<span class="kd">local</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="c1">-- or</span>
+<span class="kd">local</span> <span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div>
+<p>第二种实现方式：</p>
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+<span class="kd">local</span> <span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">add</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">t1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">3</span><span class="p">]}</span>
+<span class="k">end</span>
+
+<span class="c1">-- add a and b</span>
+<span class="kd">local</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">11</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">33</span><span class="p">}</span>
+<span class="kd">local</span> <span class="n">c</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="kd">local</span> <span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">d</span><span class="p">)</span>
+</code></pre></div>
+<p>元表的实现方式：</p>
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">vector</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">function</span> <span class="nf">vector</span><span class="p">:</span><span class="n">new</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">o</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="nb">setmetatable</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="p">{</span><span class="n">__index</span> <span class="o">=</span> <span class="n">self</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">o</span>
+<span class="k">end</span>
+<span class="n">vector</span><span class="p">.</span><span class="n">add</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="nb">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="s">table&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">vector</span><span class="p">:</span><span class="n">new</span><span class="p">{</span><span class="n">t1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">t1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">t2</span><span class="p">[</span><span class="mi">3</span><span class="p">]}</span>
+<span class="k">end</span>
+
+<span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="n">vector</span><span class="p">:</span><span class="n">new</span><span class="p">({</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">})</span>
+<span class="kd">local</span> <span class="n">b</span> <span class="o">=</span> <span class="n">vector</span><span class="p">:</span><span class="n">new</span><span class="p">({</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">})</span>
+<span class="kd">local</span> <span class="n">c</span> <span class="o">=</span> <span class="n">vector</span><span class="p">:</span><span class="n">new</span><span class="p">({</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">})</span>
+<span class="c1">-- Add a , b and c. Notice that I use colon here.</span>
+<span class="kd">local</span> <span class="n">result</span> <span class="o">=</span> <span class="n">a</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">b</span><span class="p">):</span><span class="n">add</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="c1">-- or</span>
+<span class="kd">local</span> <span class="n">result</span> <span class="o">=</span> <span class="n">b</span><span class="p">:</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">):</span><span class="n">add</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<span class="c1">-- or</span>
+<span class="kd">local</span> <span class="n">result</span> <span class="o">=</span> <span class="n">vector</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span><span class="n">add</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</code></pre></div>
+<p>元表还支持元方法（metamethod)</p>
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="n">vector</span><span class="p">.</span><span class="n">__add</span> <span class="o">=</span> <span class="n">vector</span><span class="p">.</span><span class="n">add</span>
+</code></pre></div>
+<p>这样，上面的计算公式变成</p>
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">a</span> <span class="o">=</span> <span class="n">vector</span><span class="p">:</span><span class="n">new</span><span class="p">({</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">})</span>
+<span class="kd">local</span> <span class="n">b</span> <span class="o">=</span> <span class="n">vector</span><span class="p">:</span><span class="n">new</span><span class="p">({</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">})</span>
+<span class="kd">local</span> <span class="n">c</span> <span class="o">=</span> <span class="n">vector</span><span class="p">:</span><span class="n">new</span><span class="p">({</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">})</span>
+
+<span class="kd">local</span> <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span>
+</code></pre></div>
+<p>常用的元方法有：</p>
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="n">__add</span>           <span class="c1">-- for addition(+)</span>
+<span class="n">__sub</span>           <span class="c1">-- for subtraction(-)</span>
+<span class="n">__div</span>           <span class="c1">-- for division(/)</span>
+<span class="n">__mul</span>           <span class="c1">-- for multiplication(*)</span>
+<span class="n">__unm</span>           <span class="c1">-- for negation(~)</span>
+<span class="n">__mod</span>           <span class="c1">-- for modulo(%)</span>
+<span class="n">__pow</span>           <span class="c1">-- for exponentiation(^)</span>
+<span class="n">__eq</span>            <span class="c1">-- equal to</span>
+<span class="n">__lt</span>            <span class="c1">-- less than</span>
+<span class="n">__le</span>            <span class="c1">-- less than or equal</span>
+<span class="n">__concat</span>        <span class="c1">-- concatenation        </span>
+<span class="n">__index</span>
+<span class="n">__newindex</span>
+<span class="n">__tostring</span>
+<span class="n">__call</span>
+</code></pre></div>
+<p>元表的概念和面向对象设计中的继承关系十分类似。当然也有不同。比如在内存方面，传统意义的面向对象设计new出来的每个对象都各自独占一份内存，但元表new出来的不同新表会共享一份元表内存。
+同时，元表的面向对象设计并不能实现访问限制，即无法实现protected、private功能。尽管如此，lua
+的table概念已经足够强大，足以满足我们大部分代码设计与实现。</p>
+
+<p>lua语言虽然简单，但lua程序语言设计的思想是值得我们每个人去思考的。</p>
+
+<blockquote>
+<p>Simple But Elegant（简单却不失优雅）</p>
+</blockquote>
+
+<h2 id="table">table作为数据结构</h2>
+
+<p>以下是数据结构—— <strong>集合</strong> 的lua实现</p>
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">set</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="kd">local</span> <span class="n">mt</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">function</span> <span class="nc">set</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">o</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="nb">setmetatable</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">mt</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">v</span> <span class="k">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">do</span> <span class="n">o</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span> <span class="k">end</span>
+    <span class="k">return</span> <span class="n">o</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nc">set</span><span class="p">.</span><span class="nf">union</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">getmetatable</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">~=</span> <span class="n">mt</span> <span class="ow">or</span> <span class="nb">getmetatable</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">~=</span> <span class="n">mt</span> <span class="k">then</span>
+        <span class="nb">error</span><span class="p">(</span><span class="s2">&quot;</span><span class="s">attempt to &#39;add&#39; a set with a not-set value&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="kd">local</span> <span class="n">res</span> <span class="o">=</span> <span class="n">set</span><span class="p">.</span><span class="n">new</span><span class="p">{}</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="k">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">do</span> <span class="n">res</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span> <span class="k">end</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="k">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">do</span> <span class="n">res</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span> <span class="k">end</span>
+    <span class="k">return</span> <span class="n">res</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nc">set</span><span class="p">.</span><span class="nf">intersection</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">res</span> <span class="o">=</span> <span class="n">set</span><span class="p">.</span><span class="n">new</span><span class="p">{}</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="k">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">do</span>
+        <span class="n">res</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">res</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nc">set</span><span class="p">.</span><span class="nf">equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="k">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">do</span>
+        <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">~=</span> <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">then</span> <span class="k">return</span> <span class="kc">false</span> <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="k">in</span> <span class="nb">pairs</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">do</span>
+        <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">~=</span> <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">then</span> <span class="k">return</span> <span class="kc">false</span> <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>可以定义如下元方法</p>
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="n">mt</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">mt</span><span class="p">.</span><span class="n">__add</span> <span class="o">=</span> <span class="n">set</span><span class="p">.</span><span class="n">union</span>
+<span class="n">mt</span><span class="p">.</span><span class="n">__mul</span> <span class="o">=</span> <span class="n">set</span><span class="p">.</span><span class="n">intersection</span>
+<span class="n">mt</span><span class="p">.</span><span class="n">__eq</span> <span class="o">=</span> <span class="n">set</span><span class="p">.</span><span class="n">equal</span>
+</code></pre></div>
+<h2 id="table">table作为类</h2>
+
+<p>一个简单的面向对象设计如下：</p>
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="n">object</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">function</span> <span class="nf">object</span><span class="p">:</span><span class="n">extend</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">o</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="nb">setmetatable</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="p">{</span><span class="n">__index</span> <span class="o">=</span> <span class="n">self</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">o</span>
+<span class="k">end</span>
+<span class="n">object</span><span class="p">.</span><span class="n">new</span> <span class="o">=</span> <span class="n">object</span><span class="p">.</span><span class="n">extend</span>
+</code></pre></div>
+<p>多重继承：</p>
+<div class="highlight"><pre><code class="language-lua" data-lang="lua"><span class="kd">local</span> <span class="n">search</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">plist</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">#</span><span class="n">plist</span> <span class="k">do</span>
+        <span class="kd">local</span> <span class="n">v</span><span class="o">=</span><span class="n">plist</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="k">then</span> <span class="k">return</span> <span class="n">v</span> <span class="k">end</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="nf">extendClasses</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+    <span class="kd">local</span> <span class="n">c</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="nb">setmetatable</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="p">{</span><span class="n">__index</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+        <span class="kd">local</span> <span class="n">v</span> <span class="o">=</span> <span class="n">search</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="n">t</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="k">return</span> <span class="n">v</span>
+    <span class="k">end</span><span class="p">})</span>
+    <span class="k">function</span> <span class="nf">c</span><span class="p">:</span><span class="n">extend</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">o</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="nb">setmetatable</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">self</span><span class="p">)</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">__index</span> <span class="o">=</span> <span class="n">self</span>
+        <span class="k">return</span> <span class="n">o</span>
+    <span class="k">end</span>
+    <span class="n">c</span><span class="p">.</span><span class="n">new</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="n">extend</span>
+    <span class="k">return</span> <span class="n">c</span>
+<span class="k">end</span>
+</code></pre></div>
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading">艾里克de梦</h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li>艾里克de梦</li>
+        <li><a href="mailto:pyericz@yahoo.com">pyericz@yahoo.com</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        <li>
+          <a href="https://github.com/pyericz">
+            <span class="icon github">
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#C2C2C2" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <span class="username">pyericz</span>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">人生最曼妙的风景，不是命运的波澜，而是内心的淡定与从容</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

@@ -1,0 +1,327 @@
+---
+layout: post
+title: "Lua的核心——table"
+date: 2016-02-04
+categories: Lua
+---
+
+>本系列lua教程不会涉及lua基本语法的讲解，而是会专注于lua的一些核心模块以及与我们日常开发紧密相关的知识点。更多lua语法细节需要大家在lua教材中去阅读。
+
+lua的核心——table是一种关联性数组（associative array），也就是说，table不像array,
+vector, map这类强类型的容器只能聚合某一类数据，而是可以聚合任意类型的数据。
+这也让table变成了一种极其强大、灵活的容器。加上table可以存放函数，
+以及元表（metatable）概念的引入，table可以解决大部分逻辑编程问题。
+## table作为config表单
+一种简单表单的用法：
+
+```lua
+local config = {
+	[1]="hello.png",
+	[2]="world.png",
+	[3]="lua.jpg"
+}
+
+function loadImage(obj, img)
+	-- do your stuff
+end
+
+function loadImages(objs)
+	assert(type(objs) == "table")
+	for i, v in ipairs(objs) do
+		local img = config[i]
+		local obj = objs[i]
+		loadImage(obj, img)
+	end
+end
+```
+
+配置更为复杂的表单：
+
+```lua
+function createObject(class)
+	-- object factory
+end
+
+function createView(config)
+	assert(type(config) == "table")
+	local view = createObject(config.class)
+	setPosition(view, config.position)
+	setSize(view, config.size)
+	setVisible(view, config.visible)
+	setId(view, config.id)
+	setTag(view, config.tag)
+	return view
+end
+
+function create()
+	local config = {
+		class = "button",
+		id = "1314",
+		tag = 3,
+		position = {0, 0},
+		size = {40, 40},
+		visible = true
+	}
+	local button = createView(config)
+	-- do your stuff
+end
+```
+
+## 元表
+元表的引入最初是为了能扩展table本身不具备的行为。比如，两个table的加／减法是未定义的，但通过元表的方式可以扩展实现这种定义。
+
+举个例子。
+现有如下两个表：
+
+```lua
+local a = {3, 4, 5}
+local b = {6, 7, 8}
+```
+
+那么a和b相加应该得到什么样的结果呢？这其实与a和b的定义有关。若a和b代表矢量（或方向向量），则
+
+$$
+\vec{a} + \vec{b} = (3 + 6, 4 + 7, 5 + 8) = (9, 11, 13)
+$$
+
+若a和b代表集合，则
+
+$$
+(a + b) = \{3, 4, 5, 6, 7, 8\}
+$$
+
+因此，lua本身并不能事先定义加法操作，只能交由开发者去定义。
+
+现在假设a和b代表矢量，那么加法的定义也就明确了。我们先来看看如下几种加法实现有什么优劣。
+
+第一种实现方式：
+
+```lua
+local a = {3, 4, 5}
+a.add = function(t)
+	assert(type(t) == "table")
+	local result = {}
+	result[1] = a[1] + t[1]
+	result[2] = a[2] + t[2]
+	result[3] = a[3] + t[3]
+	return result
+end
+
+local b = {6, 7, 8}
+b.add = function(t)
+	assert(type(t) == "table")
+	local result = {}
+	result[1] = t[1] + b[1]
+	result[2] = t[2] + b[2]
+	result[3] = t[3] + b[3]
+	return result
+end
+
+-- add a and b
+c = a.add(b)
+-- or
+c = b.add(a)
+```
+
+```lua
+local a = {3, 4, 5}
+a.add = function(t1, t2)
+	assert(type(t1) == "table")
+	assert(type(t2) == "table")
+	return {t1[1] + t2[1], t1[2] + t2[2], t1[3] + t2[3]}
+end
+
+local b = {6, 7, 8}
+b.add = function(t1, t2)
+	assert(type(t1) == "table")
+	assert(type(t2) == "table")
+	return {t1[1] + t2[1], t1[2] + t2[2], t1[3] + t2[3]}
+end
+
+-- Add a and b. Notice that I use colon here.
+local c = a:add(b)
+-- or
+local c = b:add(a)
+```
+
+第二种实现方式：
+
+```lua
+local a = {3, 4, 5}
+local b = {6, 7, 8}
+
+function add(t1, t2)
+	assert(type(t1) == "table")
+	assert(type(t2) == "table")
+	return {t1[1] + t2[1], t1[2] + t2[2], t1[3] + t2[3]}
+end
+
+-- add a and b
+local d = {11, 33, 33}
+local c = add(a, b)
+local result = add(c, d)
+result = add(add(a, b), d)
+```
+
+元表的实现方式：
+
+```lua
+local vector = {}
+function vector:new(o)
+	o = o or {}
+	setmetatable(o, {__index = self})
+	return o
+end
+vector.add = function(t1, t2)
+	assert(type(t1) == "table")
+	assert(type(t2) == "table")
+	return vector:new{t1[1] + t2[1], t1[2] + t2[2], t1[3] + t2[3]}
+end
+
+local a = vector:new({3, 4, 5})
+local b = vector:new({6, 7, 8})
+local c = vector:new({9, 10, 11})
+-- Add a , b and c. Notice that I use colon here.
+local result = a:add(b):add(c)
+-- or
+local result = b:add(a):add(c)
+-- or
+local result = vector.add(a, b):add(c)
+```
+
+元表还支持元方法（metamethod)
+
+```lua
+vector.__add = vector.add
+```
+
+这样，上面的计算公式变成
+
+```lua
+local a = vector:new({3, 4, 5})
+local b = vector:new({6, 7, 8})
+local c = vector:new({9, 10, 11})
+
+local result = a + b + c
+```
+
+常用的元方法有：
+
+```lua
+__add			-- for addition(+)
+__sub			-- for subtraction(-)
+__div			-- for division(/)
+__mul			-- for multiplication(*)
+__unm			-- for negation(~)
+__mod			-- for modulo(%)
+__pow			-- for exponentiation(^)
+__eq			-- equal to
+__lt			-- less than
+__le			-- less than or equal
+__concat		-- concatenation		
+__index
+__newindex
+__tostring
+__call
+
+```
+
+元表的概念和面向对象设计中的继承关系十分类似。当然也有不同。比如在内存方面，传统意义的面向对象设计new出来的每个对象都各自独占一份内存，但元表new出来的不同新表会共享一份元表内存。
+同时，元表的面向对象设计并不能实现访问限制，即无法实现protected、private功能。尽管如此，lua
+的table概念已经足够强大，足以满足我们大部分代码设计与实现。
+
+lua语言虽然简单，但lua程序语言设计的思想是值得我们每个人去思考的。
+>Simple But Elegant（简单却不失优雅）
+
+## table作为数据结构
+以下是数据结构—— **集合** 的lua实现
+
+```lua
+local set = {}
+local mt = {}
+function set.new(s)
+    local o = {}
+    setmetatable(o, mt)
+    for _, v in ipairs(s) do o[v] = true end
+    return o
+end
+
+function set.union(a, b)
+    if getmetatable(a) ~= mt or getmetatable(b) ~= mt then
+        error("attempt to 'add' a set with a not-set value", 2)
+    end
+    local res = set.new{}
+    for k in pairs(a) do res[k] = true end
+    for k in pairs(b) do res[k] = true end
+    return res
+end
+
+function set.intersection(a, b)
+    local res = set.new{}
+    for k in pairs(a) do
+        res[k] = b[k]
+    end
+    return res
+end
+
+function set.equal(a, b)
+    for k in pairs(a) do
+        if a[k] ~= b[k] then return false end
+    end
+    for k in pairs(b) do
+        if a[k] ~= b[k] then return false end
+    end
+    return true
+end
+```
+
+可以定义如下元方法
+
+```lua
+mt = {}
+mt.__add = set.union
+mt.__mul = set.intersection
+mt.__eq = set.equal
+```
+
+## table作为类
+一个简单的面向对象设计如下：
+
+```lua
+object = {}
+function object:extend(o)
+	o = o or {}
+	setmetatable(o, {__index = self})
+	return o
+end
+object.new = object.extend
+```
+
+多重继承：
+
+```lua
+local search = function(k, plist)
+    for i=1, #plist do
+        local v=plist[i][k]
+        if v then return v end
+    end
+end
+
+function extendClasses(...)
+    local params = {...}
+    local c = {}
+    setmetatable(c, {__index = function(t, k)
+        local v = search(k, params)
+        t[k] = v
+        return v
+    end})
+    function c:extend(o)
+        o = o or {}
+        setmetatable(o, self)
+        self.__index = self
+        return o
+    end
+    c.new = c.extend
+    return c
+end
+```

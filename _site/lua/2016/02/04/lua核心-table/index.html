@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>lua table</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="人生最曼妙的风景，不是命运的波澜，而是内心的淡定与从容">
+    <link rel="canonical" href="http://pyericz.github.io/lua/2016/02/04/lua%E6%A0%B8%E5%BF%83-table/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/">艾里克de梦</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          <a class="page-link" href="/about/">About</a>
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>lua table</h1>
+    <p class="meta">Feb 4, 2016</p>
+  </header>
+
+  <article class="post-content">
+  <h1 id="luatable">Lua的核心——table</h1>
+<blockquote>
+  <p>本系列lua教程不会涉及lua基本语法的讲解，而是会专注于lua的一些核心模块以及与我们日常开发紧密相关的知识点。更多lua语法细节需要大家在lua教材中去阅读。</p>
+</blockquote>
+
+<p>lua的核心——table是一种关联性数组（associative array），也就是说，table不像array,
+vector, map这类强类型的容器只能聚合某一类数据，而是可以聚合任意类型的数据。
+这也让table变成了一种极其强大、灵活的容器。加上table可以存放函数，
+以及元表（metatable）概念的引入，table可以解决大部分逻辑编程问题。
+## table作为config表单
+一种简单表单的用法：
+```lua
+local config = {
+	[1]=”hello.png”,
+	[2]=”world.png”,
+	[3]=”lua.jpg”
+}</p>
+
+<p>function loadImage(obj, img)
+	– do your stuff
+end</p>
+
+<p>function loadImages(objs)
+	assert(type(objs) == “table”)
+	for i, v in ipairs(objs) do
+		local img = config[i]
+		local obj = objs[i]
+		loadImage(obj, img)
+	end
+end
+<code>
+配置更为复杂的表单：
+</code>lua
+function createObject(class)
+	– object factory
+end</p>
+
+<p>function createView(config)
+	assert(type(config) == “table”)
+	local view = createObject(config.class)
+	setPosition(view, config.position)
+	setSize(view, config.size)
+	setVisible(view, config.visible)
+	setId(view, config.id)
+	setTag(view, config.tag)
+	return view
+end</p>
+
+<p>function create()
+	local config = {
+		class = “button”,
+		id = “1314”,
+		tag = 3,
+		position = {0, 0},
+		size = {40, 40},
+		visible = true
+	}
+	local button = createView(config)
+	– do your stuff
+end
+```
+## 元表
+元表的引入最初是为了能扩展table本身不具备的行为。比如，两个table的加／减法是未定义的，但通过元表的方式可以扩展实现这种定义。</p>
+
+<p>举个例子。
+现有如下两个表：
+<code>lua
+local a = {3, 4, 5}
+local b = {6, 7, 8}
+</code>
+那么a和b相加应该得到什么样的结果呢？这其实与a和b的定义有关。若a和b代表矢量（或方向向量），则
+[
+\vec{a} + \vec{b} = (3 + 6, 4 + 7, 5 + 8) = (9, 11, 13)
+]
+若a和b代表集合，则
+[
+(a + b) = {3, 4, 5, 6, 7, 8}
+]
+因此，lua本身并不能事先定义加法操作，只能交由开发者去定义。</p>
+
+<p>现在假设a和b代表矢量，那么加法的定义也就明确了。我们先来看看如下几种加法实现有什么优劣。</p>
+
+<p>第一种实现方式：
+```lua
+local a = {3, 4, 5}
+a.add = function(t)
+	assert(type(t) == “table”)
+	local result = {}
+	result[1] = a[1] + t[1]
+	result[2] = a[2] + t[2]
+	result[3] = a[3] + t[3]
+	return result
+end</p>
+
+<p>local b = {6, 7, 8}
+b.add = function(t)
+	assert(type(t) == “table”)
+	local result = {}
+	result[1] = t[1] + b[1]
+	result[2] = t[2] + b[2]
+	result[3] = t[3] + b[3]
+	return result
+end</p>
+
+<p>– add a and b
+c = a.add(b)
+– or
+c = b.add(a)
+<code>
+</code>lua
+local a = {3, 4, 5}
+a.add = function(t1, t2)
+	assert(type(t1) == “table”)
+	assert(type(t2) == “table”)
+	return {t1[1] + t2[1], t1[2] + t2[2], t1[3] + t2[3]}
+end</p>
+
+<p>local b = {6, 7, 8}
+b.add = function(t1, t2)
+	assert(type(t1) == “table”)
+	assert(type(t2) == “table”)
+	return {t1[1] + t2[1], t1[2] + t2[2], t1[3] + t2[3]}
+end</p>
+
+<p>– Add a and b. Notice that I use colon here.
+local c = a:add(b)
+– or
+local c = b:add(a)
+<code>
+第二种实现方式：
+</code>lua
+local a = {3, 4, 5}
+local b = {6, 7, 8}</p>
+
+<p>function add(t1, t2)
+	assert(type(t1) == “table”)
+	assert(type(t2) == “table”)
+	return {t1[1] + t2[1], t1[2] + t2[2], t1[3] + t2[3]}
+end</p>
+
+<p>– add a and b
+local d = {11, 33, 33}
+local c = add(a, b)
+local result = add(c, d)
+result = add(add(a, b), d)
+<code>
+元表的实现方式：
+</code>lua
+local vector = {}
+function vector:new(o)
+	o = o or {}
+	setmetatable(o, {__index = self})
+	return o
+end
+vector.add = function(t1, t2)
+	assert(type(t1) == “table”)
+	assert(type(t2) == “table”)
+	return vector:new{t1[1] + t2[1], t1[2] + t2[2], t1[3] + t2[3]}
+end</p>
+
+<p>local a = vector:new({3, 4, 5})
+local b = vector:new({6, 7, 8})
+local c = vector:new({9, 10, 11})
+– Add a , b and c. Notice that I use colon here.
+local result = a:add(b):add(c)
+– or
+local result = b:add(a):add(c)
+– or
+local result = vector.add(a, b):add(c)
+<code>
+元表还支持元方法（metamethod)
+</code>lua
+vector.__add = vector.add
+<code>
+这样，上面的计算公式变成
+</code>lua
+local a = vector:new({3, 4, 5})
+local b = vector:new({6, 7, 8})
+local c = vector:new({9, 10, 11})</p>
+
+<p>local result = a + b + c
+<code>
+常用的元方法有：
+</code>lua
+__add			– for addition(+)
+__sub			– for subtraction(-)
+__div			– for division(/)
+__mul			– for multiplication(*)
+__unm			– for negation(~)
+__mod			– for modulo(%)
+__pow			– for exponentiation(^)
+__eq			– equal to
+__lt			– less than
+__le			– less than or equal
+__concat		– concatenation		
+__index
+__newindex
+__tostring
+__call</p>
+
+<p>```
+元表的概念和面向对象设计中的继承关系十分类似。当然也有不同。比如在内存方面，传统意义的面向对象设计new出来的每个对象都各自独占一份内存，但元表new出来的不同新表会共享一份元表内存。
+同时，元表的面向对象设计并不能实现访问限制，即无法实现protected、private功能。尽管如此，lua
+的table概念已经足够强大，足以满足我们大部分代码设计与实现。</p>
+
+<p>lua语言虽然简单，但lua程序语言设计的思想是值得我们每个人去思考的。
+&gt;Simple But Elegant（简单却不失优雅）</p>
+
+<h2 id="table">table作为数据结构</h2>
+<p>以下是数据结构—— <strong>集合</strong> 的lua实现
+```lua
+local set = {}
+local mt = {}
+function set.new(s)
+    local o = {}
+    setmetatable(o, mt)
+    for _, v in ipairs(s) do o[v] = true end
+    return o
+end</p>
+
+<p>function set.union(a, b)
+    if getmetatable(a) ~= mt or getmetatable(b) ~= mt then
+        error(“attempt to ‘add’ a set with a not-set value”, 2)
+    end
+    local res = set.new{}
+    for k in pairs(a) do res[k] = true end
+    for k in pairs(b) do res[k] = true end
+    return res
+end</p>
+
+<p>function set.intersection(a, b)
+    local res = set.new{}
+    for k in pairs(a) do
+        res[k] = b[k]
+    end
+    return res
+end</p>
+
+<p>function set.equal(a, b)
+    for k in pairs(a) do
+        if a[k] ~= b[k] then return false end
+    end
+    for k in pairs(b) do
+        if a[k] ~= b[k] then return false end
+    end
+    return true
+end
+<code>
+可以定义如下元方法
+</code>lua
+mt = {}
+mt.__add = set.union
+mt.__mul = set.intersection
+mt.__eq = set.equal
+<code>
+## table作为类
+一个简单的面向对象设计如下：
+</code>lua
+object = {}
+function object:extend(o)
+	o = o or {}
+	setmetatable(o, {__index = self})
+	return o
+end
+object.new = object.extend
+<code>
+多重继承：
+</code>lua
+local search = function(k, plist)
+    for i=1, #plist do
+        local v=plist[i][k]
+        if v then return v end
+    end
+end</p>
+
+<p>function extendClasses(…)
+    local params = {…}
+    local c = {}
+    setmetatable(c, {__index = function(t, k)
+        local v = search(k, params)
+        t[k] = v
+        return v
+    end})
+    function c:extend(o)
+        o = o or {}
+        setmetatable(o, self)
+        self.__index = self
+        return o
+    end
+    c.new = c.extend
+    return c
+end
+```</p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <h2 class="footer-heading">艾里克de梦</h2>
+
+    <div class="footer-col-1 column">
+      <ul>
+        <li>艾里克de梦</li>
+        <li><a href="mailto:pyericz@yahoo.com">pyericz@yahoo.com</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col-2 column">
+      <ul>
+        <li>
+          <a href="https://github.com/pyericz">
+            <span class="icon github">
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#C2C2C2" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <span class="username">pyericz</span>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+
+    <div class="footer-col-3 column">
+      <p class="text">人生最曼妙的风景，不是命运的波澜，而是内心的淡定与从容</p>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>
