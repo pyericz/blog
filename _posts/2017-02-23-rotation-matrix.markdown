@@ -1,6 +1,8 @@
 ---
 layout: post
 title: 旋转矩阵
+categories: math
+tag: [matrix, rotation, complex]
 ---
 
 ## 复数推导方式
