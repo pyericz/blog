@@ -47,3 +47,42 @@ $$\begin{bmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{bmatrix}$$
 
 ## 几何推导方式
 
+点$$P$$的坐标$$(x, y)$$可以表示为：<br>
+
+$$
+\begin{align}
+x &= r \cdot \cos\alpha\\
+y &= r \cdot \sin\alpha \\
+\end{align}
+$$
+
+旋转$$\theta$$角后，得到点$$P'$$，坐标$$(x', y')$$，表示为：<br>
+
+$$
+\begin{align}
+x' &= r \cdot \cos(\alpha+\theta) \\
+y' &= r \cdot \sin(\alpha+\theta)
+\end{align}
+$$
+
+展开，得到：
+
+$$
+\begin{align}
+x' &= r \cdot \cos(\alpha+\theta) \\
+&= r \cdot \cos\alpha\cos\theta-r\cdot\sin\alpha\sin\theta\\
+&= x\cos\theta - y\sin\theta\\
+y' &= r \cdot \sin(\alpha+\theta)\\
+&= r\cdot\sin\alpha\cos\theta+r\cdot\cos\alpha\sin\theta\\
+&= y\cos\theta + x\sin\theta
+\end{align}
+$$
+
+
+用矩阵的形式表示，可得到如下结果<br>
+
+$$\begin{bmatrix}x'\\ y' \end{bmatrix}=\begin{bmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{bmatrix}\begin{bmatrix}x \\ y\end{bmatrix}$$
+
+从而得到旋转矩阵<br>
+
+$$\begin{bmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{bmatrix}$$
