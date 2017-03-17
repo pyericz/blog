@@ -1,0 +1,140 @@
+---
+layout: post
+title: 3D空间中的面
+categories: math
+tag: [geometry, plane]
+---
+
+## 3D空间中面的定义
+给定3D空间中的点$$\textbf{P}$$和法线向量$$\textbf{N}$$，那么经过点$$\textbf{P}$$且垂直于法线向量$$\textbf{N}$$的面可以定义为满足下列关系的一系列点$$\textbf{Q}$$的集合：
+
+$$
+\textbf{N}\cdot(\textbf{Q}-\textbf{P}) = 0 \tag{1.1}\label{eq:1.1}
+$$
+
+若法线$$\textbf{N}$$和平面上的任意点$$\textbf{Q}$$满足如下关系
+
+$$
+\begin{align}
+\textbf{N} &= A\boldsymbol{\hat{i}}+B\boldsymbol{\hat{j}}+C\boldsymbol{\hat{k}}\\
+\textbf{Q} &= x\boldsymbol{\hat{i}}+y\boldsymbol{\hat{j}}+z\boldsymbol{\hat{k}}
+\end{align}
+$$
+
+考虑到$$\textbf{N}\cdot\textbf{P}$$是个常数，可以将(1.1)式展开，得到如下方程：
+
+$$
+Ax + By + Cz + D = 0 \tag{1.2}\label{eq:1.2}
+$$
+
+此即为平面方程的一般表达式。
+
+也可以用四维向量表示平面。定义
+
+$$
+\begin{align}
+\mathcal{L} &= \begin{bmatrix}\textbf{N}&D\end{bmatrix} = \begin{bmatrix}A&B&C&D\end{bmatrix} \\
+\mathcal{Q} &= \begin{bmatrix}\textbf{Q}&0\end{bmatrix} = \begin{bmatrix}x&y&z&0\end{bmatrix} \tag{1.3}\label{eq:1.3} 
+\end{align}
+$$
+
+则可以得到齐次化的平面表达式
+
+$$
+\mathcal{L}\cdot\mathcal{Q} = \textbf{N}\cdot\textbf{Q} + D = 0 \tag{1.4}\label{eq:1.4}
+$$
+
+
+## 面与线相交
+
+### 线的定义
+
+空间中给定两点$$\textbf{P}_1$$和$$\textbf{P}_2$$，则通过两点的线上的任意点$$\textbf{P}(t)$$可以表示为
+
+$$
+\textbf{P}(t) = (1-t)\textbf{P}_1 + t\textbf{P}_2 \tag{2.1} \label{eq:2.1}
+$$
+
+其中$$t$$的取值范围为$$(-\infty, +\infty)$$。而连接$$\textbf{P}_1$$和$$\textbf{P}_2$$的线段，$$t$$的取值范围则为$$[0, 1]$$。
+
+空间中的射线可由端点$$\textbf{S}$$和延伸到无穷远的方向向量$$\textbf{V}$$表示，关系如下：
+
+$$
+\textbf{P}(t) = \textbf{S} + t\textbf{V} \tag{2.2} \label{eq:2.2}
+$$
+
+其中t的取值范围为$$[0, +\infty)$$。(2.2)也通常用来表示线，因为只要令$$\textbf{S}=\textbf{P}_1, \textbf{V}=\textbf{P}_2-\textbf{P}_1$$，则(2.2)式就会变成(2.1)式。
+
+## 面与线的相交点计算
+
+面与线相交的点$$\textbf{P}(t)$$既在面上，也在线上，因此应该同时满足(1.4)和(2.2)，即
+
+$$
+\textbf{N}\cdot\textbf{P}(t) + D =  0 \tag{2.3} \label{eq:2.3}
+$$
+
+代入(2.2)式，得到
+
+$$
+\textbf{N}\cdot(\textbf{S} + t\textbf{V}) + D = 0 \tag{2.4} \label{eq:2.4}
+$$
+
+整理得到$$t$$的表达式，
+
+$$
+t=\frac{-(\textbf{N}\cdot\textbf{S}+D)}{\textbf{N}\cdot\textbf{V}} \tag{2.5} \label{eq:2.5}
+$$
+
+将t代入(2.2)式即可求得相交点。
+
+## 三个面相交于一点
+
+令$$\mathcal{L}_1$$，$$\mathcal{L}_2$$和$$\mathcal{L}_3$$分别表示三个面，若三个面相交于一点$$\textbf{Q}$$，则该点应同时满足如下三个方程
+
+$$
+\mathcal{L}_1\cdot\mathcal{Q} = \textbf{N}_1\cdot\textbf{Q} + D_1 = 0 \\
+\mathcal{L}_2\cdot\mathcal{Q} = \textbf{N}_2\cdot\textbf{Q} + D_2 = 0 \\
+\mathcal{L}_3\cdot\mathcal{Q} = \textbf{N}_2\cdot\textbf{Q} + D_2 = 0 \tag{3.1}\label{eq:3.1}
+$$
+
+采用矩阵的形式描述为
+
+$$
+\textbf{M}\textbf{Q} = \begin{bmatrix}-D_1 \\ -D_2 \\ -D_3 \end{bmatrix} \tag{3.2}\label{eq:3.2}
+$$
+
+其中$$\textbf{M}$$表示为
+
+$$
+\textbf{M} = \begin{bmatrix}(N_1)_x & (N_1)_y & (N_1)_z \\ (N_2)_x & (N_2)_y & (N_2)_z \\ (N_3)_x & (N_3)_y & (N_3)_z \end{bmatrix} \tag{3.3}\label{eq:3.3}
+$$
+
+若$$\textbf{M}$$可逆，则点$$\textbf{Q}$$可通过如下方式解出来
+
+
+$$
+\textbf{Q} = \textbf{M}^{-1}\begin{bmatrix}-D_1 \\ -D_2 \\ -D_3 \end{bmatrix} \tag{3.4}\label{eq:3.4}
+$$
+
+若$$\textbf{M}$$奇异，即$$det\textbf{M} = 0$$，那么三个面不会相交于一个点。
+
+## 两个面相交于一点
+
+令$$\mathcal{L}_1$$和$$\mathcal{L}_2$$分别表示相交的两个面。两面相交为一条线，该线应同时与两个面的法线垂直，因此该线的方向向量$$\textbf{V}$$可以表示为两个面法线向量$$\textbf{N}_1$$和$$\textbf{N}_2$$的叉积，即
+
+$$
+\textbf{V} = \textbf{N}_1\times\textbf{N}_2 \tag{4.1} \label{eq:4.1}
+$$
+
+根据(2.2)式，为了获得线的完整描述信息，还必须得到位于线上的一个点$$\textbf{S}$$。为此，可以构建一个以$$\textbf{V}$$为法线，穿过坐标原点的面
+
+$$
+\mathcal{L}_3 = \begin{bmatrix}\textbf{V}&0\end{bmatrix} \tag{4.2} \label{eq:4.2}
+$$
+
+该面应与$$\mathcal{L}_1$$和$$\mathcal{L}_2$$相交于一个点，该点即为线上的一个点$$\textbf{S}$$。结合(3.3)式和(3.4)式，$$\textbf{S}$$点可通过如下方式计算出来
+
+$$
+\textbf{S} = \begin{bmatrix}(N_1)_x & (N_1)_y & (N_1)_z \\ (N_2)_x & (N_2)_y & (N_2)_z \\ V_x & V_y & V_z \end{bmatrix}^{-1}\begin{bmatrix}-D_1 \\ -D_2 \\ 0 \end{bmatrix} \tag{4.3}\label{eq:4.3}
+$$
+
