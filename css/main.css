@@ -9,10 +9,7 @@
 html, body { height: 100%; }
 
 body {
-  font-family: Georgia, "Times New Roman", Helvetica, Tahoma,
-             "Microsoft YaHei", "微软雅黑", 
-             STXihei, "华文细黑", 
-             serif, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
+  font-family: -apple-system, "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Source Han Sans CN", "Source Han Sans SC", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
   font-style: normal;
   line-height: 1.5;
   font-weight: 300;
