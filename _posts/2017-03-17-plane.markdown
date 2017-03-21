@@ -118,7 +118,7 @@ $$
 
 若$$\mathbf{M}$$奇异，即$$det\mathbf{M} = 0$$，那么三个面不会相交于一个点。
 
-## 两个面相交于一点
+## 两个面相交于线
 
 令$$\mathcal{L}_1$$和$$\mathcal{L}_2$$分别表示相交的两个面。两面相交为一条线，该线应同时与两个面的法线垂直，因此该线的方向向量$$\mathbf{V}$$可以表示为两个面法线向量$$\mathbf{N}_1$$和$$\mathbf{N}_2$$的叉积，即
 
@@ -138,3 +138,95 @@ $$
 \mathbf{S} = \begin{bmatrix}(N_1)_x & (N_1)_y & (N_1)_z \\ (N_2)_x & (N_2)_y & (N_2)_z \\ V_x & V_y & V_z \end{bmatrix}^{-1}\begin{bmatrix}-D_1 \\ -D_2 \\ 0 \end{bmatrix} \tag{4.3}\label{eq:4.3}
 $$
 
+## 面的空间变换
+
+假设我们希望使用3x3矩阵$$\mathbf{M}$$和3D平移向量$$\mathbf{T}$$来变换平面。变换后，令法线向量为$$\mathbf{N}'$$，平面上的任一点为$$\mathbf{Q}'$$，距离原点的符号距离为$$D'$$，则平面方程应满足
+
+$$
+\mathbf{N}'\cdot\mathbf{Q}'+ D' = 0  \tag{5.1}\label{eq:5.1}
+$$
+
+考虑到法线的变换是$$\mathbf{M}$$矩阵的逆转置，即
+
+$$
+\mathbf{N}'=(\mathbf{M}^{-1})^T\mathbf{N} \tag{5.2}\label{eq:5.2}
+$$
+因此可以将(5.2)式写成
+
+$$
+\begin{align}
+\mathbf{N}'\cdot\mathbf{Q}'+ D' &= ((\mathbf{M}^{-1})^T\mathbf{N})\cdot(\mathbf{MQ+T}) + D'\\
+&= ((\mathbf{M}^{-1})^T\mathbf{N})^T(\mathbf{MQ+T}) + D' \\
+&= ((\mathbf{M}^{-1})^T\mathbf{N})^T\mathbf{MQ} + ((\mathbf{M}^{-1})^T\mathbf{N})^T\mathbf{T} + D'\\
+&= \mathbf{N}^T\mathbf{M}^{-1}\mathbf{M}\mathbf{Q} + \mathbf{N}^T\mathbf{M}^{-1}\mathbf{T} + D' \\
+&= \mathbf{N}^T\mathbf{Q} + \mathbf{N}^T\mathbf{M}^{-1}\mathbf{T} + D' \\
+&= -D + \mathbf{N}\cdot\mathbf{M}^{-1}\mathbf{T} + D' \\
+&= -D + (\mathbf{M}^{-1}\mathbf{T})^T\mathbf{N} + D' \\
+&= 0
+\end{align}
+$$
+
+从而得到$$D'$$的值为
+
+$$
+D' = D - (\mathbf{M}^{-1}\mathbf{T})^T\mathbf{N} \tag{5.3}\label{eq:5.3}
+$$
+
+因此，变换后的平面$$\mathcal{L}'$$为
+
+$$
+\begin{align}
+\mathcal{L}' &= 
+\begin{bmatrix}
+\mathbf{N}'\\
+D'
+\end{bmatrix}
+\\&= 
+\begin{bmatrix}
+(\mathbf{M}^{-1})^T\mathbf{N}\\
+D - (\mathbf{M}^{-1}\mathbf{T})^T\mathbf{N}
+\end{bmatrix}
+\\&=
+\begin{bmatrix}
+(\mathbf{M}^{-1})^T&\mathbf{0}\\
+- (\mathbf{M}^{-1}\mathbf{T})^T&1
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf{N}\\
+D
+\end{bmatrix}
+\\&=
+\begin{bmatrix}
+\mathbf{M}^{-1}&- \mathbf{M}^{-1}\mathbf{T}\\
+\mathbf{0}&1
+\end{bmatrix}^{T}
+\begin{bmatrix}
+\mathbf{N}\\
+D
+\end{bmatrix}
+\\&=
+\begin{bmatrix}
+\mathbf{M}^{-1}&- \mathbf{M}^{-1}\mathbf{T}\\
+\mathbf{0}&1
+\end{bmatrix}^{T}
+\mathcal{L}
+\end{align}
+$$
+
+即
+
+$$
+\mathcal{L}' = (\mathcal{F}^{-1})^T\mathcal{L} \tag{5.4}\label{eq:5.4}
+$$
+
+其中，
+
+$$
+\mathcal{F}^{-1} = \begin{bmatrix}
+\mathbf{M}^{-1}&- \mathbf{M}^{-1}\mathbf{T}\\
+\mathbf{0}&1
+\end{bmatrix} 
+\tag{5.5}\label{eq:5.5}
+$$
+
+是3D点在四维齐次空间中的逆变换。
