@@ -21,7 +21,7 @@ $$
 \end{align}
 $$
 
-考虑到$$\mathbf{N}\cdot\mathbf{P}$$是个常数，可以将(1.1)式展开，得到如下方程：
+考虑到$$\mathbf{N}\cdot\mathbf{P}$$是个常数，表示为$$-D$$，可以将(1.1)式展开，得到如下方程：
 
 $$
 Ax + By + Cz + D = 0 \tag{1.2}\label{eq:1.2}
@@ -33,15 +33,15 @@ $$
 
 $$
 \begin{align}
-\mathcal{L} &= \begin{bmatrix}\mathbf{N}&D\end{bmatrix} = \begin{bmatrix}A&B&C&D\end{bmatrix} \\
-\mathcal{Q} &= \begin{bmatrix}\mathbf{Q}&0\end{bmatrix} = \begin{bmatrix}x&y&z&0\end{bmatrix} \tag{1.3}\label{eq:1.3} 
+\mathcal{L} &= \begin{bmatrix}\mathbf{N}\\D\end{bmatrix} = \begin{bmatrix}A\\B\\C\\D\end{bmatrix} \\
+\mathcal{Q} &= \begin{bmatrix}\mathbf{Q}\\0\end{bmatrix} = \begin{bmatrix}x\\y\\z\\0\end{bmatrix} \tag{1.3}\label{eq:1.3} 
 \end{align}
 $$
 
 则可以得到齐次化的平面表达式
 
 $$
-\mathcal{L}\cdot\mathcal{Q} = \mathbf{N}\cdot\mathbf{Q} + D = 0 \tag{1.4}\label{eq:1.4}
+\mathcal{L}\cdot\mathcal{Q} =\mathcal{L}^T\mathcal{Q}= \mathbf{N}\cdot\mathbf{Q} + D = 0 \tag{1.4}\label{eq:1.4}
 $$
 
 
@@ -129,7 +129,7 @@ $$
 根据(2.2)式，为了获得线的完整描述信息，还必须得到位于线上的一个点$$\mathbf{S}$$。为此，可以构建一个以$$\mathbf{V}$$为法线，穿过坐标原点的面
 
 $$
-\mathcal{L}_3 = \begin{bmatrix}\mathbf{V}&0\end{bmatrix} \tag{4.2} \label{eq:4.2}
+\mathcal{L}_3 = \begin{bmatrix}\mathbf{V}\\0\end{bmatrix} \tag{4.2} \label{eq:4.2}
 $$
 
 该面应与$$\mathcal{L}_1$$和$$\mathcal{L}_2$$相交于一个点，该点即为线上的一个点$$\mathbf{S}$$。结合(3.3)式和(3.4)式，$$\mathbf{S}$$点可通过如下方式计算出来
@@ -229,4 +229,12 @@ $$
 \tag{5.5}\label{eq:5.5}
 $$
 
-是3D点在四维齐次空间中的逆变换。
+是3D点在四维齐次空间中的逆变换，其正变换是
+
+$$
+\mathcal{F} = \begin{bmatrix}
+\mathbf{M}&\mathbf{T}\\
+\mathbf{0}&1
+\end{bmatrix} 
+\tag{5.6}\label{eq:5.6}
+$$
