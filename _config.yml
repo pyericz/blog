@@ -19,3 +19,5 @@ permalink: pretty
 
 highlighter: rouge
 github: https://github.com/pyericz/pyericz.github.io.git
+
+theme: jekyll-theme-modernist
