@@ -33,9 +33,14 @@
 (function() {
     var backToTop = document.querySelector('.back-to-top')
     var backToTopA = document.querySelector('.back-to-top a')
+    var menuBtn = document.querySelector('#headerMenu')
+    var nav = document.querySelector('#headerNav')
         // console.log(backToTop);
     window.addEventListener('scroll',function () {
-
+        if (menuBtn.classList.contains('active')) {
+            menuBtn.classList.remove('active')
+            nav.classList.remove('nav-show')
+        }
 
         // 页面顶部滚进去的距离
         var scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop)
