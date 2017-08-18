@@ -136,5 +136,5 @@ $$
 \tag{14}\label{eq:14}
 $$
 
-![](/assets/img/opengl-perspective-projection/1.png){:width="720px" height="469px"}
+![](/assets/img/opengl-perspective-projection/1.png){: .center-image width="720px" height="469px"}
 
