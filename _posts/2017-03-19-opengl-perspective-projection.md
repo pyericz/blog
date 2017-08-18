@@ -6,9 +6,9 @@ tag: [geometry, opengl, perspective, projection, matrix]
 date: 2017-03-19
 ---
 
-OpenGL使用归一化的设备坐标(Normalized device coordinates, NDC)，设备的中心点在坐标原点$$(0, 0)$$上，沿x轴，左边缘是-1，右边缘是+1；沿y轴，下边缘是-1，上边缘是+1。因OpenGL采用右手系，z轴方向朝屏幕外面。
-因此我们需要把投影坐标映射到[-1, 1]的空间中，该空间是齐次裁剪空间(homogeneous clip space)在3D空间的映射。
-假设近裁截面的上下左右边缘分别为$$t, b, l, r$$，近裁截面的z方向坐标为$$-n$$，远裁截面的z方向坐标为$$-f$$，那么透视投影矩阵可以表示为
+OpenGL使用归一化的设备坐标（Normalized device coordinates, **NDC**），设备的中心点在坐标原点$$(0, 0)$$上，沿x轴，左边缘是$$-1$$，右边缘是$$+1$$；沿y轴，下边缘是$$-1$$，上边缘是$$+1$$。因OpenGL采用右手系，z轴方向朝屏幕外面。
+因此我们需要把投影坐标映射到$$[-1, 1]$$的空间中，该空间是齐次裁剪空间（homogeneous clip space）在3D空间的映射。
+假设近裁截面的上下左右边缘分别为$$t, b, l, r$$，近裁截面的z方向坐标为$$-n$$，远裁截面的z方向坐标为$$-f$$，那么可以证明透视投影矩阵可以表示为
 
 $$
 \begin{bmatrix}
@@ -21,7 +21,7 @@ $$
 
 证明过程如下：
 
-假设四维相机空间中的齐次坐标点$$\textbf{P}=(P_x, P_y, P_z, 1)$$处在视锥体(View frustum)中，则该点投影到近裁截面上的点$$(x, y)$$应满足$$l\le x\le r, b\le y \le t$$。映射到$$[-1,1]$$的点$$(x',y')$$可以由如下式子导出
+假设四维相机空间中的齐次坐标点$$\textbf{P}=(P_x, P_y, P_z, 1)$$处在视锥体（View frustum）中，则该点投影到近裁截面上的点$$(x, y)$$应满足$$l\le x\le r, b\le y \le t$$。映射到$$[-1,1]$$的点$$(x',y')$$可以由如下式子导出
 
 $$
 \frac{x'-(-1)}{1-(-1)} = \frac{x-l}{r-l}
@@ -58,7 +58,7 @@ $$
 y' = \frac{2n}{t-b}(-\frac{P_y}{P_z})-\frac{t+b}{t-b} \tag{4}\label{eq:4}
 $$
 
-接下来需要将投影的z坐标映射到[-1, 1]，考虑到点$$\textbf{P}$$在视锥体内部，应满足$$-f\le P_z \le -n$$，且在光栅化处理中z的倒数是做线性插值的，因此可以构建如下的线性方程
+接下来需要将投影的z坐标映射到$$[-1, 1]$$，考虑到点$$\textbf{P}$$在视锥体内部，应满足$$-f\le P_z \le -n$$，且在光栅化处理中z的倒数是做线性插值的，因此可以构建如下的线性方程
 
 $$
 z'=\frac{A}{z}+B \tag{5}\label{eq:5}
@@ -84,7 +84,7 @@ $$
 z'=-\frac{2nf}{f-n}(-\frac{1}{P_z}) + \frac{f+n}{f-n} \tag{8}\label{eq:8}
 $$
 
-(3)(4)(8)式都包含除数$$-P_z$$。映射到[-1, 1]的点$$(x',y',z')$$等价于四维齐次点（$$w = -P_z$$)
+(3)(4)(8)式都包含除数$$-P_z$$。映射到$$[-1, 1]$$的点$$(x',y',z')$$等价于四维齐次点（$$w = -P_z$$)
 
 $$
 \textbf{P}'= (-x'P_z, -y'P_z, -z'P_z, -P_z) \tag{9}\label{eq:9}
@@ -136,5 +136,23 @@ $$
 \tag{14}\label{eq:14}
 $$
 
-![](/assets/img/opengl-perspective-projection/1.png){: .center-image width="720px" height="469px"}
+值得讨论的是在NDC下，z轴方向是如何映射的。根据(13)式，可以得到
 
+$$
+\begin{align}
+P'_z &= -\frac{f+n}{f-n}-\frac{2nf}{f-n}\\
+P'_w &= -P_z
+\end{align}
+$$
+
+则在NDC的z值为
+
+$$
+z' = \frac{P'_z}{P'_w} = \frac{f+n}{f-n}+\frac{2nf}{f-n}\cdot\frac{1}{P_z} \tag{15}\label{eq:15}
+$$
+
+(15)式的取值范围如下图所示（图片摘自《Mathematics for 3D Game Programming and Computer Graphics, Third Edition》，作者Eric Lengyel）：
+
+![](/assets/img/2017/03/19/opengl-perspective-projection.png){: .center-image width="720px" height="469px"}
+
+可见，对于视锥体内的目标位置，投影到NDC的$$z'$$坐标取值范围为$$[-1, 1]$$。
