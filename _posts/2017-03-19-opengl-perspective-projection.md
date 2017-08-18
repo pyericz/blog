@@ -153,6 +153,6 @@ $$
 
 (15)式的取值范围如下图所示（图片摘自《Mathematics for 3D Game Programming and Computer Graphics, Third Edition》，作者Eric Lengyel）：
 
-![](/assets/img/2017/03/19/opengl-perspective-projection.png){: .center-image width="720px" height="469px"}
+![](/assets/img/2017/03/19/opengl-perspective-projection.png)
 
 可见，对于视锥体内的目标位置，投影到NDC的$$z'$$坐标取值范围为$$[-1, 1]$$。
