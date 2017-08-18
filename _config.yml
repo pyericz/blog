@@ -14,10 +14,22 @@ author: Eric Zhang
 markdown: kramdown
 #markdown: redcarpet
 #redcarpet:
-extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "strikethrough", "with_toc_data"]
+# extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "strikethrough", "with_toc_data"]
+kramdown:
+    input: GFM
+    auto_ids: true
+    syntax_highlighter: rouge
 permalink: pretty
 
 highlighter: rouge
 github: https://github.com/pyericz/pyericz.github.io.git
 
+#permalink: pretty
+excerpt_separator: "\n\n\n"
+
+category_dir: category/
+tag_dir: tag/
+
+gems: [jekyll-paginate]
+paginate: 10
 # theme: jekyll-theme-hacker

@@ -1,0 +1,39 @@
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+%vertical-rhythm {
+    margin-bottom: 2;
+}
+
+/**
+ * Code formatting
+ */
+// pre,
+// code {
+//     font-size: 15px;
+//     border: 1px solid $grey-color-light;
+//     border-radius: 3px;
+//     background-color: #eef;
+// }
+//
+ code.highlighter-rouge {
+     padding: 1px 5px;
+     background-color: #fee9cc;
+ }
+
+ pre {
+     padding: 8px 12px;
+     overflow-x: auto;
+     tab-size:      2;
+
+     > code {
+         background-color: transparent;
+         border: none;
+         padding-right: 0;
+         padding-left: 0;
+     }
+ }
+
