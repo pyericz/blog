@@ -2,7 +2,7 @@
 title: 艾里克de梦
 layout: posts
 email: pyericz@yahoo.com 
-description: "人生最曼妙的风景，不是命运的波澜，而是内心的淡定与从容"
+description: ""
 baseurl: ""
 url: "http://pyericz.github.io"
 github_username:  pyericz
@@ -14,10 +14,10 @@ author: Eric Zhang
 markdown: kramdown
 #markdown: redcarpet
 #redcarpet:
-#  extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "strikethrough", "with_toc_data"]
+extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "strikethrough", "with_toc_data"]
 permalink: pretty
 
 highlighter: rouge
 github: https://github.com/pyericz/pyericz.github.io.git
 
-theme: jekyll-theme-hacker
+# theme: jekyll-theme-hacker
