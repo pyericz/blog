@@ -4,6 +4,12 @@ title: 3D空间中的面
 categories: math
 tag: [geometry, plane]
 ---
+* content
+{:toc}
+
+本文探讨面的空间变换。为了方便计算，引入了四维齐次空间的概念，并介绍面在四维齐次空间中的表示和变换。
+
+
 
 ## 3D空间中面的定义
 给定3D空间中的点$$\mathbf{P}$$和法线向量$$\mathbf{N}$$，那么经过点$$\mathbf{P}$$且垂直于法线向量$$\mathbf{N}$$的面可以定义为满足下列关系的一系列点$$\mathbf{Q}$$的集合：

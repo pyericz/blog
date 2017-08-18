@@ -4,11 +4,15 @@ title: "Lua语言中table的用法"
 date: 2016-02-04
 categories: Lua
 ---
+* content
+{:toc}
 
 lua的table是一种关联性数组（associative array），也就是说，table不像array,
 vector, map这类强类型的容器只能聚合某一类数据，而是可以聚合任意类型的数据。
 这也让table变成了一种极其强大、灵活的容器。加上table可以存放函数，
 以及元表（metatable）概念的引入，table可以解决大部分逻辑编程问题。
+
+
 
 ## table作为config表单
 

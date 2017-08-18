@@ -4,6 +4,12 @@ title: 旋转矩阵
 categories: math
 tag: [matrix, rotation, complex]
 ---
+* content
+{:toc}
+
+旋转矩阵有着广泛的用途。本文试图用复数的概念和几何的概念推导出旋转矩阵。
+
+
 
 ## 复数推导方式
 
