@@ -5,6 +5,13 @@ categories: math
 tag: [geometry, opengl, perspective, projection, matrix]
 date: 2017-03-19
 ---
+* content
+{:toc}
+
+本文介绍透视投影的公式推导，并讨论在归一化的设备坐标系下z轴坐标的取值范围。
+
+
+### 透视投影的表示
 
 OpenGL使用归一化的设备坐标（Normalized device coordinates, **NDC**），设备的中心点在坐标原点$$(0, 0)$$上，沿x轴，左边缘是$$-1$$，右边缘是$$+1$$；沿y轴，下边缘是$$-1$$，上边缘是$$+1$$。因OpenGL采用右手系，z轴方向朝屏幕外面。
 因此我们需要把投影坐标映射到$$[-1, 1]$$的空间中，该空间是齐次裁剪空间（homogeneous clip space）在3D空间的映射。
@@ -19,8 +26,7 @@ $$
 \end{bmatrix}
 $$
 
-证明过程如下：
-
+### 证明过程
 假设四维相机空间中的齐次坐标点$$\textbf{P}=(P_x, P_y, P_z, 1)$$处在视锥体（View frustum）中，则该点投影到近裁截面上的点$$(x, y)$$应满足$$l\le x\le r, b\le y \le t$$。映射到$$[-1,1]$$的点$$(x',y')$$可以由如下式子导出
 
 $$
@@ -135,6 +141,8 @@ $$
 \end{bmatrix}
 \tag{14}\label{eq:14}
 $$
+
+### 讨论
 
 值得讨论的是在NDC下，z轴方向是如何映射的。根据(13)式，可以得到
 
