@@ -4,6 +4,7 @@ title: 法线向量的空间变换
 date: 2017-03-21
 categories: math
 tag: [vector, transform]
+mathjax: true
 ---
 * content
 {:toc}

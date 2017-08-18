@@ -3,6 +3,7 @@ layout: post
 title: 3D空间中的面
 categories: math
 tag: [geometry, plane]
+mathjax: true
 ---
 * content
 {:toc}
