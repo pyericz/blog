@@ -49,6 +49,7 @@
 
     backToTopA.addEventListener('click',function (e) {
         e.preventDefault()
-        window.scrollTo(0,0)
+//         window.scrollTo(0,0)
+        window.scrollTo({"behavior": "smooth", "top": 0});
     })
 }());
