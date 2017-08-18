@@ -2,7 +2,7 @@
 BASEURL="_posts/"
 NOW=$(date +"%Y-%m-%d")
 HYPHEN="-"
-EXT=".markdown"
+EXT=".md"
 FILE=$BASEURL$NOW$HYPHEN${1// /-}$EXT
 echo $FILE" created!"
 touch $FILE
