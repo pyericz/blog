@@ -1,8 +1,8 @@
 ---
 layout: post
-title: OpenGL中的透视投影
+title: 透视投影矩阵的公式推导
 categories: math
-tag: [geometry, opengl, perspective, projection, matrix]
+tag: [frustum, ndc, perspective, projection, matrix]
 date: 2017-03-19
 ---
 * content
