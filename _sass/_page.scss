@@ -11,6 +11,7 @@
     width: 1140px;
     box-sizing: border-box;
     margin: 0 auto;
+    padding-top: 72px;
     // word-break: break-all;
     .left {
         border: 1px solid #ddd;
@@ -96,7 +97,7 @@
         top: 0;
         .fixed {
             position: fixed;
-            top: 20px;
+            top: 72px;
         }
         .scroll-bottom {
             position: absolute;
@@ -104,7 +105,9 @@
         }
         .side {
             box-sizing: border-box;
-            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            box-shadow: 3px 3px 3px #ddd;
             padding-bottom: 1px;
             -ms-word-break: break-all;
             word-break: break-all;
@@ -118,7 +121,7 @@
                 padding: 12px 15px;
 
                 // margin-right: -10px;
-                border-bottom: 1px solid #c0c0c0;
+                // border-bottom: 1px solid #c0c0c0;
                 font-size: 16px;
                 font-weight: bold;
             }
