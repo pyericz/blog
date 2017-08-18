@@ -46,9 +46,13 @@
             backToTop.classList.remove('back-to-top-show')
         }
     })
-
+    // $("a[href='#top']").click(function() {
+    //     $("html, body").animate({ scrollTop: 0 }, "slow");
+    //     return false;
+    // });
     backToTopA.addEventListener('click',function (e) {
         e.preventDefault()
-        window.scrollTo(0,0)
+        // window.scrollTo(0,0)
+        $("html, body").animate({ scrollTop: 0 }, "fast");
     })
 }());
