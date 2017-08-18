@@ -140,7 +140,7 @@ $$
 
 $$
 \begin{align}
-P'_z &= -\frac{f+n}{f-n}-\frac{2nf}{f-n}\\
+P'_z &= -\frac{f+n}{f-n}\cdot P_z-\frac{2nf}{f-n}\\
 P'_w &= -P_z
 \end{align}
 $$
