@@ -33,3 +33,4 @@ tag_dir: tag/
 gems: [jekyll-paginate]
 paginate: 10
 # theme: jekyll-theme-hacker
+baidu_tongji_id: 771bb69fe07c2dc990235fa69f556948
