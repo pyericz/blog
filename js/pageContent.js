@@ -105,13 +105,15 @@ function ancherPostion(anchorBtn, rightDiv) {
         var top = anchorBtn.getBoundingClientRect().top
             // console.log(top);
         var scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-        if (scrollTop > 50) {
-            anchorBtn.style.top = '20px'
-            rightDiv.style.top = '20px'
-        } else {
-            anchorBtn.style.top = '76px'
-            rightDiv.style.top = '76px'
-        }
+        // if (scrollTop > 50) {
+        //     anchorBtn.style.top = '20px'
+        //     rightDiv.style.top = '20px'
+        // } else {
+        //     anchorBtn.style.top = '76px'
+        //     rightDiv.style.top = '76px'
+        // }
+        anchorBtn.style.top = '76px'
+        rightDiv.style.top = '76px'
     })
 }
 

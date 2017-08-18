@@ -118,7 +118,7 @@ header {
                 right: 0;
                 top:10px;
                 padding: 5px 10px;
-                background: #f5f5f5;
+                background: #006;
                 border: 1px solid #333;
                 border-radius: 4px;
                 color: #c9c9c9;
@@ -126,10 +126,10 @@ header {
                 -webkit-transition: 0.4s ease;
                 transition: 0.4s ease;
             }
-            >.active{
-                background: #c0ddc7;
-                color: #fff;
-            }
+            // >.active{
+            //     background: #c0ddc7;
+            //     color: #fff;
+            // }
             .nav-show{
                 visibility: visible;
                 transform: scale(1);
@@ -148,8 +148,9 @@ header {
                 opacity: 0;
                 transition: 0.2s cubic-bezier(0.5, 0.1, 0.51, 1.38);
                 ul {
-                    background: #f5f5f5;
-                    border-radius: 0 0 4px 4px;
+                    background: #006;
+
+                    box-shadow: 0px 3px 3px 0px #555;
                     li {
                         font-size: 14px;
                         display: block;
@@ -164,7 +165,7 @@ header {
                             border: none;
                         }
                         >.active {
-                            background-color: #c0ddc7;
+                            // background-color: #c0ddc7;
                             box-shadow: none;
                         }
                     }
