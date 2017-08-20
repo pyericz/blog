@@ -21,10 +21,11 @@
                 menuBtn.classList.add('active')
             }
         }
-        document.querySelector('body').addEventListener('click', function() {
-            nav.classList.remove('nav-show')
-            menuBtn.classList.remove('active')
-        })
+        // document.querySelector('body').addEventListener('click', function() {
+        //     nav.classList.remove('nav-show')
+        //     menuBtn.classList.remove('active')
+        // })
+
     }
 }());
 
@@ -37,10 +38,10 @@
     var nav = document.querySelector('#headerNav')
         // console.log(backToTop);
     window.addEventListener('scroll',function () {
-        if (menuBtn.classList.contains('active')) {
-            menuBtn.classList.remove('active')
-            nav.classList.remove('nav-show')
-        }
+        // if (menuBtn.classList.contains('active')) {
+        //     menuBtn.classList.remove('active')
+        //     nav.classList.remove('nav-show')
+        // }
 
         // 页面顶部滚进去的距离
         var scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop)
