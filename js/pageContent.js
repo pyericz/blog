@@ -91,6 +91,11 @@ function isMaxHeight() {
             anchorBtn.classList.remove('anchor-hide')
         })
 
+        document.querySelector('body').addEventListener('touchend', function() {
+            rightDiv.classList.remove('right-show')
+            anchorBtn.classList.remove('anchor-hide')
+        })
+
         ancherPostion(anchorBtn, rightDiv) //目录锚的位置固定
         setContentMaxHeight() //设置目录最大高度
     }
