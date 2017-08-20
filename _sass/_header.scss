@@ -16,13 +16,12 @@ header {
         }
     }
     .wrapper {
-        width: 1140px;
+        width: 90%;
         margin: 0 auto;
         line-height: 52px;
-
-
+        position: relative;
         .brand {
-            font-size: 18px;
+            font-size: 16px;
         }
         small {
             margin-left: 26px;
@@ -65,10 +64,11 @@ header {
 }
 @media screen and (max-width:1200px) and (min-width: 770px) {
     header {
-        height: 50px;
+        height: 52px;
         .wrapper {
             width: 90%;
-            line-height: 50px;
+            line-height: 52px;
+            position: relative;
             .brand {
                 font-size: 16px;
             }
@@ -97,12 +97,12 @@ header {
 }
 @media screen and (max-width: 770px) {
     header {
-        height: 48px;
+        height: 52px;
         margin-bottom: 15px;
         .wrapper {
-            width: 95%;
+            width: 90%;
             margin: 0 auto;
-            line-height: 48px;
+            line-height: 52px;
             position: relative;
             z-index: 101;
             .brand {
