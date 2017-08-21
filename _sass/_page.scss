@@ -21,6 +21,7 @@
         line-height: 1.6;
         font-size: 16px;
         background-color: #fff;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.4),0 0 30px rgba(10,10,0,0.1) inset;
         >h1 {
             margin-bottom: -10px;
         }
@@ -106,8 +107,9 @@
         .side {
             box-sizing: border-box;
             border: 1px solid #ddd;
+            box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.3), 0 0 30px rgba(10, 10, 0, 0.1) inset;
             background-color: #fff;
-            box-shadow: 3px 3px 3px #ddd;
+            /* box-shadow: 3px 3px 3px #ddd; */
             padding-bottom: 1px;
             -ms-word-break: break-all;
             word-break: break-all;
