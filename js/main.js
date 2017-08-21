@@ -21,10 +21,10 @@
                 menuBtn.classList.add('active')
             }
         }
-        // document.querySelector('body').addEventListener('click', function() {
-        //     nav.classList.remove('nav-show')
-        //     menuBtn.classList.remove('active')
-        // })
+        document.querySelector('body').addEventListener('click', function() {
+            nav.classList.remove('nav-show')
+            menuBtn.classList.remove('active')
+        })
 
     }
 }());

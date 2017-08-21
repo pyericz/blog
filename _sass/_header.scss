@@ -100,13 +100,14 @@ header {
         height: 52px;
         margin-bottom: 15px;
         .wrapper {
-            width: 90%;
+            width: 100%;
             margin: 0 auto;
             line-height: 52px;
             position: relative;
             z-index: 101;
             .brand {
                 font-size: 16px;
+                margin-left: 10px;
             }
             small {
                 margin-left: 10px;
@@ -116,11 +117,11 @@ header {
                 display: inline-block;
                 position: absolute;
                 z-index: -102;
-                right: 0;
+                right: 10px;
                 top:10px;
                 padding: 5px 10px;
                 background: #006;
-                border: 1px solid #333;
+                border: 1px solid #666;
                 border-radius: 4px;
                 color: #c9c9c9;
                 font-size: 17px;
@@ -140,7 +141,7 @@ header {
                 position: absolute;
                 z-index: 100;
                 right:0;
-                top:62px;
+                top:52px;
                 width: 100%;
                 text-align: left;
 
@@ -156,10 +157,11 @@ header {
                     li {
                         font-size: 14px;
                         display: block;
-                        border-bottom: 1px solid #333;
+                        border-bottom: 1px solid #666;
                         a {
                             display: block;
                             padding: 0 10px;
+                            padding-left: 20px;
                             height: 40px;
                             line-height: 40px;
                         }
