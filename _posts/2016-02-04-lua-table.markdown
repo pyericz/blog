@@ -19,7 +19,7 @@ vector, map这类强类型的容器只能聚合某一类数据，而是可以聚
 
 一种简单表单的用法：
 
-{% highlight lua %}
+```lua
 local config = {
     [1]="hello.png",
     [2]="world.png",
@@ -38,11 +38,11 @@ function loadImages(objs)
         loadImage(obj, img)
     end
 end
-{% endhighlight %}
+```
 
 配置更为复杂的表单：
 
-{% highlight lua %}
+```lua
 function createObject(class)
     -- object factory
 end
@@ -70,7 +70,7 @@ function create()
     local button = createView(config)
     -- do your stuff
 end
-{% endhighlight %}
+```
 
 ## 元表
 
@@ -79,10 +79,10 @@ end
 举个例子。
 现有如下两个表：
 
-{% highlight lua %}
+```lua
 local a = {3, 4, 5}
 local b = {6, 7, 8}
-{% endhighlight %}
+```
 
 那么a和b相加应该得到什么样的结果呢？这其实与a和b的定义有关。若a和b代表矢量（或方向向量），则
 
@@ -102,7 +102,7 @@ $$
 
 第一种实现方式：
 
-{% highlight lua %}
+```lua
 local a = {3, 4, 5}
 a.add = function(t)
     assert(type(t) == "table")
@@ -127,9 +127,9 @@ end
 c = a.add(b)
 -- or
 c = b.add(a)
-{% endhighlight %}
+```
 
-{% highlight lua %}
+```lua
 local a = {3, 4, 5}
 a.add = function(t1, t2)
     assert(type(t1) == "table")
@@ -148,11 +148,11 @@ end
 local c = a:add(b)
 -- or
 local c = b:add(a)
-{% endhighlight %}
+```
 
 第二种实现方式：
 
-{% highlight lua %}
+```lua
 local a = {3, 4, 5}
 local b = {6, 7, 8}
 
@@ -167,11 +167,11 @@ local d = {11, 33, 33}
 local c = add(a, b)
 local result = add(c, d)
 result = add(add(a, b), d)
-{% endhighlight %}
+```
 
 元表的实现方式：
 
-{% highlight lua %}
+```lua
 local vector = {}
 function vector:new(o)
     o = o or {}
@@ -193,27 +193,27 @@ local result = a:add(b):add(c)
 local result = b:add(a):add(c)
 -- or
 local result = vector.add(a, b):add(c)
-{% endhighlight %}
+```
 
 元表还支持元方法（metamethod)
 
-{% highlight lua %}
+```lua
 vector.__add = vector.add
-{% endhighlight %}
+```
 
 这样，上面的计算公式变成
 
-{% highlight lua %}
+```lua
 local a = vector:new({3, 4, 5})
 local b = vector:new({6, 7, 8})
 local c = vector:new({9, 10, 11})
 
 local result = a + b + c
-{% endhighlight %}
+```
 
 常用的元方法有：
 
-{% highlight lua %}
+```lua
 __add            -- for addition(+)
 __sub            -- for subtraction(-)
 __div            -- for division(/)
@@ -230,7 +230,7 @@ __newindex
 __tostring
 __call
 
-{% endhighlight %}
+```
 
 元表的概念和面向对象设计中的继承关系十分类似。当然也有不同。比如在内存方面，传统意义的面向对象设计new出来的每个对象都各自独占一份内存，但元表new出来的不同新表会共享一份元表内存。
 同时，元表的面向对象设计并不能实现访问限制，即无法实现protected、private功能。尽管如此，lua
@@ -243,7 +243,7 @@ lua语言虽然简单，但lua程序语言设计的思想是值得我们每个�
 
 以下是数据结构—— **集合** 的lua实现
 
-{% highlight lua %}
+```lua
 local set = {}
 local mt = {}
 function set.new(s)
@@ -280,22 +280,22 @@ function set.equal(a, b)
     end
     return true
 end
-{% endhighlight %}
+```
 
 可以定义如下元方法
 
-{% highlight lua %}
+```lua
 mt = {}
 mt.__add = set.union
 mt.__mul = set.intersection
 mt.__eq = set.equal
-{% endhighlight %}
+```
 
 ## table作为类
 
 一个简单的面向对象设计如下：
 
-{% highlight lua %}
+```lua
 object = {}
 function object:extend(o)
     o = o or {}
@@ -303,11 +303,11 @@ function object:extend(o)
     return o
 end
 object.new = object.extend
-{% endhighlight %}
+```
 
 多重继承：
 
-{% highlight lua %}
+```lua
 local search = function(k, plist)
     for i=1, #plist do
         local v=plist[i][k]
@@ -332,4 +332,4 @@ function extendClasses(...)
     c.new = c.extend
     return c
 end
-{% endhighlight %}
+```
