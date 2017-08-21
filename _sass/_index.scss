@@ -95,13 +95,15 @@
                         a {
                             display: block;
                             width: 100%;
-                            padding: 2px 0;
+                            padding: 4px 0;
                             border-bottom: 1px solid #eee;
                             &:hover {
                                 /* background-color: #dbdfee; */
                                 .badge {
                                     /* background-color: #dbdfee; */
-                                    transform: scale(1.2) rotate(360deg);
+                                    /* transform: scale(1.2) rotate(360deg); */
+                                    background-color: #000;
+                                    color: #fff;
                                 }
                             }
                             .name {
@@ -118,8 +120,8 @@
                                 padding: 0 10px;
                                 font-size: 12px;
                                 color: #fff;
-                                background-color: #aaa;
-                                border-radius: 50%;
+                                background-color: #9d9d9d;
+                                border-radius: 100%;
                                 transition: 0.3s ease-in-out;
                             }
                         }
