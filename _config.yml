@@ -1,10 +1,12 @@
 # Site settings
-title: 艾里克de梦
+title: 墨竹林
 layout: posts
 email: pyericz@yahoo.com 
-description: ""
+# description: "张培养的博客"
+brief-intro: "张培养的点滴记录"
 baseurl: ""
 url: "http://www.pyericz.com/"
+description_footer: 日晚爱行深竹里，月明躲在小桥头
 github_username:  pyericz
 timezone: Asian/Shanghai
 
