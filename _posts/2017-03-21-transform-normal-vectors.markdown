@@ -5,7 +5,7 @@ date: 2017-03-21
 categories: math
 tag: [vector, transform]
 mathjax: true
-author: pyericz
+author: 张培养
 ---
 * content
 {:toc}

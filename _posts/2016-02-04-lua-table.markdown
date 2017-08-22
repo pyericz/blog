@@ -3,7 +3,7 @@ layout: post
 title: "lua语言中table的用法"
 date: 2016-02-04
 categories: lua
-author: pyericz
+author: 张培养
 ---
 * content
 {:toc}

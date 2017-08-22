@@ -4,7 +4,7 @@ title: 旋转矩阵
 categories: math
 tag: [matrix, rotation, complex]
 mathjax: true
-author: pyericz
+author: 张培养
 ---
 * content
 {:toc}

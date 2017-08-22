@@ -4,7 +4,7 @@ title: "iOS获取基于地理位置的行政区域信息"
 date: 2017-08-22
 categories: iOS
 tag: [ios, lbs]
-author: pyericz
+author: 张培养
 ---
 * content
 {:toc}
