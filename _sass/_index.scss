@@ -110,18 +110,18 @@
                                 padding-left: 15px;
                             }
                             .badge {
-                                display: block;
-
-                                // width: 20px;
+                                display: inline-block;
                                 float: right;
                                 text-align: center;
                                 margin-right: 15px;
-                                margin-top: 3px;
-                                padding: 0 10px;
+                                margin-top: 5px;
+                                padding: 2px 5px;
                                 font-size: 12px;
+                                line-height: 1;
+                                font-weight: 600;
                                 color: #fff;
                                 background-color: #9d9d9d;
-                                border-radius: 100%;
+                                border-radius: 20px;
                                 transition: 0.3s ease-in-out;
                             }
                         }
@@ -131,13 +131,17 @@
                     }
                 }
                 .content-ul[recent]{
-                    padding-bottom: 16px;
+                    overflow: hidden;
+                    list-style: none;
+                    padding-left: 15px;
                     li{
                         color:#aaa;
                         font-size: 14px;
                         a {
                             display: block;
-                            padding: 0 3px;
+                            border-bottom: 1px solid #eee;
+                            width: 100%;
+                            padding: 4px 0;
                         }
                     }
 
