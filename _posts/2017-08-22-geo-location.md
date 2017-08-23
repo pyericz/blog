@@ -2,7 +2,7 @@
 layout: post
 title: "iOS获取基于地理位置的行政区域信息"
 date: 2017-08-22
-categories: iOS
+categories: ios
 tag: [ios, lbs]
 author: 张培养
 ---
