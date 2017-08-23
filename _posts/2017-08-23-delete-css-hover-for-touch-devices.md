@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "针对触摸屏设备移除css样式中的:hover定义"
+title: "触摸屏设备css的:hover定义"
 date: 2017-08-23
 categories: javascript
 tag: [hover, js, css]
