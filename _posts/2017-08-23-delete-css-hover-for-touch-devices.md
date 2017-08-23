@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "触摸屏设备css的:hover定义"
+title: "触摸屏禁用css鼠标悬停"
 date: 2017-08-23
 categories: javascript
 tag: [hover, js, css]
