@@ -65,3 +65,6 @@ for (var si in document.styleSheets) {
 ```
 对于手机端，和非触摸屏的pc端，这段代码可以很好地帮助解决问题。但对于既支持触摸屏，又支持鼠标的PC，就会有问题了。因为用鼠标操作的时候，由于被判断为触摸屏，所有的```:hover```已经被移除掉了，导致鼠标的悬停操作不起作用。
 至于如何解决这一困难，还需要继续探索。
+
+### 参考
+- [How to remove/ignore :hover css style on touch devices](https://stackoverflow.com/a/30303898)
