@@ -4,7 +4,7 @@ title: "iOS获取地理位置信息"
 date: 2017-08-22
 categories: ios
 tag: [ios, lbs]
-author: 张培养
+author: pyericz
 ---
 * content
 {:toc}

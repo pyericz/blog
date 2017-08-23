@@ -5,7 +5,7 @@ categories: math
 tag: [frustum, ndc, perspective, projection, matrix]
 date: 2017-03-19
 mathjax: true
-author: 张培养
+author: pyericz
 ---
 * content
 {:toc}

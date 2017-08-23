@@ -11,5 +11,6 @@ echo "layout: post"  >> $FILE
 echo "title: \""$1"\""  >> $FILE
 echo "date: "$NOW  >> $FILE
 echo "categories: "  >> $FILE
+echo "tag: []"  >> $FILE
 echo "author: 张培养" >> $FILE
 echo "---" >> $FILE

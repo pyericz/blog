@@ -4,7 +4,7 @@ title: "触摸屏设备css的:hover定义"
 date: 2017-08-23
 categories: javascript
 tag: [hover, js, css]
-author: 张培养
+author: pyericz
 ---
 * content
 {:toc}
