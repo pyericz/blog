@@ -8,6 +8,7 @@ icon: heart
 {:toc}
 
 ### 软件开发
+- 软件架构
 - iOS开发
 - Android开发
 - Web前端开发
