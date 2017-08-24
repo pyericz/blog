@@ -35,6 +35,7 @@
         });
         document.querySelector('body').addEventListener('touchend', function() {
             if (!touchMoved) {
+                e.stopPropagation();
                 nav.classList.remove('nav-show');
                 menuBtn.classList.remove('active');
             }
