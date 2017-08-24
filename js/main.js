@@ -22,24 +22,11 @@
             }
         };
 
-        document.querySelector('body').addEventListener('click', function() {
-            nav.classList.remove('nav-show');
+        document.querySelector('body').onclick = function(e) {
+            e.stopPropagation();
             menuBtn.classList.remove('active');
-        });
-        var touchMoved = false;
-        document.querySelector('body').addEventListener('touchstart', function() {
-            touchMoved = false;
-        });
-        document.querySelector('body').addEventListener('touchmove', function() {
-            touchMoved = true;
-        });
-        document.querySelector('body').addEventListener('touchend', function() {
-            if (!touchMoved) {
-                e.stopPropagation();
-                nav.classList.remove('nav-show');
-                menuBtn.classList.remove('active');
-            }
-        });
+            nav.classList.remove('nav-show');
+        };
     }
 }());
 
