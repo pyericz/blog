@@ -26,6 +26,19 @@
             nav.classList.remove('nav-show');
             menuBtn.classList.remove('active');
         });
+        var touchMoved = false;
+        document.querySelector('body').addEventListener('touchstart', function() {
+            touchMoved = false;
+        });
+        document.querySelector('body').addEventListener('touchmove', function() {
+            touchMoved = true;
+        });
+        document.querySelector('body').addEventListener('touchend', function() {
+            if (!touchMoved) {
+                nav.classList.remove('nav-show');
+                menuBtn.classList.remove('active');
+            }
+        });
     }
 }());
 
