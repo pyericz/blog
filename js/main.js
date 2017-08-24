@@ -23,7 +23,6 @@
         };
 
         document.querySelector('body').onclick = function(e) {
-            e.stopPropagation();
             menuBtn.classList.remove('active');
             nav.classList.remove('nav-show');
         };
