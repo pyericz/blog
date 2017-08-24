@@ -26,10 +26,6 @@
             nav.classList.remove('nav-show');
             menuBtn.classList.remove('active');
         });
-        document.querySelector('body').addEventListener('touchend', function() {
-            nav.classList.remove('nav-show');
-            menuBtn.classList.remove('active');
-        });
     }
 }());
 
