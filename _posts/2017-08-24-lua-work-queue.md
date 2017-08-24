@@ -21,7 +21,7 @@ tag: [work, queue, async]
 
 
 
-GitHub源码：[](https://github.com/pyericz/LuaWorkQueue)
+GitHub源码：(https://github.com/pyericz/LuaWorkQueue)
 
 ### 定义Object
 我们将采用面向对象的编程方法来展开讨论，虽然Lua本身不是面向对象语言，但可以利用元表方便地模拟面向对象过程。为此，我们可以先定义Object，通过定义extend方法，和new方法，模拟面向对象中的继承和实例化。
