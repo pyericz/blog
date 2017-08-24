@@ -22,10 +22,14 @@
             }
         };
 
-        document.querySelector('body').onclick = function(e) {
-            menuBtn.classList.remove('active');
+        document.querySelector('body').addEventListener('click', function() {
             nav.classList.remove('nav-show');
-        };
+            menuBtn.classList.remove('active');
+        });
+        document.querySelector('body').addEventListener('touch', function() {
+            nav.classList.remove('nav-show');
+            menuBtn.classList.remove('active');
+        });
     }
 }());
 
