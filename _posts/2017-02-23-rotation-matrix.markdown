@@ -4,7 +4,6 @@ title: 旋转矩阵
 categories: math
 tag: [matrix, rotation, complex]
 mathjax: true
-author: pyericz
 ---
 * content
 {:toc}

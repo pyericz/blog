@@ -5,7 +5,6 @@ date: 2017-03-21
 categories: math
 tag: [vector, transform]
 mathjax: true
-author: pyericz
 ---
 
 3D模型中的顶点一般包含法线向量和切线向量信息，当模型的顶点在空间中做变换时，应同时变换顶点的法线向量和切线向量。本文探讨3D模型顶点法线向量的变换。
