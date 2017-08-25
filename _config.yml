@@ -1,11 +1,11 @@
 # Site settings
-title: 墨竹林
+title: PxrGO
 layout: posts
 email: pyericz@yahoo.com 
 # description: ""
 brief-intro: "求知求智，淡定从容"
 baseurl: ""
-url: "http://www.pyericz.com/"
+url: "http://www.pxrgo.com/"
 description_footer: 一抹午烟风隔断，野鸡声在竹林西
 github_username:  pyericz
 timezone: Asian/Shanghai
