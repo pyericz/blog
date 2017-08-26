@@ -54,7 +54,7 @@ iOS提供的CoreLocation.framework可以让我们方便地获取基于地理位�
 			// 从placemark中获取感兴趣的行政区域信息，比如获得省份名称
 			NSLog(@"administrativeArea: %@", placemark.administrativeArea);
 		}
-	}
+	}]
 }
 ```
 CLPlacemark包含如下信息：
