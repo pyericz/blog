@@ -16,16 +16,16 @@ header {
         }
     }
     .wrapper {
-        width: 90%;
+        width: 95%;
         margin: 0 auto;
         line-height: 52px;
         position: relative;
         .brand {
-            font-size: 16px;
+            font-size: 20px;
         }
         small {
             margin-left: 26px;
-            font-size: 14px;
+            font-size: 12px;
         }
         .menu{
             display: none;
@@ -68,14 +68,14 @@ header {
     header {
         height: 50px;
         .wrapper {
-            width: 90%;
+            width: 95%;
             line-height: 50px;
             position: relative;
             .brand {
-                font-size: 16px;
+                font-size: 20px;
             }
             small {
-                margin-left: 15px;
+                margin-left: 10px;
                 font-size: 12px;
             }
             .menu{
@@ -108,25 +108,29 @@ header {
             position: relative;
             z-index: 101;
             .brand {
-                font-size: 16px;
-                margin-left: 10px;
+                font-size: 20px;
+                margin-left: 20px;
             }
             small {
-                margin-left: 10px;
+                margin-left: 5px;
                 font-size: 12px;
+                visibility: hidden;
             }
             .menu{
                 display: inline-block;
                 position: absolute;
                 z-index: -102;
-                right: 10px;
-                top:10px;
+                right: 0;
+                top: 0;
+                /* top:10px; */
                 padding: 5px 10px;
+                margin-top: 10px;
+                margin-right: 10px;
                 background: #222;
-                border: 1px solid #000;
+                /* border: 1px solid #000; */
                 border-radius: 4px;
                 color: #c8c9cb;
-                font-size: 17px;
+                font-size: 20px;
                 // -webkit-transition: 0.4s ease;
                 // transition: 0.4s ease;
             }
