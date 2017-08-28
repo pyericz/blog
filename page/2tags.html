@@ -39,11 +39,12 @@ icon: tags
         <div class="wrap">
 
             <!-- Content -->
-            <div class="side content">
-                <div>
+            <div class="side">
+                <div class="title">
                     Content
                 </div>
-                <ul id="content-side" class="content-ul">
+                <div class="content">
+                    <ul id="content-side" class="content-ul">
                     {% for tag in sortedtags %}
                     <li>
                         <a class="scroll" href="#{{ tag }}">
@@ -51,8 +52,8 @@ icon: tags
                         </a>
                     </li>
                     {% endfor %}
-
-                </ul>
+                    </ul>
+                </div>
             </div>
             <!-- 其他div框放到这里 -->
             <!-- <div class="side">bbbb</div> -->

@@ -43,10 +43,11 @@ icon: archive
         <div class="wrap">
 
             <!-- Content -->
-            <div class="side content">
-                <div>
+            <div class="side">
+                <div class="title">
                     Content
                 </div>
+                <div class="content">
                 <ul id="content-side" class="content-ul">
                     {% assign counter = 0 %}
                         {% for post in site.posts %}
@@ -59,6 +60,7 @@ icon: archive
                           {% endif %}
                         {% endfor %}
                 </ul>
+                </div>
             </div>
             <!-- 其他div框放到这里 -->
             <!-- <div class="side">bbbb</div> -->
