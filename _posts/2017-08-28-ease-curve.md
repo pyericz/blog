@@ -86,7 +86,7 @@ $$
 
 ## Quadratic
 ### easeInQuad
-#### easeOutQuad
+### easeOutQuad
 ### easeInOutQuad
 
 ## Cubic
