@@ -43,8 +43,11 @@ $on-laptop:        800px;
 /* AK custom CSS mods */
 .imgright { float: right; margin-left: 10px; }
 .imgcap img {
-    border: 1px solid #ddd;
-    max-width: 100%;
+    // border: 1px solid #ddd;
+    border-style: none;
+    box-sizing: border-box;
+    background-color: transparent;
+    max-width: 80%;
 }
 .imgcap {
     color: #555;
