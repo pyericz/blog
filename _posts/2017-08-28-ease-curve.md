@@ -42,7 +42,7 @@ $$
 ## Linear
 
 $$
-y = x, \quad x\in[0, 1]
+y(x) = x, \quad x\in[0, 1]
 $$
 
 
@@ -53,7 +53,7 @@ $$
 ### easeInSine
 
 $$
-y = 1-\cos(\frac{\pi}{2}\cdot x), \quad x\in[0, 1]
+y(x) = 1-\cos(\frac{\pi}{2}\cdot x), \quad x\in[0, 1]
 $$
 
 {:.imgcap}
@@ -83,6 +83,7 @@ $$
 {:.imgcap}
 ![](/assets/img/2017/08/28/easeInOutSine.svg)
 
+(未完待续)
 
 ## Quadratic
 ### easeInQuad
