@@ -47,7 +47,7 @@ $on-laptop:        800px;
     border-style: none;
     box-sizing: border-box;
     background-color: transparent;
-    max-width: 80%;
+    max-width: 70%;
 }
 .imgcap {
     color: #555;
@@ -55,6 +55,17 @@ $on-laptop:        800px;
     text-align: center;
 }
 
+@media screen and (max-width:1200px) and (min-width: 770px) {
+    .imgcap img {
+        max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .imgcap img {
+        max-width: 90%;
+    }
+}
 /*
  * variables
  */
