@@ -20,6 +20,9 @@ header {
         margin: 0 auto;
         line-height: 52px;
         position: relative;
+        .logo {
+            vertical-align: middle;
+        }
         .brand {
             font-size: 20px;
         }
@@ -107,6 +110,9 @@ header {
             line-height: 52px;
             position: relative;
             z-index: 101;
+            .logo {
+                margin-left: 20px;
+            }
             .brand {
                 font-size: 16px;
                 margin-left: 20px;
