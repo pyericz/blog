@@ -2,14 +2,14 @@
     position: fixed;
     right: 50px;
     bottom: 55px;
-    background-color: #f8f8fd;
+    // background-color: #f8f8fd;
     visibility: hidden;
-    opacity: 0;
     transition: 0.4s ease;
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.3);
     a {
         display: block;
-        background-color: #fff;
+        // background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.7);
         width: 38px;
         height: 38px;
         line-height: 38px;
@@ -20,9 +20,9 @@
 }
 .back-to-top-show{
     visibility: visible;
-    opacity: 0.7;
     &:hover{
-        opacity: 1
+        background-color: rgba(255, 255, 255, 1);
+        // opacity: 1
     }
 }
 @media screen and (max-width:1200px) and (min-width: 770px) {
