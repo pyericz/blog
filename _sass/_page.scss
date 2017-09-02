@@ -30,7 +30,7 @@
         ul {
             >h2 {
                 margin-left: -40px;
-                color: #6a6b6b;
+                color: #24292E;
             }
             li {
                 color: #888888;
@@ -39,11 +39,11 @@
                     width: 135px;
                 }
                 .title {
-                    font-weight: bold;
-                    color: #223253;
+                    // font-weight: bold;
+                    color: #24292E;
                     transition: 0.3s ease;
                     &:hover {
-                        color: #dd0000;
+                        color: #3162c4;
                     }
                 }
                 i {
