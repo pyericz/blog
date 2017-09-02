@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Tags
+title: 标签
 permalink: /tag/
 icon: tags
 ---
@@ -10,27 +10,27 @@ icon: tags
         <h1>{{page.title}}</h1>
         <hr>
         {% capture tags %}
-          {% for tag in site.tags %}
-            {{ tag[0] }}
-          {% endfor %}
+        {% for tag in site.tags %}
+        {{ tag[0] }}
+        {% endfor %}
         {% endcapture %}
         {% assign sortedtags = tags | split:' ' | sort %}
 
         <ul>
-        {% for tag in sortedtags %}
-          <h2 id="{{ tag }}">{{ tag }}</h2>
-          {% for post in site.tags[tag] %}
+            {% for tag in sortedtags %}
+            <h2 id="{{ tag }}">{{ tag }}</h2>
+            {% for post in site.tags[tag] %}
             <li>
                 <time>
-                {{ post.date | date:"%F" }} {{ post.date | date: "%a" }}.
+                    {{ post.date | date:"%F" }} {{ post.date | date: "%a" }}.
                 </time>
                 <a class="title" href="{{ post.url }}">{{ post.title }}</a>
 
                 {% include category.html %}
                 {% include tag.html %}
             </li>
-          {% endfor %}
-        {% endfor %}
+            {% endfor %}
+            {% endfor %}
         </ul>
 
     </div>
@@ -41,7 +41,7 @@ icon: tags
             <!-- Content -->
             <div class="side">
                 <div class="title">
-                    Content
+                    目录
                 </div>
                 <div class="content">
                     <ul id="content-side" class="content-ul">

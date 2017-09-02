@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Categories
+title: 分类
 permalink: /category/
 icon: th-list
 ---
@@ -13,21 +13,21 @@ icon: th-list
         <ul>
             {% for category in site.categories %}
             <h2 id="{{category | first}}">{{category | first}}</h2>
-                {% for posts in category  %}
-                    {% for post in posts %}
-                        {% if post.url %}
-                        <li>
-                            <time>
-                            {{ post.date | date:"%F" }} {{ post.date | date: "%a" }}.
-                            </time>
-                            <a class="title" href="{{ post.url }}">{{ post.title }}</a>
+            {% for posts in category  %}
+            {% for post in posts %}
+            {% if post.url %}
+            <li>
+                <time>
+                    {{ post.date | date:"%F" }} {{ post.date | date: "%a" }}.
+                </time>
+                <a class="title" href="{{ post.url }}">{{ post.title }}</a>
 
-                            {% include category.html %}
-                            {% include tag.html %}
-                        </li>
-                        {% endif %}
-                    {% endfor %}
-                {% endfor %}
+                {% include category.html %}
+                {% include tag.html %}
+            </li>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
             {% endfor %}
         </ul>
     </div>
@@ -38,7 +38,7 @@ icon: th-list
             <!-- Content -->
             <div class="side">
                 <div class="title">
-                    Content
+                    目录
                 </div>
                 <div class="content">
                 <ul id="content-side" class="content-ul">
