@@ -13,6 +13,11 @@
     margin: 0 auto;
     padding-top: 72px;
     // word-break: break-all;
+    .label {
+        .label-card {
+            color: #4B4943;
+        }
+    }
     .left {
         width: 75%;
         float: left;
@@ -52,13 +57,13 @@
                 .categories {
                     padding: 0 15px;
                     i {
-                        color: #24292E;
+                        color: #4B4943;
                     }
                     a {
                         padding: 0 5px;
                         border-radius: 4px;
                         /* background-color: #f2f9fc; */
-                        color: #24292E;
+                        color: #4B4943;
                         transition: 0.3s ease;
                         &:hover {
                             color: #3162c4;
@@ -67,13 +72,13 @@
                 }
                 .pageTag {
                     i {
-                        color: #24292E;
+                        color: #4B4943;
                     }
                     a {
                         padding: 0 5px;
                         /* background-color: #f2f9fc; */
                         border-radius: 4px;
-                        color: #24292E;
+                        color: #4B4943;
                         transition: 0.3s ease;
                         &:hover {
                             color: #3162c4;
