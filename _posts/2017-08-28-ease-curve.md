@@ -22,9 +22,9 @@ $$
 从这个式子可以看出，我们需要一条二次方的运动曲线（抛物线）来模拟这样的运动过程。而类似这样的一条曲线，就是本文要讨论的缓动曲线。
 
 
-总的来说，缓动曲线包含四大类，分别是线性（linear）、慢入（ease in）、慢出（ease out）和慢入慢出（ease in and out）。
+总的来说，缓动曲线包含四大类，分别是线性（linear）、缓入（ease in）、缓出（ease out）和缓入缓出（ease in and out）。
 除了线性类，其余三大类又可以细分出各种子类，比如二次方缓动曲线（Quadratic）就是其中的一个子类。
-以上文提到的石块为例，石块的运动曲线满足二次方缓动曲线，而上升过程满足慢出的过程（速度先快后慢），下降过程则满足慢入过程（速度先慢后快）。
+以上文提到的石块为例，石块的运动曲线满足二次方缓动曲线，而上升过程满足缓出的过程（速度先快后慢），下降过程则满足缓入过程（速度先慢后快）。
 本文将对线性类和缓动类的10种子类共11种类别31种组合情况进行公式化整理，并绘制相应的缓动曲线图，供大家查阅。这11种类别分别为：
 
 - Linear
@@ -39,93 +39,308 @@ $$
 - Elastic
 - Bounce
 
-## Linear
+
+## 缓动曲线的关系
+
+### 曲线关系
+
+缓动曲线的**定义域**是$$[0, 1]$$，而其**值域**满足前提
+
+$$
+\begin{align}
+f(0) &= 0, \\
+f(1) &= 1
+\end{align}
+$$
+
+从这个前提出发，我们将会看到，不论是直线，还是缓动曲线，都会遵循相同的计算方式。
+
+假设以函数$$f_b(x)$$作为基础函数（一般可作为缓入函数），若缓入函数表示为
+
+$$f(x) = f_b(x)$$
+
+那么我们将会看到，所有的缓出曲线必然可以表示为
+
+$$
+g(x) = 1 - f_b(1-x)
+$$
+
+而缓入缓出曲线可以用分段函数表示
+
+$$
+h(x) =
+\begin{cases}
+0.5\cdot f_b(2\cdot x) & ,x \in [0, 0.5] \\
+\\
+0.5\cdot[2-f_b(2\cdot(1-x))] & ,x\in(0.5, 1]
+\end{cases}
+$$
+
+### 举例
+#### 平方曲线
+对于平方曲线，我们定义基础函数为
+
+$$
+f_b(x) = x^2,\quad x\in[0, 1]
+$$
+
+则缓入函数表示为
+
+$$
+f(x) = f_b(x) = x^2,\quad x\in[0, 1]
+$$
+
+缓出函数可以表示为
+
+$$
+g(x) = 1 - f_b(1-x) = 1-(1-x)^2,\quad x\in[0, 1]
+$$
+
+而缓入缓出曲线可以用分段函数表示
+
+$$
+\begin{align}
+h(x) &=
+\begin{cases}
+0.5\cdot f_b(2\cdot x) & ,x \in [0, 0.5] \\
+\\
+0.5\cdot[2-f_b(2\cdot(1-x))] & ,x\in(0.5, 1]
+\end{cases}\\
+\\
+&= 
+\begin{cases}
+0.5\cdot(2x)^2 & ,x \in [0, 0.5] \\
+\\
+0.5\cdot(2-[2(1-x)]^2) & ,x\in(0.5, 1]
+\end{cases}\\
+\\
+&= 
+\begin{cases}
+2x^2 & ,x \in [0, 0.5] \\
+\\
+1-2(1-x)^2 & ,x\in(0.5, 1]
+\end{cases}
+\end{align}
+$$
+
+#### 直线
+对于直线来说，上述的缓动曲线关系依然成立。令基础函数为
+
+$$
+f_b(x) = x,\quad x\in[0, 1]
+$$
+
+则缓入函数：
+
+$$
+f(x) = f_b(x) = x,\quad x\in[0, 1]
+$$
+
+缓出函数：
+
+$$
+g(x) = 1 - f_b(1-x) = 1 - (1 - x) = x,\quad x\in[0, 1]
+$$
+
+缓入缓出函数：
+
+$$
+\begin{align}
+h(x) &=
+\begin{cases}
+0.5\cdot f_b(2\cdot x) & ,x \in [0, 0.5] \\
+\\
+0.5\cdot[2-f_b(2\cdot(1-x))] & ,x\in(0.5, 1]
+\end{cases}\\
+\\
+&= 
+\begin{cases}
+0.5\cdot (2\cdot x) & ,x \in [0, 0.5] \\
+\\
+0.5\cdot[2-(2\cdot(1-x))] & ,x\in(0.5, 1]
+\end{cases}\\
+\\
+&= 
+\begin{cases}
+x & ,x \in [0, 0.5] \\
+\\
+x & ,x\in(0.5, 1]
+\end{cases}\\
+\\
+&=x,\quad x\in[0, 1]
+\end{align}
+$$
+
+可见，三种函数都是一样的。这个结果是很容易理解的：既然是直线，那么就没有缓入或缓出的过程，即整个过程都是同样的速率，
+其导数必然为常数。在这里这个求导的常数就是1，对应的结果就是
+
+$$
+f(x) = g(x) = h(x) = x,\quad x\in[0, 1]
+$$
+
+## 缓动曲线公式和曲线图
+### Linear
+
+基础函数
+
+$$
+f_b(x) = x, \quad x\in[0, 1]
+$$
+
+公式
 
 $$
 y(x) = x, \quad x\in[0, 1]
 $$
 
+曲线图
 
 {:.imgcap}
 ![](/assets/img/2017/08/28/linear.svg)
 
-## Sinusoidal
-### easeInSine
+
+### Sinusoidal
+
+基础函数
+
+$$
+f_b(x) = 1-\cos(\frac{\pi}{2}\cdot x), \quad x\in[0, 1]
+$$
+
+#### easeInSine
+
+公式
 
 $$
 y(x) = 1-\cos(\frac{\pi}{2}\cdot x), \quad x\in[0, 1]
 $$
 
+曲线图
+
 {:.imgcap}
 ![](/assets/img/2017/08/28/easeInSine.svg)
 
-### easeOutSine
+#### easeOutSine
+
+公式
 
 $$
 y(x) = \sin(\frac{\pi}{2}\cdot x), \quad  x\in[0, 1]
 $$
 
+曲线图
+
 {:.imgcap}
 ![](/assets/img/2017/08/28/easeOutSine.svg)
 
-### easeInOutSine
+#### easeInOutSine
+
+公式
 
 $$
 y(x) =
 \begin{cases}
-\frac{1}{2}\cdot[1-\cos(\pi\cdot x)] & ,x \in [0, \frac{1}{2}] \\
+0.5[1-\cos(\pi\cdot x)] & ,x \in [0, 0.5] \\
 \\
-\frac{1}{2}\cdot\{\sin[\pi\cdot(x-\frac{1}{2})]+1\} & ,x\in(\frac{1}{2}, 1]
+0.5\{\sin[\pi\cdot(x-0.5)]+1\} & ,x\in(0.5, 1]
 \end{cases}
 $$
 
+曲线图
 
 {:.imgcap}
 ![](/assets/img/2017/08/28/easeInOutSine.svg)
 
+### Quadratic
+
+基础函数
+
+$$
+f_b(x) = x^2,\quad x\in[0, 1]
+$$
+
+#### easeInQuad
+
+公式
+
+$$
+y(x) = x^2,\quad x\in[0, 1]
+$$
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInQuad.svg)
+
+#### easeOutQuad
+
+公式
+
+$$
+y(x) = 1-(1-x)^2,\quad x\in[0, 1]
+$$
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeOutQuad.svg)
+
+#### easeInOutQuad
+
+公式
+
+$$
+y(x) =
+\begin{cases}
+2x^2 & ,x \in [0, 0.5] \\
+\\
+1-2(1-x)^2 & ,x\in(0.5, 1]
+\end{cases}
+$$
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInOutQuad.svg)
+
 (未完待续)
 
-## Quadratic
-### easeInQuad
-### easeOutQuad
-### easeInOutQuad
+### Cubic
+#### easeInCubic
+#### easeOutCubic
+#### easeInOutCubic
 
-## Cubic
-### easeInCubic
-### easeOutCubic
-### easeInOutCubic
+### Quartic
+#### easeInQuart
+#### easeOutQuart
+#### easeInOutQuart
 
-## Quartic
-### easeInQuart
-### easeOutQuart
-### easeInOutQuart
+### Quintic
+#### easeInQuint
+#### easeOutQuint
+#### easeInOutQuint
 
-## Quintic
-### easeInQuint
-### easeOutQuint
-### easeInOutQuint
+### Exponential
+#### easeInExpo
+#### easeOutExpo
+#### easeInOutExpo
 
-## Exponential
-### easeInExpo
-### easeOutExpo
-### easeInOutExpo
+### Circular
+#### easeInCirc
+#### easeOutCirc
+#### easeInOutCirc
 
-## Circular
-### easeInCirc
-### easeOutCirc
-### easeInOutCirc
+### Back
+#### easeInBack
+#### easeOutBack
+#### easeInOutBack
 
-## Back
-### easeInBack
-### easeOutBack
-### easeInOutBack
+### Elastic
+#### easeInElastic
+#### easeOutElastic
+#### easeInOutElastic
 
-## Elastic
-### easeInElastic
-### easeOutElastic
-### easeInOutElastic
-
-## Bounce
-### easeInBounce
-### easeOutBounce
-### easeInOutBounce
+### Bounce
+#### easeInBounce
+#### easeOutBounce
+#### easeInOutBounce
