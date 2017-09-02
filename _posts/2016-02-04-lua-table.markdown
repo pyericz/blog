@@ -3,6 +3,7 @@ layout: post
 title: "Lua语言中table的用法"
 date: 2016-02-04
 categories: lua
+tag: [table]
 ---
 * content
 {:toc}
