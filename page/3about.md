@@ -2,7 +2,7 @@
 layout: about
 title: 关于
 permalink: /about/
-icon: heart
+icon: info-circle
 ---
 * content
 {:toc}
