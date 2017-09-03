@@ -662,7 +662,7 @@ $$
 ![](/assets/img/2017/08/28/easeInOutCirc.svg)
 
 ------------------------------------------------------------------
-接下来的三类缓动曲线，需要更多的参数辅助控制曲线的形态。
+接下来的Back和Elastic缓动曲线，需要更多的参数辅助控制曲线的形态。
 
 ### Back
 
@@ -846,7 +846,85 @@ $$
 {:.imgcap}
 ![](/assets/img/2017/08/28/easeInOutElastic7.svg)
 
+------------------------------------------------------------------
+
 ### Bounce
+要处理Bounce曲线，我们需要更多的技巧。首先Bounce曲线处处连续，但并非处处可导，不可导的点处在bounce的各个转折点。要构造这样的一个函数，我们就需要一定的技巧。
+在前面的例子中，基础函数都可以用一个直观的函数表达式来表示。在Back和Elastic曲线中，我们需要引入更多的参数来控制曲线的形态。而在Bounce曲线中，我们也需要两个参数来控制曲线的形态。
+所不同的是，这两个参数是需要根据自变量的值动态调整的。因此我们需要一个广义的函数。可以借助C语言来定义这个基础函数
+```c
+float bounce(float progress)
+{
+    for(float a=0, b=1; 1; a+=b,b/=2.0f) {
+        if (progress >= (7 - 4.0f * a) / 11.0f) {
+            return -powf((11-6*a-11*progress)/4, 2) + powf(b, 2);
+        }
+    }
+}
+```
+
+进一步，我们需要定义easeIn, easeOut和easeInOut函数。这三个函数通过接收基础函数和给定的自变量值来获取函数值。我们可以通过函数指针来实现
+
+```c
+typedef float (*curve)(float);
+```
+
+有了函数指针，我们的缓动函数就可以声明如下：
+
+```c
+float easeIn(curve cv, float x);
+float easeOut(curve cv, float x);
+float easeInOut(curve cv, float x);
+```
+
+使用的时候，把bounce函数传入对应的缓动函数中即可。
+
 #### easeInBounce
+
+函数：
+```c
+float easeIn(curve cv, float x)
+{
+    return cv(x);
+}
+```
+
+曲线图：
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInBounce.svg)
+
 #### easeOutBounce
+函数：
+```c
+float easeOut(curve cv, float x)
+{
+    return 1-cv(1-x);
+}
+```
+
+曲线图：
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeOutBounce.svg)
+
 #### easeInOutBounce
+函数：
+```c
+float easeInOut(curve cv, float x)
+{
+    if (x <= 0.5f)
+        return 0.5f * cv(2.0f * x);
+    else
+        return (2.0f - cv(2.0f * (1.0f - x))) / 2.0f;
+}
+```
+
+曲线图：
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInOutBounce.svg)
+
+## 外部链接
+
+- [Easing Function](http://easings.net)
