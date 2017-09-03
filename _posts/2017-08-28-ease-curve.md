@@ -675,7 +675,7 @@ f_b(x) = x^2\cdot[(1 + n)\cdot x - n],\quad x\in[0, 1]
 $$
 </div>
 
-#### easeInCirc
+#### easeInBack
 
 公式
 
@@ -749,9 +749,102 @@ $$
 ![](/assets/img/2017/08/28/easeInOutBack2.5.svg)
 
 ### Elastic
+
+基础函数
+
+<div style="font-size: 13px;">
+$$
+f_b(x) = 2^{10(x - 1)}\cdot\sin{[(2 n + \frac{1}{2})\pi\cdot x]},\quad x\in[0, 1]
+$$
+</div>
+
 #### easeInElastic
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) = 2^{10(x - 1)}\cdot\sin{[(2 n + \frac{1}{2})\pi\cdot x]},\quad x\in[0, 1]
+$$
+</div>
+
+曲线图
+
+(n = 3)
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInElastic3.svg)
+
+(n = 5)
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInElastic5.svg)
+
+(n = 7)
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInElastic7.svg)
+
 #### easeOutElastic
+
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) = 1 - 2^{10 (-x)}\cdot\sin{[(2 n + \frac{1}{2})\pi\cdot (1 - x)]},\quad x\in[0, 1]
+$$
+</div>
+
+曲线图
+
+(n = 3)
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeOutElastic3.svg)
+
+(n = 5)
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeOutElastic5.svg)
+
+(n = 7)
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeOutElastic7.svg)
+
 #### easeInOutElastic
+
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) =
+\begin{cases}
+0.5\cdot 2^{10\cdot(2 x - 1)}\cdot\sin{[(2 n + \frac{1}{2})\pi\cdot(2x)]} & ,x \in [0, 0.5] \\
+\\
+0.5\cdot\{2-2^{10\cdot[2 (1 - x) - 1]}\cdot\sin{[(2 n + \frac{1}{2})\pi\cdot 2(1 - x)]}\} & ,x\in(0.5, 1]
+\end{cases}
+$$
+</div>
+
+曲线图
+
+(n = 3)
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInOutElastic3.svg)
+
+(n = 5)
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInOutElastic5.svg)
+
+(n = 7)
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInOutElastic7.svg)
 
 ### Bounce
 #### easeInBounce
