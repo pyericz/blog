@@ -600,9 +600,66 @@ $$
 ![](/assets/img/2017/08/28/easeInOutExpo.svg)
 
 ### Circular
+
+基础函数
+
+<div style="font-size: 13px;">
+$$
+f_b(x) = 1 - \sqrt{1 - x^2},\quad x\in[0, 1]
+$$
+</div>
+
 #### easeInCirc
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) = 1 - \sqrt{1 - x^2},\quad x\in[0, 1]
+$$
+</div>
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInCirc.svg)
+
 #### easeOutCirc
+
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) = \sqrt{1 - (1 - x)^2},\quad x\in[0, 1]
+$$
+</div>
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeOutCirc.svg)
+
 #### easeInOutCirc
+
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) =
+\begin{cases}
+0.5\cdot(1 - \sqrt{1 - 4 x^2}) & ,x \in [0, 0.5] \\
+\\
+0.5\cdot(1 + \sqrt{1 - 4\cdot(1 - x)^2}) & ,x\in(0.5, 1]
+\end{cases}
+$$
+</div>
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInOutCirc.svg)
 
 ### Back
 #### easeInBack
