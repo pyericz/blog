@@ -3,12 +3,12 @@ layout: post
 title: Unix/Linux常用命令整理
 date: 2017-09-03
 categories: linux
-tag: [shell, command, linux, unix]
+tag: [linux, unix, shell, command]
 ---
 * content
 {:toc}
 
-本文罗列出Unix/Linux常用命令。
+本文罗列整理Unix/Linux的常用命令，方便查询。
 
 
 
@@ -140,7 +140,6 @@ output the last part of files
 ```
 从后10行开始查看file内容 
 ```
-
 
 ## 进程管理
 
