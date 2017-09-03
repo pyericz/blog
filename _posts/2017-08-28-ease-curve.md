@@ -927,4 +927,6 @@ float easeInOut(curve cv, float x)
 
 ## 外部链接
 
+- [GitHub源码](https://github.com/pyericz/EaseCurve)
+
 - [Easing Function](http://easings.net)
