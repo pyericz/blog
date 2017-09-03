@@ -661,10 +661,92 @@ $$
 {:.imgcap}
 ![](/assets/img/2017/08/28/easeInOutCirc.svg)
 
+------------------------------------------------------------------
+接下来的三类缓动曲线，需要更多的参数辅助控制曲线的形态。
+
 ### Back
-#### easeInBack
+
+
+基础函数
+
+<div style="font-size: 13px;">
+$$
+f_b(x) = x^2\cdot[(1 + n)\cdot x - n],\quad x\in[0, 1]
+$$
+</div>
+
+#### easeInCirc
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) = x^2\cdot[(1 + n)\cdot x - n],\quad x\in[0, 1]
+$$
+</div>
+
+曲线图
+
+(n = 1.5)
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInBack1.5.svg)
+
+(n = 2.5)
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInBack2.5.svg)
+
 #### easeOutBack
+
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) = 1 - (1 - x)^2\cdot[(1 + n)\cdot(1 - x) - n],\quad x\in[0, 1]
+$$
+</div>
+
+曲线图
+
+(n = 1.5)
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeOutBack1.5.svg)
+
+(n = 2.5)
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeOutBack2.5.svg)
+
 #### easeInOutBack
+
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) =
+\begin{cases}
+2x^2\cdot[(1 + n)\cdot 2 x - n] & ,x \in [0, 0.5] \\
+\\
+1 - 2 (1 - x)^2\cdot[(1 + n)\cdot 2 (1 - x) - n] & ,x\in(0.5, 1]
+\end{cases}
+$$
+</div>
+
+曲线图
+
+(n = 1.5)
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInOutBack1.5.svg)
+
+(n = 2.5)
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInOutBack2.5.svg)
 
 ### Elastic
 #### easeInElastic
