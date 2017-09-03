@@ -538,9 +538,66 @@ $$
 ![](/assets/img/2017/08/28/easeInOutQuint.svg)
 
 ### Exponential
+
+基础函数
+
+<div style="font-size: 13px;">
+$$
+f_b(x) = 2^{10\cdot(x - 1)},\quad x\in[0, 1]
+$$
+</div>
+
 #### easeInExpo
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) = 2^{10\cdot(x - 1)},\quad x\in[0, 1]
+$$
+</div>
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInExpo.svg)
+
 #### easeOutExpo
+
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) = 1 - 2^{-10x},\quad x\in[0, 1]
+$$
+</div>
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeOutExpo.svg)
+
 #### easeInOutExpo
+
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) =
+\begin{cases}
+2^{10\cdot(2 x - 1) - 1} & ,x \in [0, 0.5] \\
+\\
+1 - 2^{-10\cdot(2 x - 1) - 1} & ,x\in(0.5, 1]
+\end{cases}
+$$
+</div>
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInOutExpo.svg)
 
 ### Circular
 #### easeInCirc
