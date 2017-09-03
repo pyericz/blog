@@ -351,22 +351,191 @@ $$
 {:.imgcap}
 ![](/assets/img/2017/08/28/easeInOutQuad.svg)
 
-(未完待续)
-
 ### Cubic
+
+基础函数
+
+<div style="font-size: 13px;">
+$$
+f_b(x) = x^3,\quad x\in[0, 1]
+$$
+</div>
+
 #### easeInCubic
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) = x^3,\quad x\in[0, 1]
+$$
+</div>
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInCubic.svg)
+
 #### easeOutCubic
+
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) = 1-(1-x)^3,\quad x\in[0, 1]
+$$
+</div>
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeOutCubic.svg)
+
 #### easeInOutCubic
 
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) =
+\begin{cases}
+4x^3 & ,x \in [0, 0.5] \\
+\\
+1-4(1-x)^3 & ,x\in(0.5, 1]
+\end{cases}
+$$
+</div>
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInOutCubic.svg)
+
 ### Quartic
+
+基础函数
+
+<div style="font-size: 13px;">
+$$
+f_b(x) = x^4,\quad x\in[0, 1]
+$$
+</div>
+
 #### easeInQuart
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) = x^4,\quad x\in[0, 1]
+$$
+</div>
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInQuart.svg)
+
 #### easeOutQuart
+
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) = 1-(1-x)^4,\quad x\in[0, 1]
+$$
+</div>
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeOutQuart.svg)
+
 #### easeInOutQuart
 
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) =
+\begin{cases}
+8x^4 & ,x \in [0, 0.5] \\
+\\
+1-8(1-x)^4 & ,x\in(0.5, 1]
+\end{cases}
+$$
+</div>
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInOutQuart.svg)
+
 ### Quintic
+
+基础函数
+
+<div style="font-size: 13px;">
+$$
+f_b(x) = x^5,\quad x\in[0, 1]
+$$
+</div>
+
 #### easeInQuint
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) = x^5,\quad x\in[0, 1]
+$$
+</div>
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInQuint.svg)
+
 #### easeOutQuint
+
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) = 1-(1-x)^5,\quad x\in[0, 1]
+$$
+</div>
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeOutQuint.svg)
+
 #### easeInOutQuint
+
+
+公式
+
+<div style="font-size: 13px;">
+$$
+y(x) =
+\begin{cases}
+16x^5 & ,x \in [0, 0.5] \\
+\\
+1-16(1-x)^5 & ,x\in(0.5, 1]
+\end{cases}
+$$
+</div>
+
+曲线图
+
+{:.imgcap}
+![](/assets/img/2017/08/28/easeInOutQuint.svg)
 
 ### Exponential
 #### easeInExpo
