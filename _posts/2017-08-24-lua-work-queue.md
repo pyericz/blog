@@ -21,9 +21,7 @@ tag: [work, queue, async]
 
 
 
-[GitHub源码](https://github.com/pyericz/LuaWorkQueue)
-
-### 定义Object
+## 定义Object
 我们将采用面向对象的编程方法来展开讨论，虽然Lua本身不是面向对象语言，但可以利用元表方便地模拟面向对象过程。为此，我们可以先定义Object，通过定义extend方法，和new方法，模拟面向对象中的继承和实例化。
 ```lua
 local Object = {}
@@ -51,7 +49,7 @@ return Object
 我们以object.lua保存这个文件。
 
 
-### 定义任务协议
+## 定义任务协议
 
 我们需要定义一个任务的基类。在这个基类中我们为每一个Work对象定义三个协议方法，分别是workBegin, work和workEnd，如下
 
@@ -76,7 +74,7 @@ return Work
 
 我们以work.lua保存这个文件。
 
-### 实现一个双向队列
+## 实现一个双向队列
 
 为了实现一个任务队列，我们还需要先实现一个双向队列。如下：
 
@@ -146,7 +144,7 @@ return Deque
 
 我们以deque.lua保存这个文件。
 
-### 实现任务队列
+## 实现任务队列
 
 有了双向队列和任务协议，接下来我们就可以很方便地实现一个双向任务队列。
 
@@ -233,7 +231,7 @@ end
 ```
 我们以work_queue.lua保存这个文件。
 
-### 测试
+## 测试
 好了，接下来我们就要对实现的任务队列做个简单的测试了。在这段简单的测试代码中，虽然我们的work方法实际上是同步执行的，但不影响整套机制的原理。
 
 ```lua
@@ -396,3 +394,7 @@ work end: 	1
 =============================
 all done
 ```
+
+## 外部链接
+
+[GitHub源码](https://github.com/pyericz/LuaWorkQueue)
