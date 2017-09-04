@@ -60,13 +60,14 @@
                         color: #4B4943;
                     }
                     a {
-                        padding: 0;
-                        border-radius: 4px;
-                        /* background-color: #f2f9fc; */
-                        color: #4B4943;
+                        padding: 0 3px;
+                        border-radius: 5px;
+                        background-color: #f8f8f8;
+                        color: #9d9d9d;
                         transition: 0.3s ease;
                         &:hover {
-                            color: #3162c4;
+                            color: #24292E;
+                            background-color: #f0e7ce;
                         }
                     }
                 }
@@ -75,13 +76,14 @@
                         color: #4B4943;
                     }
                     a {
-                        padding: 0;
-                        /* background-color: #f2f9fc; */
-                        border-radius: 4px;
-                        color: #4B4943;
+                        padding: 0 3px;
+                        border-radius: 5px;
+                        background-color: #f8f8f8;
+                        color: #9d9d9d;
                         transition: 0.3s ease;
                         &:hover {
-                            color: #3162c4;
+                            color: #24292E;
+                            background-color: #f0e7ce;
                         }
                     }
                 }
