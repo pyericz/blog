@@ -95,7 +95,7 @@
         var copytext = '原创文章，禁止转载！原文详见：' + document.location.href;
         var clipboardData = event.clipboardData || window.clipboardData || event.originalEvent.clipboardData;
         if (clipboardData) {
-            clipboardData.setData('Text', copytext);
+            clipboardData.setData("text", copytext);
         }
     }
 
