@@ -86,3 +86,18 @@
         } catch (ex) {}
     }
 }());
+
+
+(function() {
+    function addLink(event) {
+        event.preventDefault();
+
+        var copytext = '原创文章，禁止转载！原文详见：' + document.location.href;
+
+        if (event.clipboardData) {
+            event.clipboardData.setData('Text', copytext);
+        }
+    }
+
+    document.addEventListener('copy', addLink);
+}());
