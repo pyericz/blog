@@ -96,8 +96,7 @@
 
         if (event.clipboardData) {
             event.clipboardData.setData('Text', copytext);
-        } else if (window.clipboardData) {
-            window.clipboardData.setData('Text', copytext);
+            event.clipboardData.setData('text/plain', copytext);
         }
     }
 
