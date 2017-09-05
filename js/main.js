@@ -93,10 +93,9 @@
         event.preventDefault();
 
         var copytext = '原创文章，禁止转载！原文详见：' + document.location.href;
-
-        if (event.clipboardData) {
-            event.clipboardData.setData('Text', copytext);
-            event.clipboardData.setData('text/plain', copytext);
+        var clipboardData = event.clipboardData || window.clipboardData || event.originalEvent.clipboardData;
+        if (clipboardData) {
+            clipboardData.setData('Text', copytext);
         }
     }
 
