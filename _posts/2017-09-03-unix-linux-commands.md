@@ -194,6 +194,18 @@ change file mode bits
 1 (001) 执行(x)
 ```
 
+**chown** owner file
+```
+change file owner and group
+更改file文件的所有者为owner
+```
+
+**chgrp** group file
+```
+change group
+更改file文件的所有组为group
+```
+
 ## SSH
 
 **ssh** user@host
@@ -454,3 +466,4 @@ RPM安装包
 
 - [Unix/Linux Command Cheat Sheet](https://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/)
 - [How To Find A File In Linux Using The Command Line](https://www.lifewire.com/uses-of-linux-command-find-2201100)
+- [Linux permissions: chown, chgrp and chmod](http://www.marksei.com/linux-permissions-chown-chgrp-and-chmod/)
