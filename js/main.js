@@ -91,8 +91,9 @@
 (function() {
     function addLink(event) {
         event.preventDefault();
-
-        var copytext = '原创文章，禁止转载！原文详见：' + document.location.href;
+        var copyright = document.querySelector("meta[name='copyright-notice']").getAttribute("content");;
+        var source = "原文链接：" + document.location.href;
+        var copytext = source + '\n' + copyright + '\n\n' + window.getSelection();
         var clipboardData = event.clipboardData || window.clipboardData || event.originalEvent.clipboardData;
         if (clipboardData) {
             clipboardData.setData("text", copytext);
