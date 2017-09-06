@@ -211,11 +211,19 @@ change file mode bits
 将密钥添加到host以实现无密码登录
 ```
 
+**scp** user@host:/path/to/files /path/to/destination
+```
+secure copy (remote file copy program)
+远程安全拷贝。以user用户身份连接到host，并拷贝host下的/path/to/files文件到本地/path/to/destination
+```
+
 ## 搜索
 
 **grep** pattern files
 ```
+file pattern searcher. 
 搜索files中匹配pattern的内容
+另参考：egrep, fgrep, zgrep, zfgrep
 ```
 
 
@@ -228,6 +236,25 @@ change file mode bits
 ```
 搜索command输出中匹配pattern的内容
 ```
+
+**find** dir options term
+```
+walk a file hierarchy
+文件查找
+```
+
+**find /** dir options term
+```
+从根目录开始查找。举例
+$ find / -name test.cpp
+```
+
+**find .** dir options term
+```
+从当前目录开始查找。举例：
+$ find . -name test.cpp
+```
+
 
 ## 系统信息
 
@@ -426,3 +453,4 @@ RPM安装包
 ## 参考
 
 - [Unix/Linux Command Cheat Sheet](https://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/)
+- [How To Find A File In Linux Using The Command Line](https://www.lifewire.com/uses-of-linux-command-find-2201100)
