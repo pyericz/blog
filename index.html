@@ -22,13 +22,13 @@ layout: default
                 <div class="label">
 
                     <div class="label-card">
-                        {% if post.author %}<i class="fa fa-user"></i>{{ post.author }}
-                        {% else if site.author %}<i class="fa fa-user"></i>{{ site.author }}
+                        {% if post.author %}<i class="fa fa-user" aria-hidden="true"></i>{{ post.author }}
+                        {% else if site.author %}<i class="fa fa-user" aria-hidden="true"></i>{{ site.author }}
                         {% endif %}
                     </div>
 
                     <div class="label-card">
-                        <i class="fa fa-calendar"></i>{{ post.date | date: "%F" }}
+                        <i class="fa fa-calendar" aria-hidden="true"></i>{{ post.date | date: "%F" }}
                     </div>
 
 
