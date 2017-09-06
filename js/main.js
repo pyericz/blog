@@ -91,9 +91,9 @@
 (function() {
     function addLink(event) {
         event.preventDefault();
-        var source = "原文链接：" + document.location.href;
-        var copyright = "版权声明：" + document.querySelector("meta[name='copyright-notice']").getAttribute("content");;
-        var copytext = source + '\n' + copyright + '\n\n' + window.getSelection();
+        var source = "\n\n原文链接：" + document.location.href;
+        var copyright = "\n版权声明：" + document.querySelector("meta[name='copyright-notice']").getAttribute("content");;
+        var copytext = window.getSelection() + source + copyright;
         var clipboardData = event.clipboardData || window.clipboardData || event.originalEvent.clipboardData;
         if (clipboardData) {
             clipboardData.setData("text", copytext);
