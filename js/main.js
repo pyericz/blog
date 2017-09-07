@@ -90,7 +90,6 @@
 
 (function() {
     function addLink(event) {
-        event.preventDefault();
         var source = "\n\n原文链接：" + document.location.href;
         var copyright = "\n版权声明：" + document.querySelector("meta[name='copyright-notice']").getAttribute("content");;
         var copytext = window.getSelection() + source + copyright;
@@ -98,6 +97,7 @@
         if (clipboardData) {
             clipboardData.setData("text/plain", copytext);
         }
+        event.preventDefault();
     }
 
     document.addEventListener('copy', addLink);
