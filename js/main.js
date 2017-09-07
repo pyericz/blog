@@ -96,7 +96,7 @@
         var copytext = window.getSelection() + source + copyright;
         var clipboardData = event.clipboardData || window.clipboardData || event.originalEvent.clipboardData;
         if (clipboardData) {
-            clipboardData.setData("text", copytext);
+            clipboardData.setData("text/plain", copytext);
         }
     }
 
