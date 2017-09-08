@@ -9,7 +9,7 @@ icon: info-circle
 
 > {{site.description}}
 
-PxrGO将会涉及到的领域包括科学、技术、思辨和随笔。
+{{site.title}}将会涉及到的领域包括科学、技术、思辨和随笔。
 
 ## 科学
 
