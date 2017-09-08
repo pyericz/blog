@@ -3,7 +3,7 @@
     right: 2.5%;
     bottom: 5%;
     // background-color: #f8f8fd;
-    /* visibility: hidden; */
+    visibility: hidden;
     opacity: 0;
     transition: 0.4s ease;
     box-shadow: 0 1px 5px 1px rgba(0, 0, 0, 0.3);
@@ -23,7 +23,7 @@
     }
 }
 .back-to-top-show{
-    /* visibility: visible; */
+    visibility: visible;
     opacity: 1;
     transition: 0.3s ease;
     &:hover{
