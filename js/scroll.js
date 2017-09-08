@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded",function(){
         var href = a.getAttribute("href");
         var index = href.indexOf('#');
         var tag = href.substr(index);
-        // var b=href,c=g(tag);
         var top = $(tag).offset().top - 62;
         $("html, body").animate({ scrollTop: top }, 300);
 
