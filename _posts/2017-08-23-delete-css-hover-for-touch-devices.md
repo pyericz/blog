@@ -3,7 +3,7 @@ layout: post
 title: "触摸屏禁用css鼠标悬停"
 date: 2017-08-23
 categories: javascript
-tag: [hover, js, css]
+tag: [hover, javascript, css]
 ---
 * content
 {:toc}
