@@ -60,7 +60,7 @@
     backToTopA.addEventListener('click',function (e) {
         e.preventDefault();
         // window.scrollTo(0,0)
-        $("html, body").animate({ scrollTop: 0 }, {duration: 300, easing: "easeOutSine"});
+        $("html, body").animate({ scrollTop: 0 }, {duration: 500, easing: "easeOutSine"});
     });
 }());
 
