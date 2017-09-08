@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded",function(){
         var index = href.indexOf('#');
         var tag = href.substr(index);
         var top = $(tag).offset().top - 62;
-        $("html, body").animate({ scrollTop: top }, 300);
+        $("html, body").animate({ scrollTop: top }, {duration: 300, easing: "easeOutSine"});
 
     },f=document.querySelectorAll("a.scroll");
 
