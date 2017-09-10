@@ -125,8 +125,8 @@ function ancherPostion(anchorBtn, rightDiv) {
         //     anchorBtn.style.top = '76px'
         //     rightDiv.style.top = '76px'
         // }
-        anchorBtn.style.top = '72px'
-        rightDiv.style.top = '72px'
+        anchorBtn.style.top = '82px'
+        rightDiv.style.top = '82px'
     })
 }
 

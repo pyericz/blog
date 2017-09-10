@@ -11,7 +11,7 @@
     width: 95%;
     box-sizing: border-box;
     margin: 0 auto;
-    padding-top: 72px;
+    padding-top: 82px;
     // word-break: break-all;
     .label {
         .label-card {
@@ -100,7 +100,7 @@
         top: 0;
         .fixed {
             position: fixed;
-            top: 72px;
+            top: 82px;
         }
         .scroll-bottom {
             position: absolute;
@@ -204,7 +204,7 @@
         .anchor {
             visibility: visible;
             position: fixed;
-            top: 72px;
+            top: 82px;
             padding: 0;
             display: block;
             right: 2.5%;
@@ -234,7 +234,7 @@
             width: auto;
             max-width: 95%;
             padding: 0;
-            top: 76px;
+            top: 82px;
             right: 2.5%;
             opacity: 0;
             transform-origin: 100% 0;
