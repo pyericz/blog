@@ -8,46 +8,25 @@
 (function() {
     if (window.innerWidth > 770) {
 
-        var sidebarWrap = document.querySelector('.right>.wrap')
+        var sidebarWrap = document.querySelector('.right>.wrap');
 
         //fix 之后百分比宽度会失效，这里用js赋予宽度
-        sidebarWrap.style.width = sidebarWrap.offsetWidth + "px"
-        sidebarWrap.classList.add('fixed')
-        // window.onscroll = function() {
+        sidebarWrap.style.width = sidebarWrap.offsetWidth + "px";
+        sidebarWrap.classList.add('fixed');
 
-        //     // 页面顶部滚进去的距离
-        //     var scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-
-
-        //     // 页面底部滚进去的距离
-        //     var htmlHeight = Math.max(document.body.clientHeight, document.documentElement.clientHeight)
-        //         // console.log(htmlHeight);
-        //     var scrollBottom = htmlHeight - window.innerHeight - scrollTop
-
-        //     if (scrollTop < 53) {
-        //         sidebarWrap.classList.remove('fixed')
-        //         sidebarWrap.classList.remove('scroll-bottom')
-        //     } else if (scrollBottom >= (190 - 38)) {
-        //         sidebarWrap.classList.remove('scroll-bottom')
-        //         sidebarWrap.classList.add('fixed')
-        //     } else if (isMaxHeight()) { //content 达到maxHeight
-        //         sidebarWrap.classList.remove('fixed')
-        //         sidebarWrap.classList.add('scroll-bottom')
-        //     }
-        // }
-        setContentMaxHeightInPC() //设置目录最大高度(PC端)
+        setContentMaxHeightInPC(); //设置目录最大高度(PC端)
     }
-    moveTOC() //将Content内容转移
+    moveTOC(); //将Content内容转移
 }());
 
 /**
  * 设置目录最大高度
  */
 function setContentMaxHeightInPC() {
-    var windowHeight = window.innerHeight
-    var contentUl = document.querySelector('.content-ul')
-    var contentMaxHeight = windowHeight - 77 - 60
-    contentUl.style.maxHeight = contentMaxHeight + 'px'
+    var windowHeight = window.innerHeight;
+    var contentUl = document.querySelector('.content-ul');
+    var contentMaxHeight = windowHeight - 77 - 60;
+    contentUl.style.maxHeight = contentMaxHeight + 'px';
 }
 
 /**
@@ -55,13 +34,11 @@ function setContentMaxHeightInPC() {
  * @return {Boolean} [description]
  */
 function isMaxHeight() {
-    var windowHeight = window.innerHeight
-    var contentUl = document.querySelector('.content-ul')
-    var contentMaxHeight = windowHeight - 77 - 60
-    var contentHeight = contentUl.offsetHeight
-    return contentMaxHeight === contentHeight
-        // console.log(contentMaxHeight);
-        // console.log(contentHeight);
+    var windowHeight = window.innerHeight;
+    var contentUl = document.querySelector('.content-ul');
+    var contentMaxHeight = windowHeight - 77 - 60;
+    var contentHeight = contentUl.offsetHeight;
+    return contentMaxHeight === contentHeight;
 }
 
 
@@ -73,8 +50,8 @@ function isMaxHeight() {
  */
 (function() {
     if (window.innerWidth <= 770) {
-        var anchorBtn = document.querySelector('.anchor')
-        var rightDiv = document.querySelector('.right')
+        var anchorBtn = document.querySelector('.anchor');
+        var rightDiv = document.querySelector('.right');
 
         /**
          * 监听锚点按钮
@@ -114,56 +91,38 @@ function isMaxHeight() {
  */
 function ancherPostion(anchorBtn, rightDiv) {
     window.addEventListener('scroll', function() {
-        // console.log('scroll');
-        var top = anchorBtn.getBoundingClientRect().top
-            // console.log(top);
-        var scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop)
-        // if (scrollTop > 50) {
-        //     anchorBtn.style.top = '20px'
-        //     rightDiv.style.top = '20px'
-        // } else {
-        //     anchorBtn.style.top = '76px'
-        //     rightDiv.style.top = '76px'
-        // }
-        anchorBtn.style.top = '82px'
-        rightDiv.style.top = '82px'
-    })
+        var top = anchorBtn.getBoundingClientRect().top;
+        var scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
+        anchorBtn.style.top = '82px';
+        rightDiv.style.top = '82px';
+    });
 }
 
 /**
  * 设置目录最大高度
  */
 function setContentMaxHeight() {
-    var windowHeight = window.innerHeight
-    var contentUl = document.querySelector('.content-ul')
-    var contentMaxHeight = windowHeight - 180
-    contentUl.style.maxHeight = contentMaxHeight + 'px'
+    var windowHeight = window.innerHeight;
+    var contentUl = document.querySelector('.content-ul');
+    var contentMaxHeight = windowHeight - 180;
+    contentUl.style.maxHeight = contentMaxHeight + 'px';
 }
 
 //-------------post Content----------------------
 //将Content内容转移
 function moveTOC() {
     if (document.querySelector('#markdown-toc') !== null) {
-        var TOCString = document.querySelector('#markdown-toc').innerHTML
-        var contentUl = document.querySelector('#content-side')
-        contentUl.insertAdjacentHTML('afterbegin', TOCString) //插入字符串
+        var TOCString = document.querySelector('#markdown-toc').innerHTML;
+        var contentUl = document.querySelector('#content-side');
+        contentUl.insertAdjacentHTML('afterbegin', TOCString); //插入字符串
 
-        // if (!isAndroidWechatBrowser()) {
+        var aTags = document.querySelectorAll('#content-side a');
 
-            //添加scroll样式，为了平滑滚动
-            //add class "scroll", for smooth scroll
-            var aTags = document.querySelectorAll('#content-side a')
-
-            //add class for everyone
-            // aTags.forEach(function () {
-            //     console.log(this);
-            // })
-            for (var i = 0; i < aTags.length; i++) {
-                if (!aTags[i].classList.contains('scroll')) {
-                    aTags[i].classList.add('scroll')
-                }
+        for (var i = 0; i < aTags.length; i++) {
+            if (!aTags[i].classList.contains('scroll')) {
+                aTags[i].classList.add('scroll');
             }
-        // }
+        }
     }
 }
 
@@ -172,6 +131,6 @@ function moveTOC() {
  * @return {Boolean} [description]
  */
 function isAndroidWechatBrowser() {
-    var ua = navigator.userAgent.toLowerCase()
-    return /micromessenger/.test(ua) && /android/.test(ua2)
+    var ua = navigator.userAgent.toLowerCase();
+    return /micromessenger/.test(ua) && /android/.test(ua2);
 }
