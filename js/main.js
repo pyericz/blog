@@ -99,3 +99,11 @@
 
     document.addEventListener('copy', addLink);
 }());
+
+$.fn.tagcloud.defaults = {
+    size: {start: 12, end: 24, unit: 'px'},
+    color: {start: '#3498DB', end: '#46CFB0'}
+};
+$(function () {
+    $('#tagcloud a').tagcloud();
+});
