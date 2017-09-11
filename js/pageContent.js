@@ -93,8 +93,8 @@ function ancherPostion(anchorBtn, rightDiv) {
     window.addEventListener('scroll', function() {
         var top = anchorBtn.getBoundingClientRect().top;
         var scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
-        anchorBtn.style.top = '82px';
-        rightDiv.style.top = '82px';
+        anchorBtn.style.top = '72px';
+        rightDiv.style.top = '72px';
     });
 }
 

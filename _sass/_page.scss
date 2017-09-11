@@ -166,6 +166,7 @@
 }
 @media screen and (max-width: 770px) {
     .page {
+        padding-top: 72px;
         width: 95%;
         .left {
             width: 100%;
@@ -204,7 +205,7 @@
         .anchor {
             visibility: visible;
             position: fixed;
-            top: 82px;
+            top: 72px;
             padding: 0;
             display: block;
             right: 2.5%;
@@ -234,7 +235,7 @@
             width: auto;
             max-width: 95%;
             padding: 0;
-            top: 82px;
+            top: 72px;
             right: 2.5%;
             opacity: 0;
             transform-origin: 100% 0;

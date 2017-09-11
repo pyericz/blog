@@ -76,12 +76,12 @@ header {
 }
 @media screen and (max-width: 770px) {
     header {
-        height: 62px;
+        height: 52px;
         margin-bottom: 15px;
         .wrapper {
             width: 100%;
             margin: 0 auto;
-            line-height: 62px;
+            line-height: 52px;
             position: relative;
             z-index: 101;
             .logo {
@@ -93,7 +93,7 @@ header {
             }
             small {
                 margin-left: 5px;
-                font-size: 14px;
+                font-size: 12px;
             }
             .menu{
                 display: block;
@@ -104,7 +104,7 @@ header {
                 top: 0;
                 padding: 0;
                 line-height: 30px;
-                margin-top: 16px;
+                margin-top: 11px;
                 margin-right: 4%;
                 background: transparent;
                 color: #24292E;
@@ -125,7 +125,7 @@ header {
                 position: absolute;
                 z-index: 100;
                 right:0;
-                top:62px;
+                top:52px;
                 width: 100%;
                 text-align: left;
 
@@ -138,15 +138,15 @@ header {
                     background: #fff;
                     box-shadow: 0 1px 2px 0px rgba(0,0,0,0.5);
                     li {
-                        font-size: 16px;
+                        font-size: 14px;
                         display: block;
                         /* border-top: 1px solid #444D56; */
                         a {
                             display: block;
                             padding: 0 10px;
                             padding-left: 5%;
-                            height: 62px;
-                            line-height: 62px;
+                            height: 52px;
+                            line-height: 52px;
                         }
                         &:last-of-type{
                             /* border: none; */

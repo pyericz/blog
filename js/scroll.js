@@ -3,7 +3,11 @@ document.addEventListener("DOMContentLoaded",function(){
         var href = element.getAttribute("href");
         var index = href.indexOf('#');
         var tag = href.substr(index);
-        var top = $(tag).offset().top - 72;
+        var offset = 72;
+        if (window.innerWidth <= 770) {
+            offset = 62;
+        }
+        var top = $(tag).offset().top - offset;
         $("html, body").animate({ scrollTop: top }, {duration: 300, easing: "easeOutSine"});
 
     },elements=document.querySelectorAll("a.scroll");
