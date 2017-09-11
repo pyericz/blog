@@ -102,7 +102,7 @@
 
 $.fn.tagcloud.defaults = {
     size: {start: 12, end: 24, unit: 'px'},
-    color: {start: '#3498DB', end: '#46CFB0'}
+    color: {start: '#3498DB', end: '#4B4943'}
 };
 $(function () {
     $('#tagcloud a').tagcloud();
