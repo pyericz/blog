@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded",function(){
             offset = 62;
         }
         var top = $(tag).offset().top - offset;
-        $("html, body").animate({ scrollTop: top }, {duration: 300, easing: "easeOutSine"});
+        $("html, body").animate({ scrollTop: top }, {duration: 400, easing: "easeOutSine"});
 
     },elements=document.querySelectorAll("a.scroll");
 
