@@ -23,6 +23,17 @@ icon: info-circle
 
 ## 技术
 
+### 编程语言
+- C
+- C++
+- Objective-C
+- Swift
+- Lua
+- Java
+- JavaScript
+- Python
+- Lisp
+
 ### 软件开发
 - 软件架构
 - iOS开发
