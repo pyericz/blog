@@ -1,4 +1,4 @@
-function start(n, tag) {
+function start(n, tag, points) {
     var container = document.querySelector(tag);
     var w = container.offsetWidth,
         h = 400,
@@ -11,14 +11,19 @@ function start(n, tag) {
         orders = d3.range(n, n + 1);
 
     var offset = w / 2-100;
-    var points = [
-        {x: 0 + offset, y: 346},
-        {x: 160 + offset, y: 169},
-        {x: 84 + offset,y: 42},
-        {x: 0 + offset, y: 94},
-        {x: 47 + offset, y: 160}
-    ];
+    if (points == undefined) {
+        points = [
+            {x: 0, y: 346},
+            {x: 160, y: 169},
+            {x: 84,y: 42},
+            {x: 0, y: 94},
+            {x: 47, y: 160}
+        ];
+    }
 
+    for (var i = 0; i < points.length; i ++) {
+        points[i].x += offset;
+    }
 
     var vis = d3.select(tag).selectAll("svg")
         .data(orders)

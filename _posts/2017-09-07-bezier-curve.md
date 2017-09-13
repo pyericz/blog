@@ -75,7 +75,11 @@ $$
 
 <div id="vis0" class="vis">
 	<script>
-		start(2, "#vis0");
+        var points = [
+            {x: 0, y: 346},
+            {x: 160, y: 30},
+        ];
+		start(2, "#vis0", points);
 	</script>
 </div>
 
