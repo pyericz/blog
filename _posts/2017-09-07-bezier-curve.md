@@ -76,10 +76,10 @@ $$
 <div id="vis0" class="vis">
 	<script>
         var points = [
-            {x: 0, y: 346},
-            {x: 160, y: 30},
+            {x: 0, y: 0},
+            {x: 60, y: 260},
         ];
-		start(2, "#vis0", points);
+		bezierCurveAnimation("#vis0", points);
 	</script>
 </div>
 
@@ -88,7 +88,12 @@ $$
 
 <div id="vis1" class="vis">
 	<script>
-		start(3, "#vis1");
+        var points = [
+            {x: 0, y: 0},
+            {x: 60, y: 181},
+            {x: -60,y: 258},
+        ];
+		bezierCurveAnimation("#vis1", points);
 	</script>
 </div>
 
@@ -97,7 +102,13 @@ $$
 
 <div id="vis2" class="vis">
 	<script>
-		start(4, "#vis2");
+	    var points = [
+            {x: 0, y: 0},
+            {x: 60, y: 131},
+            {x: 0,y: 258},
+            {x: -60, y: 176},
+        ];
+		bezierCurveAnimation("#vis2", points);
 	</script>
 </div>
 
@@ -105,11 +116,32 @@ $$
 
 <div id="vis3" class="vis">
 	<script>
-		start(5, "#vis3");
+	    var points = [
+            {x: 0, y: 0},
+            {x: 80, y: 131},
+            {x: 60,y: 258},
+            {x: -80, y: 206},
+            {x: -60, y: 80}
+        ];
+		bezierCurveAnimation("#vis3", points);
 	</script>
 </div>
 
+### 五次方曲线
 
+<div id="vis4" class="vis">
+	<script>
+	    var points = [
+            {x: 0, y: 0},
+            {x: 80, y: 131},
+            {x: 0,y: 258},
+            {x: -60, y: 206},
+            {x: 0, y: 140},
+			{x: -30, y: 60}
+        ];
+		bezierCurveAnimation("#vis4", points);
+	</script>
+</div>
 
 
 
