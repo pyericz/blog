@@ -169,4 +169,6 @@ $$
 
 ## 参考
 
+- [Bézier curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve)
 - [Animated Bézier Curves](https://www.jasondavies.com/animated-bezier/)
+
