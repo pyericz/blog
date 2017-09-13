@@ -9,7 +9,7 @@ mathjax: true
 * content
 {:toc}
 
-我们在上一篇文章《[伯恩斯坦多项式](/math/2017/09/06/bernstein-polynomial/)》中，我们提到了伯恩斯坦多项式的一般形式
+在上一篇文章《[伯恩斯坦多项式](/math/2017/09/06/bernstein-polynomial/)》中，我们提到了伯恩斯坦多项式的一般形式
 
 $$
 B_n(t) = \sum_{i=0}^{n}\beta_i \cdot b_{i, n}(t)
@@ -86,6 +86,11 @@ $$
 
 ### 二次方曲线
 
+
+$$
+B(t) = P_0 \cdot (1-t)^2 + P_1\cdot 2(1-t)t + P_2 \cdot t^2
+$$
+
 <div id="vis1" class="vis">
 	<script>
         var points = [
@@ -99,6 +104,11 @@ $$
 
 
 ### 三次方曲线
+
+
+$$
+B(t) = P_0 \cdot (1-t)^3 + P_1\cdot 3(1-t)^2t + P_2 \cdot 3(1-t)t^2 + P_3 \cdot t^3
+$$
 
 <div id="vis2" class="vis">
 	<script>
@@ -114,6 +124,12 @@ $$
 
 ### 四次方曲线
 
+
+$$
+B(t) = P_0 \cdot (1-t)^4 + P_1\cdot 4(1-t)^3t + P_2 \cdot 6(1-t)^2t^2 + P_3 \cdot 4(1-t)t^3 + P_4 \cdot t^4
+$$
+
+
 <div id="vis3" class="vis">
 	<script>
 	    var points = [
@@ -128,6 +144,11 @@ $$
 </div>
 
 ### 五次方曲线
+
+
+$$
+B(t) = P_0 \cdot (1-t)^5 + P_1\cdot 5(1-t)^4t + P_2 \cdot 10(1-t)^3t^2 + P_3 \cdot 10(1-t)^2t^3 + P_4 \cdot 5(1-t)t^4 + P_5 \cdot t^5
+$$
 
 <div id="vis4" class="vis">
 	<script>
