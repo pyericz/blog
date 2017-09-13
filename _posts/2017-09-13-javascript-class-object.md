@@ -1,6 +1,6 @@
 ---
 layout: post
-title: JavaScript定义类和实例化对象的方式总结
+title: JavaScript面向对象编程范式总结
 date: 2017-09-13
 categories: javascript
 tag: [class, object, oo, inheritance, factory, constructor]
