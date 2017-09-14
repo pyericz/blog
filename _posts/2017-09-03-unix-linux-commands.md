@@ -108,6 +108,20 @@ $ touch file
 ```
 如果file文件不存在则创建file文件，如果存在则改变file文件的timestamp
 
+**file**
+>**determine file type**
+```shell
+$ file file1.cpp
+```
+显示file1.cpp的文件类型
+
+**dd**
+>**convert and copy a file.** The **dd** utility copies the standard input to the standard output. Input data is read and written in 512-byte blocks. If input reads are short, input from multiple reads are aggregated to form the output block. When finished, **dd** displays the number of complete and partial input and output blocks and truncated input records to the standard error out-put.
+```shell
+$ dd if=/dev/hdb of=/dev/hdd
+```
+将本地/dev/hdb整盘备份到/dev/hdd
+
 **cat**
 >**concatenate files and print on the standard output**
 ```shell
