@@ -174,6 +174,21 @@ $ killall proc
 ```
 杀掉所有名为proc的进程（**请谨慎使用**）
 
+
+**halt**
+>**stopping the system**
+```shell
+# halt
+```
+停止系统
+
+**reboot**
+>**restarting the system**
+```shell
+# reboot
+```
+重启系统
+
 **bg**
 >
 ```shell
@@ -325,6 +340,13 @@ $ whoami
 ```
 查看你的当前用户名
 
+**last**
+>**indicate last logins of users and ttys**
+```shell
+$ last
+```
+显示上一个登录的用户和ttys
+
 **uname -a**
 >**print system information**
 ```shell
@@ -414,7 +436,6 @@ $ gzip file
 $ gzip -d file.gz 
 ```
 将file.gz解压缩为file
-
 
 ## 网络
 
