@@ -35,7 +35,7 @@ tag: [jquery, javascript, scroll, href]
 至此，我们可以递归遍历所有scroll类型的元素，监听每一个链接的点击操作，并执行如上的行为了。不过，等等，我们还有一个目标没实现，就是当页面加载完时，需要默认执行滚动到指定元素的操作。显然，我们可以在递归遍历的时候判断当前页面指向的hash值，是否和遍历到的元素对应起来，如果是，则执行一遍滚动就是了。遍历的代码如下：
 ```js
 var elements=document.querySelectorAll("a.scroll");
-var uri = document.baseURI;
+var uri = document.URL;
 
 (function parse(index){
 
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
     },elements=document.querySelectorAll("a.scroll");
 
-    var uri = document.baseURI;
+    var uri = document.URL;
 
     (function parse(index){
 

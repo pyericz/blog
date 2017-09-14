@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
     },elements=document.querySelectorAll("a.scroll");
 
-    var uri = document.baseURI;
+    var uri = document.URL;
 
     (function parse(index){
 
