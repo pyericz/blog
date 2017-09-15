@@ -3,7 +3,7 @@ layout: post
 title: JavaScript面向对象编程范式总结
 date: 2017-09-13
 categories: javascript
-tag: [class, object, oo, inheritance, factory, constructor]
+tag: [class, object, oo, inheritance, factory, constructor, new, es6]
 ---
 
 * content
