@@ -12,14 +12,17 @@ tag: [es6, this, javascript, arrow, function]
 ECMAScript 6（简称ES6）中引入了箭头(```=>```)函数，使函数的定义简洁了许多。可以简单对比如下两种函数的定义方式：
 - 传统方式
 ```js
-var isEven = function(x) { return x % 2 === 0;};
+var isEven = function(x) 
+{ 
+      return x % 2 === 0;
+};
 ```
 - 箭头函数
 ```js
 var isEven = x => x % 2 === 0;
 ```
 
-初次学习箭头函数，可能容易被箭头函数中```this```的行为搞混。本篇通过简单的例子梳理箭头函数中```this```的本质。
+当箭头函数中有使用到```this```的时候，初学者可能容易对```this```的行为感到疑惑。但实际上箭头函数中```this```的行为更简单易懂，只需要稍加分析梳理，就能掌握箭头函数中```this```的本质。
 
 
 
