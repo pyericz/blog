@@ -27,7 +27,7 @@ var isEven = x => x % 2 === 0;
 
 >箭头函数内部并不存在```this```的绑定机制。如果箭头函数中使用了```this```，那么该```this```指向的只能是外层代码中定义的```this```。正因为箭头函数中没有```this```的绑定机制，**箭头函数是不能作为构造函数使用的**。
 
-## 说明
+## 探究
 
 以如下简单的代码片段为例：
 ```js
@@ -81,5 +81,3 @@ eventHandler.register();
 ```
 在这段代码片段中，如果```register```函数订阅事件的回调函数不是使用箭头函数，```this```指向的就是```document```，从而会因为找不到```document```的```onClick```方法而报错。如果不绑定```this```，```this```只能指向```eventHandler```，从而确保了回调的正确性。
 
-## 参考
-- [《ECMAScript 6入门》函数的扩展](http://es6.ruanyifeng.com/#docs/function)
