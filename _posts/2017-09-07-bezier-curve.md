@@ -9,22 +9,6 @@ mathjax: true
 * content
 {:toc}
 
-在上一篇文章《[伯恩斯坦多项式](/math/2017/09/06/bernstein-polynomial/)》中，我们提到了伯恩斯坦多项式的一般形式
-
-$$
-B_n(t) = \sum_{i=0}^{n}\beta_i \cdot b_{i, n}(t)
-$$
-
-其中，
-
-$$
-b_{i,n}(t) = \binom{n}{i}\cdot t^{i} \cdot (1-t)^{(n-i)}, \quad t\in[0, 1]
-$$
-
-是n阶伯恩斯坦基底多项式。而$$\beta_i$$叫做伯恩斯坦系数。当伯恩斯坦系数是二维平面中的一系列固定点时，伯恩斯坦多项式就演变成了本篇要讨论的贝塞尔曲线(Bézier curve)。
-
-
-
 <style>
 
 .curve, .line {
@@ -54,10 +38,39 @@ svg {
     <!-- border: 1px solid #ddd; -->
 }
 </style>
-
-
 <script src="/assets/js/2017/09/07/d3.min.js"></script>
 <script src="/assets/js/2017/09/07/control.js"></script>
+
+在上一篇文章《[伯恩斯坦多项式](/math/2017/09/06/bernstein-polynomial/)》中，我们提到了伯恩斯坦多项式的一般形式
+
+$$
+B_n(t) = \sum_{i=0}^{n}\beta_i \cdot b_{i, n}(t)
+$$
+
+其中，
+
+$$
+b_{i,n}(t) = \binom{n}{i}\cdot t^{i} \cdot (1-t)^{(n-i)}, \quad t\in[0, 1]
+$$
+
+是n阶伯恩斯坦基底多项式。而$$\beta_i$$叫做伯恩斯坦系数。当伯恩斯坦系数是二维平面中的一系列固定点时，伯恩斯坦多项式就演变成了本篇要讨论的贝塞尔曲线(Bézier curve)。
+
+我们先来看一个三阶贝塞尔曲线的例子：
+
+<div id="vis" class="vis">
+	<script>
+	    var points = [
+            {x: -140, y: 0},
+            {x: -76, y: 177},
+            {x: 89,y: 228},
+            {x: 140, y: 60},
+        ];
+		bezierCurveAnimation("#vis", points);
+	</script>
+</div>
+
+在该例子中，共有四个坐标点（控制点）。读者可以尝试拖动四个控制点，看看贝塞尔曲线的形态变化。
+
 
 
 ## 推导
