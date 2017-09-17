@@ -60,10 +60,10 @@ $$
 <div id="vis" class="vis">
 	<script>
 	    var points = [
-            {x: -140, y: 0},
-            {x: -76, y: 177},
-            {x: 89,y: 228},
-            {x: 140, y: 60},
+            {x: -120, y: 0},
+            {x: -56, y: 177},
+            {x: 69,y: 228},
+            {x: 120, y: 60},
         ];
 		bezierCurveAnimation("#vis", points);
 	</script>
