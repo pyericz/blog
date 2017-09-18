@@ -3,7 +3,7 @@ layout: post
 title: 用Lua语言实现一个任务队列
 date: 2017-08-24
 categories: lua
-tag: [work, queue, async]
+tag: [lua, work, queue, async]
 ---
 * content
 {:toc}
