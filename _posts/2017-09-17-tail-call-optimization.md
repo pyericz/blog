@@ -124,7 +124,7 @@ local function Fibonacci(n)
 	if (n <= 1) then
 		return 1
 	end
-	return Fibonacci(n-1) + Fibonacci(n - 2)
+	return Fibonacci(n - 1) + Fibonacci(n - 2)
 end
 ```
 在没有做尾调用优化的时候，该函数的执行时间会随着```n```的变大而明显变长，且会在```n```到达一定数值之后，报```stack overflow```的错误。做了尾调用优化之后，其运算效率大大增加。下面是尾调用优化后的代码
@@ -134,7 +134,7 @@ local function Fibonacci(n)
 		if (n <= 1) then
 			return ret2
 		end
-		return doFibonacci(n-1, ret2, ret1 + ret2)
+		return doFibonacci(n - 1, ret2, ret1 + ret2)
 	end
 	return doFibonacci(n, 1, 1)
 end
