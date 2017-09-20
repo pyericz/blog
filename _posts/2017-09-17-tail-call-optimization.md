@@ -8,7 +8,7 @@ tag: [lua, python, tco, optimize]
 * content
 {:toc}
 
-**尾调用**（**Tail Call**）是函数式编程非常重要的概念。所谓尾调用，是指函数的最后一步操作是函数调用。以Lua语言为例，在这个函数定义中
+**尾调用**(**Tail Call**)是函数式编程非常重要的概念。所谓尾调用，是指函数的最后一步操作是函数调用。以Lua语言为例，在这个函数定义中
 
 ```lua
 function foo()
@@ -47,7 +47,7 @@ end
 ```
 因此这第三种情况也不属于尾调用。使用的时候一定要注意这些情况。
 
-当尾调用的函数是函数自身（self-called）时，我们就把这样的尾调用称作**尾递归**（**Tail Recursion**）。
+当尾调用的函数是函数自身(self-called)时，我们就把这样的尾调用称作**尾递归**(**Tail Recursion**)。
 
 那么，尾调用有什么意义呢？我们先来对比下面两个函数的执行结果
 
@@ -110,7 +110,7 @@ local function factorial(n)
 		if n == 0 then
 			return result
 		else
-			return doFactorial(n-1, result*n)
+			return doFactorial(n - 1, result * n)
 		end
 	end
 	return doFactorial(n, 1)
