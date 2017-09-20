@@ -1,7 +1,7 @@
-function bezierCurveAnimation(tag, points) {
+function bezierCurveAnimation(tag, points, height=300) {
     var container = document.querySelector(tag);
     var w = container.offsetWidth,
-        h = 300,
+        h = height,
         t = .5,
         delta = .01,
         padding = 10,

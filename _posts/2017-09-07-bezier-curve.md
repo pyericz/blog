@@ -65,7 +65,7 @@ $$
             {x: 69,y: 228},
             {x: 120, y: 60},
         ];
-		bezierCurveAnimation("#vis", points);
+		bezierCurveAnimation("#vis", points, 260);
 	</script>
 </div>
 
