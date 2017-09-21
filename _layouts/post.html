@@ -9,7 +9,7 @@ layout: default
 
             <div class="label-card">
                 {% if page.author %}<i class="fa fa-user"></i>{{ page.author }}
-                {% else if site.author %}<i class="fa fa-user"></i>{{ site.author }}
+                {% else if site.author %}<i class="fa fa-user"></i><a class="author" href="{{site.author_link}}">{{ site.author }}</a>
                 {% endif %}
             </div>
 

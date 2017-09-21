@@ -11,6 +11,7 @@ github_username:  pyericz
 timezone: Asian/Shanghai
 
 author: pyericz
+author_link: https://github.com/pyericz
 
 # Build settings
 markdown: kramdown

@@ -23,7 +23,7 @@ layout: default
 
                     <div class="label-card">
                         {% if post.author %}<i class="fa fa-user" aria-hidden="true"></i>{{ post.author }}
-                        {% else if site.author %}<i class="fa fa-user" aria-hidden="true"></i>{{ site.author }}
+                        {% else if site.author %}<i class="fa fa-user" aria-hidden="true"></i><a class="author" href="{{site.author_link}}">{{ site.author }}</a>
                         {% endif %}
                     </div>
 

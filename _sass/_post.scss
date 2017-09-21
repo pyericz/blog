@@ -27,6 +27,14 @@
                     background-color: #f0e7ce;
                 }
             }
+            .author {
+                color: #7c7c7c;
+                background-color: transparent;
+                &:hover {
+                    color: #24292E;
+                    background-color: transparent;
+                }
+            }
         }
     }
     a {

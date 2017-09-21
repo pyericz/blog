@@ -29,6 +29,14 @@
                             padding-right: 0px;
                             color: #24292E;
                         }
+                        .author {
+                            color: #7c7c7c;
+                            background-color: transparent;
+                            &:hover {
+                                color: #24292E;
+                                background-color: transparent;
+                            }
+                        }
                     }
                     .categories {
                         padding: 0;
