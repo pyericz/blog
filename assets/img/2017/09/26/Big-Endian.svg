@@ -13,7 +13,7 @@
    width="280"
    height="250"
    id="svg2328"
-   inkscape:version="0.47 r22583"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
    sodipodi:docname="Big-Endian.svg">
   <metadata
      id="metadata84">
@@ -35,17 +35,17 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="947"
-     inkscape:window-height="864"
+     inkscape:window-width="1448"
+     inkscape:window-height="867"
      id="namedview82"
      showgrid="false"
-     inkscape:zoom="2"
-     inkscape:cx="145.18312"
-     inkscape:cy="125"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="134.23806"
+     inkscape:cy="142.45911"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="180"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg2328" />
+     inkscape:current-layer="g2707" />
   <defs
      id="defs2330">
     <inkscape:perspective
@@ -85,13 +85,13 @@
         <text
            xml:space="preserve"
            id="text2181"
-           style="font-size:20px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Black"
+           style="font-style:normal;font-weight:normal;font-size:20px;line-height:0%;font-family:'Arial Black';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
            y="106.59099"
            x="210.48268"><tspan
              id="tspan2183"
-             style="font-size:18px;stroke:none"
+             style="font-size:18.66666667px;stroke:none;-inkscape-font-specification:'sans-serif, Normal';font-family:sans-serif;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"
              y="106.59099"
-             x="210.48268">0D</tspan></text>
+             x="210.48268">23</tspan></text>
       </g>
       <g
          id="g3180"
@@ -104,13 +104,13 @@
         <text
            xml:space="preserve"
            id="text3184"
-           style="font-size:20px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Black"
+           style="font-style:normal;font-weight:normal;font-size:20px;line-height:0%;font-family:'Arial Black';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
            y="106.59099"
            x="210.48268"><tspan
              id="tspan3186"
-             style="font-size:18px;stroke:none"
+             style="font-size:18.66666667px;stroke:none;-inkscape-font-specification:'sans-serif, Normal';font-family:sans-serif;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"
              y="106.59099"
-             x="210.48268">0A</tspan></text>
+             x="210.48268">3F</tspan></text>
       </g>
       <g
          id="g3188"
@@ -123,13 +123,13 @@
         <text
            xml:space="preserve"
            id="text3192"
-           style="font-size:20px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Black"
+           style="font-style:normal;font-weight:normal;font-size:20px;line-height:0%;font-family:'Arial Black';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
            y="106.59099"
            x="210.48268"><tspan
              id="tspan3194"
-             style="font-size:18px;stroke:none"
+             style="font-size:18.66666667px;stroke:none;-inkscape-font-specification:'sans-serif, Normal';font-family:sans-serif;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"
              y="106.59099"
-             x="210.48268">0B</tspan></text>
+             x="210.48268">01</tspan></text>
       </g>
       <g
          id="g3196"
@@ -142,13 +142,13 @@
         <text
            xml:space="preserve"
            id="text3200"
-           style="font-size:20px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Black"
+           style="font-style:normal;font-weight:normal;font-size:20px;line-height:0%;font-family:'Arial Black';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
            y="106.59099"
            x="210.48268"><tspan
              id="tspan3202"
-             style="font-size:18px;stroke:none"
+             style="font-size:18.66666667px;stroke:none;-inkscape-font-specification:'sans-serif, Normal';font-family:sans-serif;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"
              y="106.59099"
-             x="210.48268">0C</tspan></text>
+             x="210.48268">4D</tspan></text>
       </g>
       <path
          id="path2185"
@@ -185,23 +185,23 @@
         <text
            xml:space="preserve"
            id="text3208"
-           style="font-size:20px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Black"
-           transform="matrix(0,1,-1,0,0,0)"
+           style="font-style:normal;font-weight:normal;font-size:20px;line-height:0%;font-family:'Arial Black';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+           transform="rotate(90)"
            y="-219.84514"
            x="49.333466"><tspan
              id="tspan3210"
-             style="font-size:18px;stroke:none;font-family:Times New Roman"
+             style="font-size:18px;font-family:'Times New Roman';stroke:none"
              y="-219.84514"
              x="49.333466">...</tspan></text>
         <text
            xml:space="preserve"
            id="text3212"
-           style="font-size:20px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Black"
-           transform="matrix(0,1,-1,0,0,0)"
+           style="font-style:normal;font-weight:normal;font-size:20px;line-height:0%;font-family:'Arial Black';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+           transform="rotate(90)"
            y="-219.84514"
            x="187.58347"><tspan
              id="tspan3214"
-             style="font-size:18px;stroke:none;font-family:Times New Roman"
+             style="font-size:18px;font-family:'Times New Roman';stroke:none"
              y="-219.84514"
              x="187.58347">...</tspan></text>
         <g
@@ -216,18 +216,17 @@
              height="25"
              width="40" />
           <text
-             sodipodi:linespacing="125%"
              xml:space="preserve"
              id="text3283"
-             style="font-size:18px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman"
+             style="font-style:normal;font-weight:normal;font-size:18px;line-height:0%;font-family:'Times New Roman';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
              y="82.861786"
              x="133.96561"><tspan
                id="tspan3285"
-               style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;stroke:none;font-family:Times New Roman"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18px;line-height:125%;font-family:'Times New Roman';text-align:end;writing-mode:lr-tb;text-anchor:end;stroke:none"
                y="82.861786"
                x="133.96561"><tspan
    id="tspan3287"
-   style="font-size:18px;font-style:italic;text-align:end;text-anchor:end;stroke:none">a</tspan>+3:</tspan></text>
+   style="font-style:italic;font-size:18px;text-align:end;text-anchor:end;stroke:none">a</tspan>+3:</tspan></text>
         </g>
         <g
            id="g3309"
@@ -241,18 +240,17 @@
              height="25"
              width="40" />
           <text
-             sodipodi:linespacing="125%"
              xml:space="preserve"
              id="text3313"
-             style="font-size:18px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman"
+             style="font-style:normal;font-weight:normal;font-size:18px;line-height:0%;font-family:'Times New Roman';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
              y="82.861786"
              x="133.96561"><tspan
                id="tspan3315"
-               style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;stroke:none;font-family:Times New Roman"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18px;line-height:125%;font-family:'Times New Roman';text-align:end;writing-mode:lr-tb;text-anchor:end;stroke:none"
                y="82.861786"
                x="133.96561"><tspan
    id="tspan3317"
-   style="font-size:18px;font-style:italic;text-align:end;text-anchor:end;stroke:none">a</tspan>+2:</tspan></text>
+   style="font-style:italic;font-size:18px;text-align:end;text-anchor:end;stroke:none">a</tspan>+2:</tspan></text>
         </g>
         <g
            id="g3319"
@@ -266,18 +264,17 @@
              height="25"
              width="40" />
           <text
-             sodipodi:linespacing="125%"
              xml:space="preserve"
              id="text3323"
-             style="font-size:18px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman"
+             style="font-style:normal;font-weight:normal;font-size:18px;line-height:0%;font-family:'Times New Roman';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
              y="82.861786"
              x="133.96561"><tspan
                id="tspan3325"
-               style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;stroke:none;font-family:Times New Roman"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18px;line-height:125%;font-family:'Times New Roman';text-align:end;writing-mode:lr-tb;text-anchor:end;stroke:none"
                y="82.861786"
                x="133.96561"><tspan
    id="tspan3327"
-   style="font-size:18px;font-style:italic;text-align:end;text-anchor:end;stroke:none">a</tspan>+1:</tspan></text>
+   style="font-style:italic;font-size:18px;text-align:end;text-anchor:end;stroke:none">a</tspan>+1:</tspan></text>
         </g>
         <g
            id="g3329"
@@ -291,48 +288,48 @@
              height="25"
              width="40" />
           <text
-             sodipodi:linespacing="125%"
              xml:space="preserve"
              id="text3333"
-             style="font-size:18px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman"
+             style="font-style:normal;font-weight:normal;font-size:18px;line-height:0%;font-family:'Times New Roman';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
              y="82.861786"
              x="133.96561"><tspan
                id="tspan3335"
-               style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:125%;writing-mode:lr-tb;text-anchor:end;stroke:none;font-family:Times New Roman"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18px;line-height:125%;font-family:'Times New Roman';text-align:end;writing-mode:lr-tb;text-anchor:end;stroke:none"
                y="82.861786"
                x="133.96561"><tspan
    id="tspan3337"
-   style="font-size:18px;font-style:italic;text-align:end;text-anchor:end;stroke:none">a</tspan>:</tspan></text>
+   style="font-style:italic;font-size:18px;text-align:end;text-anchor:end;stroke:none">a</tspan>:</tspan></text>
         </g>
       </g>
       <text
          xml:space="preserve"
          id="text3347"
-         style="font-size:16px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman"
+         style="font-style:normal;font-weight:normal;font-size:16px;line-height:0%;font-family:'Times New Roman';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
          y="105.59375"
          x="282.54688"><tspan
            id="tspan3349"
            y="105.59375"
-           x="282.54688">Memory</tspan></text>
+           x="282.54688">内存</tspan></text>
     </g>
     <text
        xml:space="preserve"
        id="text3343"
-       style="font-size:16px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman"
+       style="font-style:normal;font-weight:normal;font-size:16px;line-height:0%;font-family:'Times New Roman';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
        y="33.109375"
        x="218.93581"><tspan
          id="tspan3345"
          y="33.109375"
-         x="218.93581">32-bit integer</tspan></text>
+         x="218.93581"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle">32位整型</tspan></text>
     <text
        xml:space="preserve"
        id="text3351"
-       style="font-size:16px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman"
+       style="font-style:normal;font-weight:normal;font-size:16px;line-height:0%;font-family:'Times New Roman';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
        y="222.54688"
        x="208.28125"><tspan
          id="tspan3353"
          y="222.54688"
-         x="208.28125">Big-endian</tspan></text>
+         x="208.28125">大端</tspan></text>
     <g
        id="g2631">
       <g
@@ -345,13 +342,13 @@
         <text
            xml:space="preserve"
            id="text2359"
-           style="font-size:16px;font-style:normal;font-weight:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial Black"
+           style="font-style:normal;font-weight:normal;font-size:21.33333333px;line-height:0%;font-family:sans-serif;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;-inkscape-font-specification:'sans-serif, Normal';font-stretch:normal;font-variant:normal;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
            y="60"
            x="95"><tspan
              id="tspan2361"
-             style="font-size:20px"
+             style="font-size:21.33333333px;-inkscape-font-specification:'sans-serif, Normal';font-family:sans-serif;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:middle;text-align:center;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
              y="60"
-             x="95">0A0B0C0D</tspan></text>
+             x="95">3F014D23</tspan></text>
       </g>
       <g
          id="g2250">
