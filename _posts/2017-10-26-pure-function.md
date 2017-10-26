@@ -78,7 +78,7 @@ return function() {
 我们可以使用下面的方法来缓存结果
 
 ```javascript
-function cacheCall(func) {
+function cacheFunc(func) {
 	var cache = {}
 	return function() {
 		var argStr = JSON.stringfy(arguments);
@@ -88,10 +88,10 @@ function cacheCall(func) {
 }
 ```
 
-有了```cacheCall```，就可以这样来定义一个纯函数
+有了```cacheFunc```，就可以这样来定义一个纯函数
 
 ```javascript
-var squareNumber = cacheCall(function(x){
+var squareNumber = cacheFunc(function(x){
 	return x * x;
 });
 
@@ -140,7 +140,7 @@ var welcomeUser = function(Email, user) {
 	...
 };
 ```
-上面例子说明了纯函数必须明确告知他所依赖的对象、方法等，比如这里的```Db```,```Email```,```attrs```。对于这种需要强制“注入”依赖的函数，实际上提供了更丰富的接口信息，我们不需要额外的文档信息来告诉我们函数内部使用了什么```Db```，用了什么```Email```方法，接口本身就要求这些信息是传递进去的。也正因为这种强制“注入”的依赖，使得我们的函数变得更方便移植：不同的系统也许使用的是不同的数据库，那么只要传入该系统对应数据库给该函数就是了。可以对比参考命令式编程(Imperative Programming)的情况，命令式编程在编程过程中耦合的系统状态和必要的依赖等等，导致了命令式编程的函数无法很方便地移植到另一个系统中。
+上面例子说明了纯函数必须明确告知他所依赖的对象、方法等，比如这里的```Db```,```Email```,```attrs```。对于这种需要强制“注入”依赖的函数，实际上提供了更丰富的接口信息，我们不需要额外的文档信息来告诉我们函数内部使用了什么```Db```，用了什么```Email```方法，接口本身就要求这些信息是传递进去的。也正因为这种强制“注入”的依赖，使得我们的函数变得更方便移植：不同的系统也许使用的是不同的数据库，那么只要传入该系统对应数据库给该函数就是了。可以对比参考命令式编程(Imperative Programming)的情况。命令式编程在编程过程中耦合的系统状态和必要依赖等，会导致命令式编程的函数无法很方便地移植到另一个系统中。
 
 ### 可测试(Testable)
 正因为确定的输入有确定的输出，对纯函数的测试会变得更加简单。我们不需要为了测试一个函数，而去mock一个相同的系统环境；要做的只需要定义好输入，定义好输出断言(assert)就可以了。
