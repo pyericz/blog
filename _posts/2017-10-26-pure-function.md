@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 函数式编程——纯函数
+title: 函数式编程：纯函数
 date: 2017-10-26
 categories: fp
 tag: [fp, functional, programming, javascript]
