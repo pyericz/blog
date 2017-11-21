@@ -24,6 +24,19 @@ $ mysql -u [username]
 $ mysql -u [username] -p
 ```
 
+更改```root```密码:
+MySQL 5.7.6和以后的版本：
+
+```sql
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass';
+```
+
+MySQL 5.7.5和以前的版本：
+
+```sql
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('MyNewPass');
+```
+
 ## 创建账户
 
 以```root```账户登录
