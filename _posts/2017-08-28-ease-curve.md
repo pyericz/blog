@@ -812,6 +812,10 @@ float easeInOut(curve cv, float x)
 {:.imgcap}
 ![](/assets/img/2017/08/28/easeInOutBounce.svg)
 
+本篇博客已经前移到：  
+https://www.synscope.com/pyericz/mathematics/479  
+更多新的博客内容，请关注 [Synscope](https://www.synscope.com/)
+
 ## 外部链接
 
 - [GitHub源码](https://github.com/pyericz/EaseCurve)
