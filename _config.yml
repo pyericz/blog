@@ -1,11 +1,11 @@
 # Site settings
-title: PxrGO
+title: Pyeli
 layout: posts
 email: pyericz@yahoo.com 
 description: "一抹午烟风隔断，野鸡声在竹林西。求知，探索，领悟智慧。科学、技术、思辨与随笔，用博客记录人生感悟。"
 brief-intro: "求知·探索·领悟智慧"
 baseurl: ""
-url: "http://www.pxrgo.com/"
+url: "https://blog.pyeli.com/"
 description_footer: 一抹午烟风隔断，野鸡声在竹林西
 github_username:  pyericz
 timezone: Asian/Shanghai
