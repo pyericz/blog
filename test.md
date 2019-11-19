@@ -4,6 +4,8 @@
 
 Click the `clear` link to start with a clean slate, or get the `permalink` to share or save your results.
 
+{:toc}
+
 ***
 
 # h1 Heading
